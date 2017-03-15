@@ -11,15 +11,42 @@ import {PageHeader} from 'react-bootstrap';
 class App extends React.Component {
   constructor(props) {
      super(props);
+  this.state = {
+     data: 'Initial data...',
+    email: '',
+    password: '',
+    formErrors: {email: '', password: ''},
+    emailValid: false,
+    passwordValid: false,
+    formValid: false
+  }
+}
 
      this.state = {
-        data: 'Initial data...'
+       
+        email: ''
      }
 
      this.confirm = this.confirm.bind(this);
-
+     this.validateEmail=this.validateEmail.bind(this);
 
   };
+
+  validateEmail(e) {
+   this.setState({email: e.target.value});
+    var t=document.getElementById('email');
+        var x=t.value.indexOf('@');
+        var y=t.value.lastIndexOf('.');
+
+        if(x==-1 || y==-1 || (x+2)>=y){
+            alert('Email address is not valid');
+        }
+        else{
+            alert('Email is ok');
+        }
+    }
+
+  }
   confirm(e) {
     e.preventDefault();
     alert('The link was clicked.');
@@ -37,13 +64,33 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="email" placeholder="Email" />
+                 <FormControl type="text" placeholder="Email" id="email" value={this.state.email}
+                 onChange={this.validateEmail}/>
+                 <h4>{this.state.email}</h4>
+               </Col>
+             </FormGroup>
+             <FormGroup controlId="formHorizontalUser">
+               <Col componentClass={ControlLabel} sm={2}>User Name</Col>
+               <Col sm={6}>
+                <FormControl type="text" placeholder="User Name" />
+               </Col>
+             </FormGroup>
+              <FormGroup controlId="formHorizontalAddress">
+               <Col componentClass={ControlLabel} sm={2}>Address</Col>
+               <Col sm={6}>
+                <FormControl type="text" placeholder="Address" />
+               </Col>
+             </FormGroup>
+              <FormGroup controlId="formHorizontalEducation">
+               <Col componentClass={ControlLabel} sm={2}>last Education</Col>
+               <Col sm={6}>
+                <FormControl type="text" placeholder="last Education" />
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalPassword">
                <Col componentClass={ControlLabel} sm={2}>Password </Col>
                <Col sm={6}>
-                <FormControl type="password" placeholder="Password" />
+                <FormControl type="text" placeholder="Password" />
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalPassword">
