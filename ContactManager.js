@@ -12,41 +12,51 @@ class App extends React.Component {
   constructor(props) {
      super(props);
   this.state = {
-     data: 'Initial data...',
+    data: 'Initial data...',
     email: '',
     password: '',
-    formErrors: {email: '', password: ''},
-    emailValid: false,
-    passwordValid: false,
-    formValid: false
+    confPass:''
   }
-}
-
-     this.state = {
-       
-        email: ''
-     }
 
      this.confirm = this.confirm.bind(this);
-     this.validateEmail=this.validateEmail.bind(this);
+     this.valiadateInput=this.valiadateInput.bind(this);
 
   };
 
-  validateEmail(e) {
-   this.setState({email: e.target.value});
-    var t=document.getElementById('email');
-        var x=t.value.indexOf('@');
-        var y=t.value.lastIndexOf('.');
+  valiadateInput(e){
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("pass").value;
+    var confPass = document.getElementById("c_pass").value;
 
-        if(x==-1 || y==-1 || (x+2)>=y){
-            alert('Email address is not valid');
+    if(password != confPass || password<=8 ) {
+            alert(' password not correct');
         }
-        else{
-            alert('Email is ok');
+   
+    if (email.indexOf('@') == -1) {
+        alert("email not correct")
+    } else {
+
+        var parts = value.split('@');
+        var domain = parts[1];
+
+        if (domain.indexOf('.') == -1) {
+
+            alert('email not correct')
+
+        } else {
+
+            var domainParts = domain.split('.');
+            var ext = domainParts[1];
+
+            if (ext.length > 4 || ext.length < 2) {
+
+                alert("email not correct")
+            }
         }
+
     }
-
-  }
+};
+ 
   confirm(e) {
     e.preventDefault();
     alert('The link was clicked.');
@@ -64,9 +74,8 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="text" placeholder="Email" id="email" value={this.state.email}
-                 onChange={this.validateEmail}/>
-                 <h4>{this.state.email}</h4>
+                 <FormControl type="text" placeholder="Email" id="email" />
+                 
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalUser">
@@ -90,13 +99,13 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalPassword">
                <Col componentClass={ControlLabel} sm={2}>Password </Col>
                <Col sm={6}>
-                <FormControl type="text" placeholder="Password" />
+                <FormControl type="text" id="pass" placeholder="Password" />
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalPassword">
                <Col componentClass={ControlLabel} sm={2}>Confirm Password </Col>
                <Col sm={6}>
-                <FormControl type="password" placeholder="Confirm Password" />
+                <FormControl type="password" id ="c_pass" placeholder="Confirm Password" />
                </Col>
              </FormGroup>
              <FormGroup>
@@ -107,7 +116,7 @@ class App extends React.Component {
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="submit" className="btn btn-primary" name="submit" onClick = {this.confirm} value="Sign Up" />
+               <input type="submit" className="btn btn-primary" name="submit" onClick = {this.valiadateInput} value="Sign Up" />
                </Col>
              </FormGroup>
               </Form>
