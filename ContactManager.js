@@ -15,47 +15,85 @@ class App extends React.Component {
     data: 'Initial data...',
     email: '',
     password: '',
-    confPass:''
+    passwordConfirm:''
   }
-
-     this.confirm = this.confirm.bind(this);
-     this.valiadateInput=this.valiadateInput.bind(this);
+    this.confirm = this.confirm.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   };
 
-  valiadateInput(e){
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("pass").value;
-    var confPass = document.getElementById("c_pass").value;
+  handleChange(e) {
+    e.target.classList.add('active');
 
-    if(password != confPass || password<=8 ) {
-            alert(' password not correct');
-        }
-   
-    if (email.indexOf('@') == -1) {
-        alert("email not correct")
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+
+    this.showInputError(e.target.name);
+  }
+
+   handleSubmit(e) {
+    e.preventDefault();
+
+    console.log('component state', JSON.stringify(this.state));
+
+    if (!this.showFormErrors()) {
+      console.log('form is invalid: do not submit');
     } else {
-
-        var parts = value.split('@');
-        var domain = parts[1];
-
-        if (domain.indexOf('.') == -1) {
-
-            alert('email not correct')
-
-        } else {
-
-            var domainParts = domain.split('.');
-            var ext = domainParts[1];
-
-            if (ext.length > 4 || ext.length < 2) {
-
-                alert("email not correct")
-            }
-        }
-
+      console.log('form is valid: submit');
     }
-};
+  }
+
+    showFormErrors() {
+    const inputs = document.querySelectorAll('input');
+    let isFormValid = true;
+
+    inputs.forEach(input => {
+      input.classList.add('active');
+
+      const isInputValid = this.showInputError(input.name);
+
+      if (!isInputValid) {
+        isFormValid = false;
+      }
+    });
+
+    return isFormValid;
+  }
+
+    showInputError(refName) {
+    const validity = this.refs[refName].validity;
+    const label = document.getElementById(`${refName}Label`).textContent;
+    const error = document.getElementById(`${refName}Error`);
+    const isPassword = refName.indexOf('password') !== -1;
+    const isPasswordConfirm = refName === 'passwordConfirm';
+
+    if (isPasswordConfirm) {
+      if (this.refs.password.value !== this.refs.passwordConfirm.value) {
+        this.refs.passwordConfirm.setCustomValidity('Passwords do not match');
+      } else {
+        this.refs.passwordConfirm.setCustomValidity('');
+      }
+    }
+
+    if (!validity.valid) {
+      if (validity.valueMissing) {
+        error.textContent = `${label} is a required field`;
+      } else if (validity.typeMismatch) {
+        error.textContent = `${label} should be a valid email address`;
+      } else if (isPassword && validity.patternMismatch) {
+        error.textContent = `${label} should be longer than 4 chars`;
+      } else if (isPasswordConfirm && validity.customError) {
+        error.textContent = 'Passwords do not match';
+      }
+      return false;
+    }
+
+    error.textContent = '';
+    return true;
+  }
+
  
   confirm(e) {
     e.preventDefault();
@@ -74,8 +112,8 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="text" placeholder="Email" id="email" />
-                 
+                 <FormControl type="text" placeholder="Email" ref="email" value={this.state.email}  onChange={this.handleEmailChange} />
+                  <p>{this.state.email}</p>
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalUser">
@@ -99,13 +137,15 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalPassword">
                <Col componentClass={ControlLabel} sm={2}>Password </Col>
                <Col sm={6}>
-                <FormControl type="text" id="pass" placeholder="Password" />
+                <FormControl type="text" placeholder="Password" ref="password" value={this.state.password} onChange={ this.handleChange } />
+                <p>{this.state.password}</p>
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalPassword">
                <Col componentClass={ControlLabel} sm={2}>Confirm Password </Col>
                <Col sm={6}>
-                <FormControl type="password" id ="c_pass" placeholder="Confirm Password" />
+                <FormControl type="password"  placeholder="Confirm Password" ref="passwordConfirm" value={this.state.passwordConfirm} onChange={ this.handleChange }/>
+                <p>{this.state.confpass}</p>
                </Col>
              </FormGroup>
              <FormGroup>
@@ -116,7 +156,7 @@ class App extends React.Component {
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="submit" className="btn btn-primary" name="submit" onClick = {this.valiadateInput} value="Sign Up" />
+               <input type="submit" className="btn btn-primary" name="submit" onClick={this.handleSubmit} value="Sign Up" />
                </Col>
              </FormGroup>
               </Form>
@@ -155,3 +195,4 @@ class App extends React.Component {
 }
 
 export default App;
+
