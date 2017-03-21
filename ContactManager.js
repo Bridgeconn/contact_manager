@@ -17,18 +17,49 @@ class App extends React.Component {
     password: '',
     passwordConfirm:''
   }
-    this.confirm = this.confirm.bind(this);
-   this.onInput = this.onInput.bind(this);
+  this.confirm = this.confirm.bind(this);
+  this.onEmail = this.onEmail.bind(this);
+  this.onPassword = this.onPassword.bind(this);
+  this.onConPassword = this.onConPassword.bind(this);
+
 
   };
      
-  onInput(e) {
-  this.setState({email:e.target.value, 
-                password: e.target.value, 
-                passwordConfirm: e.target.value});
-   
-  }
+  onEmail(e) {
+  var email = e.target.value.trim();
+    this.setState({email:email})
+    var emailParts = email.split('@');
+  if(emailParts.length !==1 ) {
+        alert("Wrong number of @ signs");
+        return false;   
+    }
 
+    var emailName = emailParts[0];
+    var emailDomain = emailParts[1]
+    if(emailName.length < 1 || emailDomain.length < 3) {
+        alert("Wrong number of characters before or after @ sign");
+        return false;
+    }
+
+}
+  onPassword(e){
+  var password = e.target.value.trim();
+  this.setState({password:password})
+  return password;
+  } 
+
+ onConPassword(e){
+  var passwordConfirm = e.target.value.trim();
+  this.setState({passwordConfirm:passwordConfirm})
+  var pass=this.state.password;
+
+  if(pass!=passwordConfirm){
+    alert("not correct password");
+  }
+  else{
+    alert("correct password");
+  }
+}
 
   confirm(e) {
     e.preventDefault();
@@ -39,6 +70,8 @@ class App extends React.Component {
        paddingLeft: "90px",
        color: "blue"
      };
+
+
      return (
          <div className ="row">
          <div className ="col-md-6">
@@ -47,8 +80,8 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="text" placeholder="Email"  onChange={this.onInput}/>
-                <p>{this.state.email}</p>
+                 <FormControl type="email" placeholder="Email" onChange={this.onEmail} required="true"/>
+               <p>{this.state.email}</p>
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalUser">
@@ -72,15 +105,15 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalPassword">
                <Col componentClass={ControlLabel} sm={2}>Password </Col>
                <Col sm={6}>
-                <FormControl type="text" pla1ceholder="Password" onChange={this.onInput}/>
-                <p>{this.state.password}</p>
+                <FormControl type="text" placeholder="Password" onChange={this.onPassword}/>
+                
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalPassword">
-               <Col componentClass={ControlLabel} sm={2}>Confirm Password </Col>
+               <Col componentClass={ControlLabel} sm={2}>Confirm Password</Col>
                <Col sm={6}>
-                <FormControl type="password"  placeholder="Confirm Password" onChange={this.onInput}/>
-              <p>{this.state.passwordConfirm}</p>
+                <FormControl type="text"  placeholder="Confirm Password" onChange={this.onConPassword}/>
+              
                </Col>
              </FormGroup>
              <FormGroup>
@@ -91,7 +124,7 @@ class App extends React.Component {
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="submit" className="btn btn-primary" name="submit"  value="Sign Up" />
+               <input type="submit" className="btn btn-primary" name="submit" onClick={this.onConPassword} value="Sign Up" />
                </Col>
              </FormGroup>
               </Form>
