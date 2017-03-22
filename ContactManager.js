@@ -15,7 +15,7 @@ class App extends React.Component {
     data: 'Initial data...',
     email: '',
     password: '',
-    passwordConfirm:'',
+    passwordConfirm:''
   }
   this.confirm = this.confirm.bind(this);
   this.onEmail = this.onEmail.bind(this);
@@ -114,8 +114,8 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="email" placeholder="Email" required="true"/>
-              
+                 <FormControl type="email" placeholder="Email" required/>
+                  
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalUser">
@@ -159,7 +159,7 @@ class App extends React.Component {
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="button" className="btn btn-primary" name="submit" value="Sign Up" />
+               <input type="submit" className="btn btn-primary" name="submit" value="Sign Up" />
              
                </Col>
              </FormGroup>
