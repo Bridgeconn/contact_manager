@@ -171,7 +171,7 @@ class App extends React.Component {
                <FormGroup controlId="formHorizontalEmail">
                  <Col componentClass={ControlLabel} sm={2}> Email </Col>
                  <Col sm={6}>
-                   <FormControl type="email" placeholder="Email" />
+                   <FormControl type="email" placeholder="Email" required="true"/>
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalPassword">
