@@ -15,32 +15,31 @@ class App extends React.Component {
     data: 'Initial data...',
     email: '',
     password: '',
-    passwordConfirm:''
+    passwordConfirm:'',
   }
   this.confirm = this.confirm.bind(this);
   this.onEmail = this.onEmail.bind(this);
   this.onPassword = this.onPassword.bind(this);
   this.onConPassword = this.onConPassword.bind(this);
-
-
+ 
   };
      
   onEmail(e) {
   var email = e.target.value.trim();
     this.setState({email:email})
-    var emailParts = email.split('@');
-  if(emailParts.length !==1 ) {
+      
+        var emailDomain = emailParts[1]
+        if(emailParts.length !=1) {
         alert("Wrong number of @ signs");
         return false;   
     }
-
-    var emailName = emailParts[0];
-    var emailDomain = emailParts[1]
+         var emailParts = email.split('@');
+       var emailName = emailParts[0];
     if(emailName.length < 1 || emailDomain.length < 3) {
         alert("Wrong number of characters before or after @ sign");
         return false;
-    }
-
+        
+    } 
 }
   onPassword(e){
   var password = e.target.value.trim();
@@ -54,12 +53,47 @@ class App extends React.Component {
   var pass=this.state.password;
 
   if(pass!=passwordConfirm){
-    alert("not correct password");
+   document.getElementById("wrongpass").innerHTML="Wrong Password";
+
   }
   else{
-    alert("correct password");
+     document.getElementById("wrongpass").innerHTML="correct Password";
   }
+ 
 }
+
+// inputUserField(e){
+//   var username=e.target.value;
+//   this.setState({username:username});
+
+//   if(username===''){
+//     console.log("empty-field");
+//   }
+//   else{
+//     console.log("filled");
+//   }
+//   return username;
+// }
+// inputAddressField(e){
+//   var address=e.target.value;
+//   this.setState({address:address});
+//   return address;
+// }
+// inputEducationField(e){
+//   education=e.target.value;
+//  this.setState({education:education});
+//  return education;
+// }
+// inputEmptyField(e){
+//   var user = this.state.username;
+  
+//   if(user==''){
+//     console.log("empty-field");
+//   }
+//   else{
+//     console.log("filled");
+//   }
+// }
 
   confirm(e) {
     e.preventDefault();
@@ -80,14 +114,15 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="email" placeholder="Email" onChange={this.onEmail} required="true"/>
-               <p>{this.state.email}</p>
+                 <FormControl type="email" placeholder="Email" required="true"/>
+              
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalUser">
                <Col componentClass={ControlLabel} sm={2}>User Name</Col>
                <Col sm={6}>
-                <FormControl type="text" placeholder="User Name" name="username"/>
+                <FormControl type="text" placeholder="User Name" name="username"  />
+              
                </Col>
              </FormGroup>
               <FormGroup controlId="formHorizontalAddress">
@@ -113,7 +148,7 @@ class App extends React.Component {
                <Col componentClass={ControlLabel} sm={2}>Confirm Password</Col>
                <Col sm={6}>
                 <FormControl type="text"  placeholder="Confirm Password" onChange={this.onConPassword}/>
-              
+                <p id="wrongpass"></p>
                </Col>
              </FormGroup>
              <FormGroup>
@@ -124,7 +159,8 @@ class App extends React.Component {
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="submit" className="btn btn-primary" name="submit" onClick={this.onConPassword} value="Sign Up" />
+               <input type="button" className="btn btn-primary" name="submit" value="Sign Up" />
+             
                </Col>
              </FormGroup>
               </Form>
