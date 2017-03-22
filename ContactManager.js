@@ -21,25 +21,29 @@ class App extends React.Component {
   this.onEmail = this.onEmail.bind(this);
   this.onPassword = this.onPassword.bind(this);
   this.onConPassword = this.onConPassword.bind(this);
+  this.submit=this.submit.bind(this);
  
   };
+
+
      
   onEmail(e) {
   var email = e.target.value.trim();
     this.setState({email:email})
+    console.log(email);
       
-        var emailDomain = emailParts[1]
-        if(emailParts.length !=1) {
-        alert("Wrong number of @ signs");
-        return false;   
-    }
-         var emailParts = email.split('@');
-       var emailName = emailParts[0];
-    if(emailName.length < 1 || emailDomain.length < 3) {
-        alert("Wrong number of characters before or after @ sign");
-        return false;
+    //     var emailDomain = emailParts[1]
+    //     if(emailParts.length !=1) {
+    //     alert("Wrong number of @ signs");
+    //     return false;   
+    // }
+    //      var emailParts = email.split('@');
+    //    var emailName = emailParts[0];
+    // if(emailName.length < 1 || emailDomain.length < 3) {
+    //     alert("Wrong number of characters before or after @ sign");
+    //     return false;
         
-    } 
+    // } 
 }
   onPassword(e){
   var password = e.target.value.trim();
@@ -59,7 +63,7 @@ class App extends React.Component {
   else{
      document.getElementById("wrongpass").innerHTML="correct Password";
   }
- 
+console.log(pass);
 }
 
 // inputUserField(e){
@@ -94,6 +98,12 @@ class App extends React.Component {
 //     console.log("filled");
 //   }
 // }
+submit(e){
+  
+  this.onConPassword(e);
+  var value=this.pass;
+  console.log(value);
+}
 
   confirm(e) {
     e.preventDefault();
@@ -114,7 +124,7 @@ class App extends React.Component {
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="email" placeholder="Email" required/>
+                 <FormControl type="email" placeholder="Email" onClick={this.onEmail} required/>
                   
                </Col>
              </FormGroup>
@@ -159,7 +169,7 @@ class App extends React.Component {
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="submit" className="btn btn-primary" name="submit" value="Sign Up" />
+               <input type="submit" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" />
              
                </Col>
              </FormGroup>
@@ -187,7 +197,7 @@ class App extends React.Component {
                </FormGroup>
                <FormGroup>
                  <Col smOffset={2} sm={4}>
-                   <input type="submit" className="btn btn-primary" name="submit"  value="Sign in" />
+                   <input type="submit" className="btn btn-primary" name="submit" onChange={this.onConPassword}  value="Sign in" />
 
                  </Col>
                </FormGroup>
