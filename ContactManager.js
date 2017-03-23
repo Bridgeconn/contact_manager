@@ -15,35 +15,34 @@ class App extends React.Component {
     data: 'Initial data...',
     email: '',
     password: '',
-    passwordConfirm:''
+    passwordConfirm:'',
+    username:'',
+    address:'',
+    education:''
   }
   this.confirm = this.confirm.bind(this);
   this.onEmail = this.onEmail.bind(this);
   this.onPassword = this.onPassword.bind(this);
   this.onConPassword = this.onConPassword.bind(this);
+  this.inputUserField = this.inputUserField.bind(this);
+  this.inputAddressField = this.inputAddressField.bind(this);
+  this.inputEducationField = this.inputEducationField.bind(this);
   this.submit=this.submit.bind(this);
+
  
   };
 
-
+  inputUserField(e){
+  var username=e.target.value.trim();
+  this.setState({username:username});
+  return username;
+}
      
   onEmail(e) {
   var email = e.target.value.trim();
     this.setState({email:email})
-    console.log(email);
-      
-    //     var emailDomain = emailParts[1]
-    //     if(emailParts.length !=1) {
-    //     alert("Wrong number of @ signs");
-    //     return false;   
-    // }
-    //      var emailParts = email.split('@');
-    //    var emailName = emailParts[0];
-    // if(emailName.length < 1 || emailDomain.length < 3) {
-    //     alert("Wrong number of characters before or after @ sign");
-    //     return false;
-        
-    // } 
+    console.log(email);   
+    
 }
   onPassword(e){
   var password = e.target.value.trim();
@@ -56,53 +55,54 @@ class App extends React.Component {
   this.setState({passwordConfirm:passwordConfirm})
   var pass=this.state.password;
 
-  if(pass!=passwordConfirm){
+  if(pass!=passwordConfirm||pass==''){
    document.getElementById("wrongpass").innerHTML="Wrong Password";
 
   }
   else{
      document.getElementById("wrongpass").innerHTML="correct Password";
   }
-console.log(pass);
+    // console.log(pass);
+
+  }
+
+
+inputAddressField(e){
+  var address=e.target.value.trim();
+  this.setState({address:address});
+
+}
+inputEducationField(e){
+  var education=e.target.value.trim();
+  this.setState({education:education});
+
 }
 
-// inputUserField(e){
-//   var username=e.target.value;
-//   this.setState({username:username});
-
-//   if(username===''){
-//     console.log("empty-field");
-//   }
-//   else{
-//     console.log("filled");
-//   }
-//   return username;
-// }
-// inputAddressField(e){
-//   var address=e.target.value;
-//   this.setState({address:address});
-//   return address;
-// }
-// inputEducationField(e){
-//   education=e.target.value;
-//  this.setState({education:education});
-//  return education;
-// }
-// inputEmptyField(e){
-//   var user = this.state.username;
-  
-//   if(user==''){
-//     console.log("empty-field");
-//   }
-//   else{
-//     console.log("filled");
-//   }
-// }
 submit(e){
+  var value=this.state.password;
+  var mail=this.state.email;
+  var valueConfirm=this.state.passwordConfirm;
+  if(value!=valueConfirm){
+
+    console.log("incorrect password");
+  }
+   // var x = document.forms["myForm"]["email"].value;
+    var atpos = mail.indexOf("@");
+    var dotpos = mail.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length) {
+        console.log("incorrect password");
+        return false;
+    }
+  else{
+    console.log(mail);
+    console.log(this.state.username);
+    console.log(this.state.address);
+     console.log(this.state.education);
+     console.log(value);
+   
+
+  }
   
-  this.onConPassword(e);
-  var value=this.pass;
-  console.log(value);
 }
 
   confirm(e) {
@@ -124,28 +124,29 @@ submit(e){
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="email" placeholder="Email" onClick={this.onEmail} required/>
+                 <FormControl type="email" placeholder="Email" onClick={this.onEmail} required="true"/>
                   
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalUser">
                <Col componentClass={ControlLabel} sm={2}>User Name</Col>
                <Col sm={6}>
-                <FormControl type="text" placeholder="User Name" name="username"  />
-              
+                <FormControl type="text" placeholder="User Name" name="username" onChange={this.inputUserField}/>
+             
                </Col>
              </FormGroup>
               <FormGroup controlId="formHorizontalAddress">
                <Col componentClass={ControlLabel} sm={2}>Address</Col>
                <Col sm={6}>
-                <FormControl type="text" placeholder="Address" />
+                <FormControl type="text" placeholder="Address" onChange={this.inputAddressField}/>
                </Col>
              </FormGroup>
               <FormGroup controlId="formHorizontalEducation">
                <Col componentClass={ControlLabel} sm={2}>last Education</Col>
                <Col sm={6}>
-                <FormControl type="text" placeholder="last Education" />
+                <FormControl type="text" placeholder="last Education" onChange={this.inputEducationField}/>
                </Col>
+              
              </FormGroup>
              <FormGroup controlId="formHorizontalPassword">
                <Col componentClass={ControlLabel} sm={2}>Password </Col>
@@ -169,7 +170,7 @@ submit(e){
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="submit" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" />
+               <input type="submit" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" required="true" />
              
                </Col>
              </FormGroup>
@@ -197,7 +198,7 @@ submit(e){
                </FormGroup>
                <FormGroup>
                  <Col smOffset={2} sm={4}>
-                   <input type="submit" className="btn btn-primary" name="submit" onChange={this.onConPassword}  value="Sign in" />
+                   <input type="button" className="btn btn-primary" name="submit" value="Sign in" />
 
                  </Col>
                </FormGroup>
