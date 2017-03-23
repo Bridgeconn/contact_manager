@@ -41,7 +41,12 @@ class App extends React.Component {
   onEmail(e) {
   var email = e.target.value.trim();
     this.setState({email:email})
-    console.log(email);   
+    var atpos = email.indexOf("@");
+    var dotpos = email.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+        console.log("incorrect email");
+        return false;
+    }
     
 }
   onPassword(e){
@@ -82,15 +87,14 @@ submit(e){
   var value=this.state.password;
   var mail=this.state.email;
   var valueConfirm=this.state.passwordConfirm;
+   var atpos = mail.indexOf("@");
+    var dotpos = mail.lastIndexOf(".");
   if(value!=valueConfirm){
 
     console.log("incorrect password");
   }
-   // var x = document.forms["myForm"]["email"].value;
-    var atpos = mail.indexOf("@");
-    var dotpos = mail.lastIndexOf(".");
-    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length) {
-        console.log("incorrect password");
+    else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length) {
+        console.log("incorrect email");
         return false;
     }
   else{
@@ -124,7 +128,7 @@ submit(e){
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="email" placeholder="Email" onClick={this.onEmail} required="true"/>
+                 <FormControl type="email" placeholder="Email" onChange={this.onEmail}/>
                   
                </Col>
              </FormGroup>
@@ -170,7 +174,7 @@ submit(e){
 
              <FormGroup>
                <Col smOffset={2} sm={4}>
-               <input type="submit" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" required="true" />
+               <input type="button" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" />
              
                </Col>
              </FormGroup>
