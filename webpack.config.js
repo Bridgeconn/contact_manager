@@ -7,7 +7,8 @@ var config = {
    },
 
    devServer: {
-      inline: true,
+      inline: true,  
+      historyApiFallback: true;
       port: 8080
    },
 

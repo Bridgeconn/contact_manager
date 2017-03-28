@@ -7,10 +7,12 @@ import {FormControl} from 'react-bootstrap';
 import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
+import { Route, IndexRoute, Link } from 'react-router'
 
-class App extends React.Component {
+
+class ContactManager extends React.Component {
   constructor(props) {
-     super(props);
+  super(props);
   this.state = {
     data: 'Initial data...',
     email: '',
@@ -28,8 +30,6 @@ class App extends React.Component {
   this.inputAddressField = this.inputAddressField.bind(this);
   this.inputEducationField = this.inputEducationField.bind(this);
   this.submit=this.submit.bind(this);
-
- 
   };
 
   inputUserField(e){
@@ -47,6 +47,9 @@ class App extends React.Component {
         console.log("incorrect email");
         return false;
     }
+    else{
+      console.log("correct email")
+    }
     
 }
   onPassword(e){
@@ -60,7 +63,7 @@ class App extends React.Component {
   this.setState({passwordConfirm:passwordConfirm})
   var pass=this.state.password;
 
-  if(pass!=passwordConfirm||pass==''){
+  if(pass!=passwordConfirm||pass==''|| pass.length<=3){
    document.getElementById("wrongpass").innerHTML="Wrong Password";
 
   }
@@ -89,7 +92,7 @@ submit(e){
   var valueConfirm=this.state.passwordConfirm;
    var atpos = mail.indexOf("@");
     var dotpos = mail.lastIndexOf(".");
-  if(value!=valueConfirm){
+  if(value!=valueConfirm || value.length<=2){
 
     console.log("incorrect password");
   }
@@ -98,12 +101,23 @@ submit(e){
         return false;
     }
   else{
-    console.log(mail);
-    console.log(this.state.username);
-    console.log(this.state.address);
-     console.log(this.state.education);
-     console.log(value);
-   
+    // console.log(mail);
+    // console.log(this.state.username);
+    // console.log(this.state.address);
+    //  console.log(this.state.education);
+    //  console.log(value);
+    
+    var fd = new FormData();    
+    $.ajax({
+        url: '/',
+          fd: {'name':username,'email':email,'address':address,'education':education,'password':password},
+          processData: false,
+          contentType: false,
+          type: 'POST',
+          success: function(data){
+          alert(data);
+  }
+});
 
   }
   
@@ -121,10 +135,13 @@ submit(e){
 
 
      return (
+
+
          <div className ="row">
          <div className ="col-md-6">
+     
           <PageHeader> <h1><span style={divStyle}>Signup Page</span> </h1></PageHeader>
-            <Form horizontal>
+            <Form horizontal onSubmit={this.submit}>
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
@@ -175,7 +192,6 @@ submit(e){
              <FormGroup>
                <Col smOffset={2} sm={4}>
                <input type="button" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" />
-             
                </Col>
              </FormGroup>
               </Form>
@@ -213,5 +229,5 @@ submit(e){
    }
 }
 
-export default App;
+export default ContactManager;
 
