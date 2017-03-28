@@ -8,7 +8,7 @@ import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router'
-
+import $ from 'jquery'
 
 class ContactManager extends React.Component {
   constructor(props) {
@@ -101,27 +101,30 @@ submit(e){
         return false;
     }
   else{
-    // console.log(mail);
-    // console.log(this.state.username);
-    // console.log(this.state.address);
-    //  console.log(this.state.education);
-    //  console.log(value);
+    console.log(mail);
+    console.log(this.state.username);
+    console.log(this.state.address);
+     console.log(this.state.education);
+     console.log(value);
     
     var fd = new FormData();    
     $.ajax({
-        url: '/',
-          fd: {'name':username,'email':email,'address':address,'education':education,'password':password},
-          processData: false,
-          contentType: false,
+        url: './',
+          fd: {name:this.state.username, email:mail, address:this.state.address, education:this.state.education, password:value},
           type: 'POST',
-          success: function(data){
-          alert(data);
-  }
-});
-
-  }
+          success: function(fd){
+          alert(fd);
+          console.log(email);
+           },
+           error: function(error){
+            console.log(error);
+           }
+          
+    });
+    
+   }
   
-}
+  }
 
   confirm(e) {
     e.preventDefault();
