@@ -1,26 +1,24 @@
-var mysql      = require('mysql');
+var mysql = require('mysql');
+var express = require('express');
+var app = express();
+
+
 var connection = mysql.createConnection({
-  host     : 'localhost',
+  host     : 'localhost'
   user     : 'root',
   password : 'root',
   database : 'my_db'
 });
 
-connection.connect(function(error) {
-    if(!!error) {
-      console.log('Error');
-    } else {
-      console.log('Connected');
-    }
-})
+
+connection.connect();
 
 
-var query = connection.query('insert into formdat set ?', formdata, function (err, result) {
-  if (err) {
-    console.error(err);
-    return;
-  }
-  console.error(result);
+app.post('/Signup', function(req, res) {
+  var user = req.body;
+ 
+  var query = connection.query('INSERT INTO formdata SET ?', formdata,  function(err, result) {
+  
+  });
+  res.end('Success');
 });
-
-connection.end();

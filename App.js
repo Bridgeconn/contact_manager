@@ -9,9 +9,8 @@ class App extends React.Component {
          <div>
 
                 <Link to='/Home'>Home</Link>
-                <Link to='/About'>About</Link>
-                <Link to='/Contact'>Contact</Link> 
-                <Link to='/ContactManager'>ContactManager</Link> 			
+                <Link to='/Signup'>Signup</Link>
+                <Link to='/Signin'>Signin</Link> 
                 {this.props.children}
          </div>
       );

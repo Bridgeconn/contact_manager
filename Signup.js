@@ -10,11 +10,11 @@ import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router'
 import $ from 'jquery'
 
-class ContactManager extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-    data: 'Initial data...',
+   
     email: '',
     password: '',
     passwordConfirm:'',
@@ -101,19 +101,20 @@ submit(e){
         return false;
     }
   else{
-    console.log(mail);
-    console.log(this.state.username);
-    console.log(this.state.address);
-     console.log(this.state.education);
-     console.log(value);
+    // console.log(mail);
+    // console.log(this.state.username);
+    // console.log(this.state.address);
+    //  console.log(this.state.education);
+    //  console.log(value);
     
-    var fd = new FormData();    
+    var fd = new FormData();
+
     $.ajax({
-        url: './',
-          fd: {name:this.state.username, email:mail, address:this.state.address, education:this.state.education, password:value},
+          url: './test.js',
+          // fd: {name:this.state.username, email:mail, address:this.state.address, education:this.state.education, password:value},
           type: 'POST',
           success: function(fd){
-          alert(fd);
+         
           console.log(email);
            },
            error: function(error){
@@ -199,38 +200,10 @@ submit(e){
              </FormGroup>
               </Form>
               </div>
-              <div className ="col-md-6">
-              <PageHeader> <span style={divStyle}>  Signin Page </span> </PageHeader>
-              <Form horizontal>
-               <FormGroup controlId="formHorizontalEmail">
-                 <Col componentClass={ControlLabel} sm={2}> Email </Col>
-                 <Col sm={6}>
-                   <FormControl type="email" placeholder="Email" required="true"/>
-                 </Col>
-               </FormGroup>
-               <FormGroup controlId="formHorizontalPassword">
-                 <Col componentClass={ControlLabel} sm={2}>Password </Col>
-                 <Col sm={6}>
-                  <FormControl type="password" placeholder="Password" />
-                 </Col>
-               </FormGroup>
-               <FormGroup>
-                 <Col smOffset={2} sm={4}>
-                   <Checkbox>Remember me</Checkbox>
-                 </Col>
-               </FormGroup>
-               <FormGroup>
-                 <Col smOffset={2} sm={4}>
-                   <input type="button" className="btn btn-primary" name="submit" value="Sign in" />
-
-                 </Col>
-               </FormGroup>
-                </Form>
-                </div>
                 </div>
       );
    }
 }
 
-export default ContactManager;
+export default Signup;
 
