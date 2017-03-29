@@ -9,13 +9,10 @@ import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router'
 import $ from 'jquery'
-
-import AthletePreview from './script';
-
-
+import test from './test';
 class Signup extends React.Component {
   constructor(props) {
-<<<<<<< HEAD
+
   super(props);
   this.state = {
    
@@ -34,25 +31,6 @@ class Signup extends React.Component {
   this.inputAddressField = this.inputAddressField.bind(this);
   this.inputEducationField = this.inputEducationField.bind(this);
   this.submit=this.submit.bind(this);
-=======
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      passwordConfirm:'',
-      username:'',
-      address:'',
-      education:''
-    }
-    this.confirm = this.confirm.bind(this);
-    this.onEmail = this.onEmail.bind(this);
-    this.onPassword = this.onPassword.bind(this);
-    this.onConPassword = this.onConPassword.bind(this);
-    this.inputUserField = this.inputUserField.bind(this);
-    this.inputAddressField = this.inputAddressField.bind(this);
-    this.inputEducationField = this.inputEducationField.bind(this);
-    this.submit=this.submit.bind(this);
->>>>>>> 48398bcc00aef70e6197978b75b586db88acb7c3
   };
 
   inputUserField(e){
@@ -119,28 +97,20 @@ submit(e){
     return false;
   }
   else{
-<<<<<<< HEAD
+
     console.log(mail);
     console.log(this.state.username);
     console.log(this.state.address);
      console.log(this.state.education);
      console.log(value);
-=======
-    AthletePreview.t1();
+
+    test.t1(mail , value);
     var fd = new FormData();
-    console.log(fd);
-
-    
    }
-  
-  }
->>>>>>> 48398bcc00aef70e6197978b75b586db88acb7c3
-
-     
-    }
   }
 
  
+
    render() {
      var divStyle = {
        paddingLeft: "90px",
