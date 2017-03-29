@@ -10,8 +10,12 @@ import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router'
 import $ from 'jquery'
 
+import AthletePreview from './script';
+
+
 class Signup extends React.Component {
   constructor(props) {
+<<<<<<< HEAD
   super(props);
   this.state = {
    
@@ -30,82 +34,107 @@ class Signup extends React.Component {
   this.inputAddressField = this.inputAddressField.bind(this);
   this.inputEducationField = this.inputEducationField.bind(this);
   this.submit=this.submit.bind(this);
+=======
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      passwordConfirm:'',
+      username:'',
+      address:'',
+      education:''
+    }
+    this.confirm = this.confirm.bind(this);
+    this.onEmail = this.onEmail.bind(this);
+    this.onPassword = this.onPassword.bind(this);
+    this.onConPassword = this.onConPassword.bind(this);
+    this.inputUserField = this.inputUserField.bind(this);
+    this.inputAddressField = this.inputAddressField.bind(this);
+    this.inputEducationField = this.inputEducationField.bind(this);
+    this.submit=this.submit.bind(this);
+>>>>>>> 48398bcc00aef70e6197978b75b586db88acb7c3
   };
 
   inputUserField(e){
-  var username=e.target.value.trim();
-  this.setState({username:username});
-  return username;
-}
+    var username=e.target.value.trim();
+    this.setState({username:username});
+    return username;
+  }
      
   onEmail(e) {
-  var email = e.target.value.trim();
-    this.setState({email:email})
-    var atpos = email.indexOf("@");
-    var dotpos = email.lastIndexOf(".");
-    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+    var email = e.target.value.trim();
+      this.setState({email:email})
+      var atpos = email.indexOf("@");
+      var dotpos = email.lastIndexOf(".");
+      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
         console.log("incorrect email");
         return false;
-    }
-    else{
-      console.log("correct email")
-    }
-    
-}
+      }
+      else{
+        console.log("correct email")
+      }
+  }
+
   onPassword(e){
-  var password = e.target.value.trim();
-  this.setState({password:password})
-  return password;
+    var password = e.target.value.trim();
+    this.setState({password:password})
+    return password;
   } 
 
- onConPassword(e){
-  var passwordConfirm = e.target.value.trim();
-  this.setState({passwordConfirm:passwordConfirm})
-  var pass=this.state.password;
+  onConPassword(e){
+    var passwordConfirm = e.target.value.trim();
+    this.setState({passwordConfirm:passwordConfirm})
+    var pass=this.state.password;
 
-  if(pass!=passwordConfirm||pass==''|| pass.length<=3){
-   document.getElementById("wrongpass").innerHTML="Wrong Password";
-
-  }
-  else{
-     document.getElementById("wrongpass").innerHTML="correct Password";
-  }
-    // console.log(pass);
-
+    if(pass!=passwordConfirm||pass==''|| pass.length<=3){
+      document.getElementById("wrongpass").innerHTML="Wrong Password";
+    }
+    else{
+      document.getElementById("wrongpass").innerHTML="correct Password";
+    }
   }
 
+  inputAddressField(e){
+    var address=e.target.value.trim();
+    this.setState({address:address});
+  }
 
-inputAddressField(e){
-  var address=e.target.value.trim();
-  this.setState({address:address});
-
-}
-inputEducationField(e){
-  var education=e.target.value.trim();
-  this.setState({education:education});
-
-}
+  inputEducationField(e){
+    var education=e.target.value.trim();
+    this.setState({education:education});
+  }
 
 submit(e){
   var value=this.state.password;
   var mail=this.state.email;
   var valueConfirm=this.state.passwordConfirm;
-   var atpos = mail.indexOf("@");
-    var dotpos = mail.lastIndexOf(".");
+  var atpos = mail.indexOf("@");
+  var dotpos = mail.lastIndexOf(".");
+  
   if(value!=valueConfirm || value.length<=2){
-
     console.log("incorrect password");
   }
-    else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length) {
-        console.log("incorrect email");
-        return false;
-    }
+  else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length) {
+    console.log("incorrect email");
+    return false;
+  }
   else{
+<<<<<<< HEAD
     console.log(mail);
     console.log(this.state.username);
     console.log(this.state.address);
      console.log(this.state.education);
      console.log(value);
+=======
+    AthletePreview.t1();
+    var fd = new FormData();
+    console.log(fd);
+
+    
+   }
+  
+  }
+>>>>>>> 48398bcc00aef70e6197978b75b586db88acb7c3
 
      
     }
