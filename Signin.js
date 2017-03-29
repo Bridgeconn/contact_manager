@@ -39,7 +39,7 @@ class Signin extends React.Component {
          <div className ="row">
          <div className ="col-md-6">
               <PageHeader> <span style={divStyle}>  Signin Page </span> </PageHeader>
-              <Form horizontal>
+              <Form horizontal >
                <FormGroup controlId="formHorizontalEmail">
                  <Col componentClass={ControlLabel} sm={2}> Email </Col>
                  <Col sm={6}>

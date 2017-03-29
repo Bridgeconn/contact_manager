@@ -14,7 +14,7 @@ var connection = mysql.createConnection({
 connection.connect();
 
 
-app.post('/Signup', function(req, res) {
+app.post('/formdata', function(req, res) {
   var user = req.body;
  
   var query = connection.query('INSERT INTO formdata SET ?', formdata,  function(err, result) {

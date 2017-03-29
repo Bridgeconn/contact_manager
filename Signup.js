@@ -22,7 +22,7 @@ class Signup extends React.Component {
     address:'',
     education:''
   }
-  this.confirm = this.confirm.bind(this);
+  
   this.onEmail = this.onEmail.bind(this);
   this.onPassword = this.onPassword.bind(this);
   this.onConPassword = this.onConPassword.bind(this);
@@ -101,36 +101,17 @@ submit(e){
         return false;
     }
   else{
-    // console.log(mail);
-    // console.log(this.state.username);
-    // console.log(this.state.address);
-    //  console.log(this.state.education);
-    //  console.log(value);
-    
-    var fd = new FormData();
+    console.log(mail);
+    console.log(this.state.username);
+    console.log(this.state.address);
+     console.log(this.state.education);
+     console.log(value);
 
-    $.ajax({
-          url: './test.js',
-          // fd: {name:this.state.username, email:mail, address:this.state.address, education:this.state.education, password:value},
-          type: 'POST',
-          success: function(fd){
-         
-          console.log(email);
-           },
-           error: function(error){
-            console.log(error);
-           }
-          
-    });
-    
-   }
-  
+     
+    }
   }
 
-  confirm(e) {
-    e.preventDefault();
-    alert('The link was clicked.');
-  }
+ 
    render() {
      var divStyle = {
        paddingLeft: "90px",
