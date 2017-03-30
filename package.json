@@ -15,12 +15,24 @@
   "bugs": {
     "url": "https://github.com/Bridgeconn/contact_manager/issues"
   },
+  "browser": {
+    "canvas": false,
+    "fs": false,
+    "jsdom": false,
+    "xmldom": false
+  },
   "homepage": "https://github.com/Bridgeconn/contact_manager#readme",
   "dependencies": {
+    "express": "^4.15.2",
+    "fs": "0.0.1-security",
+    "jquery": "^3.2.1",
+    "mysql": "^2.13.0",
+    "net": "^1.0.2",
     "react": "^15.4.2",
     "react-bootstrap": "^0.30.8",
     "react-dom": "^15.4.2",
     "react-router": "^3.0.2",
+    "tls": "0.0.1",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.1"
   }

@@ -1,18 +1,19 @@
-var config = {
-   entry: './main.js',
 
-   output: {
-      path:'/.',
-      filename: 'index.js',
-   },
+var webpack = require('webpack');
+var path = require('path');
+var fs = require('fs');
+var nodeModules = {};
+module.exports =
 
-   devServer: {
-      inline: true,  
-      historyApiFallback: true,
-      port: 8080
-   },
-
-   module: {
+{    name: 'server',
+    target: 'node',
+    entry: './main.js',
+    output: {
+        path: '/.',
+        filename: 'index.js'
+    },
+    externals: nodeModules,
+    module: {
       loaders: [
          {
             test: /\.js?$/,
@@ -24,7 +25,6 @@ var config = {
             }
          }
       ]
-   }
-}
-
-module.exports = config;
+   },
+   
+};

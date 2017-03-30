@@ -10,6 +10,8 @@ import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router'
 import $ from 'jquery'
 import test from './test';
+import fs from 'fs';
+import net from 'net';
 class Signup extends React.Component {
   constructor(props) {
 
