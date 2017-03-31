@@ -8,8 +8,6 @@ import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router'
-
-
 class Signin extends React.Component {
   constructor(props) {
   super(props);

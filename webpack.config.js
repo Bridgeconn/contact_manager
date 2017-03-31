@@ -13,7 +13,9 @@ var config = {
       port: 8000
    },
     node: {
-  fs: "empty"
+  fs: "empty",
+  tls: "empty",
+  net: "empty"
   },
   
    module: {

@@ -7,7 +7,7 @@ import {FormControl} from 'react-bootstrap';
 import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
-import { Route, IndexRoute, Link } from 'react-router'
+import { Route, IndexRoute, Link } from 'react-router';
 import test from './test';
 
 class Signup extends React.Component {
@@ -107,15 +107,15 @@ submit(e){
     test.t1(mail , value);
     var fd = new FormData();
    }
-  }
-
- 
-
+ }
+  
    render() {
      var divStyle = {
        paddingLeft: "90px",
        color: "blue"
+
      };
+
 
 
      return (
