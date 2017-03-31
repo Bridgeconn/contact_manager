@@ -9,7 +9,7 @@ ReactDOM.render((
    <Router history = {browserHistory}>
    <Route path = "/" component = {App}>       
          <Route path = "/Home" component = {Home} /> 
-         <Route path = "/Signin" component = {Signup} />
+         <Route path = "/Signup" component = {Signup} />
          <Route path = "/Signin" component = {Signin} />
       </Route>
    </Router>), document.getElementById('app'));

@@ -8,7 +8,7 @@ import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router'
-import $ from 'jquery'
+
 
 class Signin extends React.Component {
   constructor(props) {

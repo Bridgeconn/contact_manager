@@ -1,30 +1,33 @@
 
-var webpack = require('webpack');
-var path = require('path');
-var fs = require('fs');
-var nodeModules = {};
-module.exports =
-
-{    name: 'server',
-    target: 'node',
-    entry: './main.js',
-    output: {
-        path: '/.',
-        filename: 'index.js'
-    },
-    externals: nodeModules,
-    module: {
+var config = {
+   entry: './main.js',
+  
+   output: {
+      path:'/.',
+      filename: 'index.js',
+   },
+  
+   devServer: {
+    historyApiFallback: true,
+      inline: true,
+      port: 8000
+   },
+    node: {
+  fs: "empty"
+  },
+  
+   module: {
       loaders: [
          {
-            test: /\.js?$/,
-            exclude: /node_modules/,
+            test: /\.jsx?$/,
             loader: 'babel-loader',
-
+        
             query: {
                presets: ['es2015', 'react']
             }
          }
       ]
-   },
-   
-};
+   }
+}
+
+module.exports = config;
