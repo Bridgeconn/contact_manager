@@ -20,10 +20,11 @@ connection.connect(function(error){
 });
 app.post('/my_db', function(req, res) {
   
-  var user = req.body;
+  var my_db = req.body;
 
   var query = connection.query('INSERT INTO formdata SET ?', formdata,  function(err, result) {
  console.log('success');
+ 
   });
   res.end('Success');
 });
