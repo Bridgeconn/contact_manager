@@ -8,14 +8,14 @@ import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router';
-import test from './test';
+import Signin from './Signin';
+// import test from './test';
 
 class Signup extends React.Component {
   constructor(props) {
 
   super(props);
   this.state = {
-   
     email: '',
     password: '',
     passwordConfirm:'',
@@ -104,9 +104,17 @@ submit(e){
      console.log(this.state.education);
      console.log(value);
 
-    test.t1(mail , value);
-    var fd = new FormData();
+    // test.t1(mail , value);
+    // var fd = new FormData();
+    fetch('/', { 
+        method: 'POST',
+        data: {
+          name: this.state.username,
+          email: this.state.email
+        }
+      })
    }
+   console.log(name);
  }
   
    render() {

@@ -7,13 +7,13 @@ import {FormControl} from 'react-bootstrap';
 import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
-import { Route, IndexRoute, Link } from 'react-router'
+import { Route, IndexRoute, Link } from 'react-router';
+
 class Signin extends React.Component {
   constructor(props) {
   super(props);
   this.state = {
-    data: 'Initial data...',
-   
+    data: 'Initial data...', 
   }
   this.confirm = this.confirm.bind(this);
  
