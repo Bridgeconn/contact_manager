@@ -4,6 +4,7 @@ import App from './App.js';
 import Home from './Home.js';
 import Signup from './Signup.js';
 import Signin from './Signin.js';
+
 import {Router, Route, Link, browserHistory, IndexRoute} from 'react-router';
 ReactDOM.render((
    <Router history = {browserHistory}>
@@ -11,6 +12,7 @@ ReactDOM.render((
          <Route path = "/Home" component = {Home} /> 
          <Route path = "/Signup" component = {Signup} />
          <Route path = "/Signin" component = {Signin} />
+ 
       </Route>
    </Router>), document.getElementById('app'));
 
