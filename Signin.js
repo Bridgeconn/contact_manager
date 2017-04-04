@@ -9,21 +9,29 @@ import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router';
 
+
+//
 class Signin extends React.Component {
+  //to initialise state create custructor
   constructor(props) {
+   
   super(props);
+  //initialise state
   this.state = {
+    
     data: 'Initial data...', 
   }
+  //returns a new function, in which references to 'this' will refer to 'this'
   this.confirm = this.confirm.bind(this);
  
 
   };
-
+  //prevent event e 
   confirm(e) {
     e.preventDefault();
     alert('The link was clicked.');
   }
+  // //render divStyle css styling
    render() {
      var divStyle = {
        paddingLeft: "90px",

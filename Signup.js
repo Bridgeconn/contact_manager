@@ -9,21 +9,23 @@ import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router';
 import Signin from './Signin';
-// import test from './test';
 
+//
 class Signup extends React.Component {
+  //
   constructor(props) {
-
+    //
   super(props);
+  //
   this.state = {
-    email: '',
-    password: '',
-    passwordConfirm:'',
-    username:'',
-    address:'',
-    education:''
+    email: '',//email field
+    password: '',//for password field
+    passwordConfirm:'',//for confirm password field
+    username:'',//for username field
+    address:'',//for address field
+    education:''//for last education field
   }
-  
+  //returns a new function, in which references to 'this' will refer to 'this'
   this.onEmail = this.onEmail.bind(this);
   this.onPassword = this.onPassword.bind(this);
   this.onConPassword = this.onConPassword.bind(this);
@@ -32,91 +34,120 @@ class Signup extends React.Component {
   this.inputEducationField = this.inputEducationField.bind(this);
   this.submit=this.submit.bind(this);
   };
-
+  //function for dynamic usename value 
   inputUserField(e){
+    //var username :assigned dynamic value of username on event call
     var username=e.target.value.trim();
+    //setstate username value to email
     this.setState({username:username});
+    //return username 
     return username;
   }
-     
+    // function for email value validation and getting email value
   onEmail(e) {
+    //var email :assigned dynamic value of email on event call
     var email = e.target.value.trim();
+    //setstate email value to email
       this.setState({email:email})
+      //var atpos get the value of @
       var atpos = email.indexOf("@");
+      //var dotpos get "." value next to @
       var dotpos = email.lastIndexOf(".");
+      //if value of @ is not present or dotpos less then atpos+2 or dotpos+2 more then email.length 
       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+        //write to console: incorrect password
         console.log("incorrect email");
+        //return false
         return false;
       }
       else{
+        //else correct password
         console.log("correct email")
       }
   }
-
+  //function getting password value onchange event
   onPassword(e){
+    //assigning dynamic value of passwword to var password using e.target.value
     var password = e.target.value.trim();
-    this.setState({password:password})
+    //setstate password to dynamic value
+    this.setState({password:password});
+    //return password
     return password;
   } 
-
+  //function for validate password or match password to confirm password
   onConPassword(e){
+    //assigning dynamic value of confirm password to var passwordConfirm using e.target.value
     var passwordConfirm = e.target.value.trim();
+    //setstate passwordConfirm to dynamic value
     this.setState({passwordConfirm:passwordConfirm})
+    //assign the password value to pass 
     var pass=this.state.password;
-
+    //if pass and passConfirm not same or password field isempty or password length is less than 3
     if(pass!=passwordConfirm||pass==''|| pass.length<=3){
+      //wrong password 
       document.getElementById("wrongpass").innerHTML="Wrong Password";
     }
     else{
+      //else correct password
       document.getElementById("wrongpass").innerHTML="correct Password";
     }
   }
-
+  //function for getting address field
   inputAddressField(e){
+     //assigning dynamic value of address to var address using e.target.value
     var address=e.target.value.trim();
+     //setstate address to dynamic value
     this.setState({address:address});
   }
-
+  //function for getting education field
   inputEducationField(e){
+     //assigning dynamic value of education  to var education using e.target.value
     var education=e.target.value.trim();
+     //setstate education to dynamic value
     this.setState({education:education});
   }
-
+  //calling on submit form 
 submit(e){
-  var value=this.state.password;
-  var mail=this.state.email;
+  //assigne password value  to passwordValue
+  var passwordValue=this.state.password;
+  ////assigne email value  to emailValue
+  var emailValue=this.state.email;
+  //assigne password value  to valueConfirm
   var valueConfirm=this.state.passwordConfirm;
-  var atpos = mail.indexOf("@");
-  var dotpos = mail.lastIndexOf(".");
-  
-  if(value!=valueConfirm || value.length<=2){
+   //var atpos get the value of @
+  var atpos = emailValue.indexOf("@");
+  //var dotpos get "." value next to @
+  var dotpos = emailValue.lastIndexOf(".");
+  //if pass and passConfirm not same or password field isempty or password length is less than 3
+  if(passwordValue!=valueConfirm || passwordValue.length<=3){
+    //output incorrect password
     console.log("incorrect password");
-  }
-  else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=mail.length) {
+  }//if value of @ is not present or dotpos less then atpos+2 or dotpos+2 more then email.length 
+  else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailValue.length) {
+    //incorrect email
     console.log("incorrect email");
+    //return false
     return false;
   }
+  //else all validation checked, assinge all value to param variable or obj
   else{
-
-    console.log(mail);
-    console.log(this.state.username);
-    console.log(this.state.address);
-     console.log(this.state.education);
-     console.log(value);
-
-    // test.t1(mail , value);
-    // var fd = new FormData();
-    fetch('/', { 
-        method: 'POST',
-        data: {
-          name: this.state.username,
-          email: this.state.email
-        }
-      })
-   }
-   console.log(name);
- }
-  
+    var params = {
+      username:this.state.username,
+      email:emailValue,
+      address:this.state.address,
+      education:this.state.education,
+      password:passwordValue
+     }
+     console.log(params);
+    
+   // fetch('/', { 
+   //      method: 'POST',
+   //      data: params
+   //    })
+      
+  }
+}
+  //render divStyle css styling
    render() {
      var divStyle = {
        paddingLeft: "90px",
@@ -128,17 +159,14 @@ submit(e){
 
      return (
 
-
-         <div className ="row">
+         <div className ="row">         
          <div className ="col-md-6">
-     
           <PageHeader> <h1><span style={divStyle}>Signup Page</span> </h1></PageHeader>
             <Form horizontal onSubmit={this.submit}>
              <FormGroup controlId="formHorizontalEmail">
                <Col componentClass={ControlLabel} sm={2}> Email </Col>
                <Col sm={6}>
-                 <FormControl type="email" placeholder="Email" onChange={this.onEmail}/>
-                  
+                 <FormControl type="email" placeholder="Email" onChange={this.onEmail}/> 
                </Col>
              </FormGroup>
              <FormGroup controlId="formHorizontalUser">

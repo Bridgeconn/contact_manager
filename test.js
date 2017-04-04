@@ -1,4 +1,3 @@
-
 var mysql = require('mysql');
 var express = require('express'); 
 var app = express();
@@ -7,7 +6,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'root',
-  database : 'my_db'
+  database : 'example'
 });
 
 connection.connect(function(error){
@@ -18,37 +17,28 @@ connection.connect(function(error){
 		console.log('connected');
 	}	
 });
-// app.post('/my_db', function(req, res) {
-  
-//   var my_db = req.body;
 
-//   var query = connection.query('INSERT INTO formdata SET ?', formdata,  function(err, result) {
-//  console.log('success');
-
-//   });
-//   res.end('Success');
-// });
-
-app.get('/', function (req, res) {
-
-   res.send('Hello World');
-})
-	var server = app.listen(8000, function () {
-  var host = server.address().address
-  var port = server.address().port
+	var server = app.listen(3333, function () {
+  var host = server.address().address;
+  var port = server.address().port;
    
-   console.log("Example app listening at http://%s:%s", host, port)
+   console.log("Example app listening at http://%s:%s", host, port);
+ 
 })
 
-// var testing ={
-//   t1: function(mail, value){
-//     console.log(mail);
-//     console.log(value);
-    
-//   }
-// }
-
-// module.exports = testing;
-
-
+	 connection.query('INSERT INTO example_1 (PersonsID, LastName, FirstName, Address) VALUES (?, ?, ?, ?)', ['7', 'l', 'r', 'address07'], function(err, results) {
+      if (err) throw err;
+      
+         })
+  connection.query('SELECT * FROM example_1', function(err, results) {
+        if (err) throw err;
+        console.log(results[0].PersonsID,results[1].PersonsID);
+        console.log(results[0].LastName,results[1].LastName);
+        console.log(results[0].FirstName,results[1].FirstName);
+        console.log(results[0].Address,results[1].Address);
+      })
+  
+ 
+// res.end('Success');
+// });
 
