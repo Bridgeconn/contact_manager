@@ -38,7 +38,3 @@ connection.connect(function(error){
         console.log(results[0].Address,results[1].Address);
       })
   
- 
-// res.end('Success');
-// });
-

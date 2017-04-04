@@ -38,7 +38,7 @@ class Signup extends React.Component {
   inputUserField(e){
     //var username :assigned dynamic value of username on event call
     var username=e.target.value.trim();
-    //setstate username value to email
+    //setstate username value to username
     this.setState({username:username});
     //return username 
     return username;

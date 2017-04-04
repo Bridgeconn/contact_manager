@@ -25,7 +25,7 @@ class Contact extends React.Component {
     city:'',
     state:''
   }
- 
+  //returns a new function, in which references to 'this' will refer to 'this'
   this.nameField = this.nameField.bind(this);
   this.numberField = this.numberField.bind(this);
   this.addressField = this.addressField.bind(this);
@@ -35,27 +35,40 @@ class Contact extends React.Component {
  
 
   }; 
-
+  //method for inputfield name
   nameField(e){
+     //var name : assigned dynamic value of name on event call
     var name =e.target.value.trim();
+    //setState name value to name
     this.setState({name:name});
+    //output name
     console.log(name);
 
   }
+   //method for inputfield number
   numberField(e){
+    //var number : assigned dynamic value of number on event call
     var number=e.target.value.trim();
+     //setState number value to number
     this.setState({number:number});
+    //if number is not a number or number is empty field or number is not equal to 10
    if(isNaN(number)||number.indexOf(" ")!=-1||number.length!=10){
+    //error please check the number
     console.log("please check the number  ")
    }
+   //else print number
    else{
     console.log(number);
 
    }
   }
+  //method for inputfield address
   addressField(e){
+     //var address : assigned dynamic value of address on event call
     var address=e.target.value.trim();
+      //setState address value to address
     this.setState({address:address});
+    //print address on console.log
     console.log(address);
   }
   // genderField(e){
@@ -63,14 +76,22 @@ class Contact extends React.Component {
   //   this.setState({gender:gender});
   //   console.log(gender)
   // }
+   //method for inputfield city
   cityField(e){
+    //var city : assigned dynamic value of city on event call
     var city=e.target.value.trim();
+    //setState city value to city
     this.setState({city:city});
+    //print value to console log
     console.log(city)
   }
+  //method for inputfield state
   stateField(e){
+    //var state : assigned dynamic value of state on event call
     var state=e.target.value.trim();
+    //setState state value to state
     this.setState({state:state});
+    //print value to console log
     console.log(state)
   }
   confirm(e) {
@@ -139,11 +160,12 @@ class Contact extends React.Component {
                  <Col smOffset={2} sm={4}>
                    <Checkbox>Remember me</Checkbox>
                  </Col>
-                  <FormGroup>
-               <Col sm={4}>
+                
+               </FormGroup>
+                 <FormGroup>
+               <Col smOffset={4} sm={4}>
                <input type="button" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" />
                </Col>
-             </FormGroup>
                </FormGroup>
                 </Form>
                 </div>
