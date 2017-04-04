@@ -107,46 +107,46 @@ class Signup extends React.Component {
     this.setState({education:education});
   }
   //calling on submit form 
-submit(e){
-  //assigne password value  to passwordValue
-  var passwordValue=this.state.password;
-  ////assigne email value  to emailValue
-  var emailValue=this.state.email;
-  //assigne password value  to valueConfirm
-  var valueConfirm=this.state.passwordConfirm;
+  submit(e){
+   //assigne password value  to passwordValue
+    var passwordValue=this.state.password;
+    //assigne email value  to emailValue
+    var emailValue=this.state.email;
+    //assigne password value  to valueConfirm
+    var valueConfirm=this.state.passwordConfirm;
    //var atpos get the value of @
-  var atpos = emailValue.indexOf("@");
-  //var dotpos get "." value next to @
-  var dotpos = emailValue.lastIndexOf(".");
-  //if pass and passConfirm not same or password field isempty or password length is less than 3
-  if(passwordValue!=valueConfirm || passwordValue.length<=3){
+    var atpos = emailValue.indexOf("@");
+    //var dotpos get "." value next to @
+    var dotpos = emailValue.lastIndexOf(".");
+    //if pass and passConfirm not same or password field isempty or password length is less than 3
+    if(passwordValue!=valueConfirm || passwordValue.length<=3){
     //output incorrect password
-    console.log("incorrect password");
-  }//if value of @ is not present or dotpos less then atpos+2 or dotpos+2 more then email.length 
-  else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailValue.length) {
+      console.log("incorrect password");
+    }//if value of @ is not present or dotpos less then atpos+2 or dotpos+2 more then email.length 
+    else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailValue.length) {
     //incorrect email
     console.log("incorrect email");
     //return false
     return false;
-  }
-  //else all validation checked, assinge all value to param variable or obj
-  else{
-    var params = {
-      username:this.state.username,
-      email:emailValue,
-      address:this.state.address,
-      education:this.state.education,
-      password:passwordValue
-     }
-     console.log(params);
+    }
+    //else all validation checked, assinge all value to param variable or obj
+    else{
+      var params = {
+        username:this.state.username,
+        email:emailValue,
+        address:this.state.address,
+        education:this.state.education,
+        password:passwordValue
+      }
+        console.log(params);
     
    // fetch('/', { 
    //      method: 'POST',
    //      data: params
    //    })
       
+    }
   }
-}
   //render divStyle css styling
    render() {
      var divStyle = {
