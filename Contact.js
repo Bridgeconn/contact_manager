@@ -8,11 +8,11 @@ import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router';
-
-
+import {ButtonGroup} from 'react-bootstrap';
 
 class Contact extends React.Component {
   //to initialise state create custructor
+
   constructor(props) {
    
   super(props);
@@ -24,26 +24,27 @@ class Contact extends React.Component {
     gender:'',
     city:'',
     state:''
+   
   }
   //returns a new function, in which references to 'this' will refer to 'this'
   this.nameField = this.nameField.bind(this);
   this.numberField = this.numberField.bind(this);
   this.addressField = this.addressField.bind(this);
-  // this.genderField = this.genderField.bind(this);
+  this.genderField = this.genderField.bind(this);
   this.cityField = this.cityField.bind(this);
   this.stateField = this.stateField.bind(this);
- 
+  this.onSubmit = this.onSubmit.bind(this);
 
   }; 
+ 
   //method for inputfield name
   nameField(e){
      //var name : assigned dynamic value of name on event call
-    var name =e.target.value.trim();
+    var name_value =e.target.value.trim();
     //setState name value to name
-    this.setState({name:name});
+    this.setState({name:name_value});
     //output name
-    console.log(name);
-
+    
   }
    //method for inputfield number
   numberField(e){
@@ -68,22 +69,20 @@ class Contact extends React.Component {
     var address=e.target.value.trim();
       //setState address value to address
     this.setState({address:address});
-    //print address on console.log
-    console.log(address);
+    
   }
-  // genderField(e){
-  //   var gender=e.target.value.trim();
-  //   this.setState({gender:gender});
-  //   console.log(gender)
-  // }
+  genderField(e){
+    var gender=e.target.value.trim();
+    this.setState({gender:gender});
+    console.log(gender)
+  }
    //method for inputfield city
   cityField(e){
     //var city : assigned dynamic value of city on event call
     var city=e.target.value.trim();
     //setState city value to city
     this.setState({city:city});
-    //print value to console log
-    console.log(city)
+
   }
   //method for inputfield state
   stateField(e){
@@ -91,9 +90,42 @@ class Contact extends React.Component {
     var state=e.target.value.trim();
     //setState state value to state
     this.setState({state:state});
-    //print value to console log
-    console.log(state)
+   
   }
+  onSubmit(e){
+      var name = this.state.name;
+      var number = this.state.number;
+      var address = this.state.address;
+      var city = this.state.city;
+      var state =this.state.state;
+
+      this.setState({name:name});
+      this.setState({number:number});
+      this.setState({address:address});
+      this.setState({city:city});
+      this.setState({state:state});
+
+       if(isNaN(number)||number.indexOf(" ")!=-1||number.length!=10){
+        console.log("please check thew number");
+       }
+       else{
+
+
+        var param = {
+        name:this.state.name,
+        number:this.state.number,
+        address:this.state.address,
+        city:this.state.city,
+        state:this.state.state
+      }
+
+      console.log(param);
+
+       }
+      
+  }
+
+   
   confirm(e) {
     e.preventDefault();
     alert('The link was clicked.');
@@ -104,6 +136,13 @@ class Contact extends React.Component {
        paddingLeft: "90px",
        color: "blue"
      };
+
+
+     var radioColor = {
+     backgroundColor:"#ccc",
+     color:"#2e6da4"
+    
+     }
 
 
      return (
@@ -120,9 +159,9 @@ class Contact extends React.Component {
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalPassword">
-                 <Col componentClass={ControlLabel} sm={2}> Number </Col>
+                 <Col componentClass={ControlLabel} sm={2}> Mobile Number </Col>
                  <Col sm={6}>
-                  <FormControl type="text" placeholder="Number" onChange={this.numberField} />
+                  <FormControl type="number" placeholder="Number" onChange={this.numberField} />
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalEmail">
@@ -134,27 +173,35 @@ class Contact extends React.Component {
                <FormGroup controlId="formHorizontalEmail">
                  <Col componentClass={ControlLabel} sm={2}> City </Col>
                  <Col sm={6}>
-                   <FormControl type="text" placeholder="City" onChange={this.cityField}/>
+                   <FormControl componentClass="select" placeholder="City" onChange={this.cityField}>
+                    <option value="Dwarka">Dwarka</option>
+                    <option value="Faridabad">Faridabad</option>
+                    <option value="Jaipur">Jaipur</option>
+                    <option value="Amratsar">Amratsar</option>
+                    <option value="ShriGangaNagar">ShriGangaNagar</option>
+                  </FormControl>
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalEmail">
                  <Col componentClass={ControlLabel} sm={2}> State </Col>
-                 <Col sm={6}>
-                   <FormControl type="text" placeholder="State" onChange={this.stateField}/>
+                 <Col sm={6}>         
+                <FormControl componentClass="select" onChange={this.stateField}>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Gujrat">Gujrat</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="Rajashdhan">Rajashdhan</option>
+                </FormControl>
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalPassword">
                  <Col componentClass={ControlLabel} sm={2}>Gender</Col>
-                  <label>
-                    
-                    <input type="radio" name="myRadioInput" value="male"/>
-                    <span>male</span>
-                  </label>
-                   <label>
-                   
-                    <input type="radio" name="myRadioInput" value="female"/>
-                     <span>female</span>
-                </label>
+
+                <ButtonGroup   style={radioColor}>
+                 <Button style={radioColor} active={this.state.gender === 'male'}>male</Button>
+                 <Button style={radioColor} active={this.state.gender === 'female'}>female</Button>
+                </ButtonGroup>
+                 
                </FormGroup>
                <FormGroup>
                  <Col smOffset={2} sm={4}>
@@ -164,7 +211,7 @@ class Contact extends React.Component {
                </FormGroup>
                  <FormGroup>
                <Col smOffset={4} sm={4}>
-               <input type="button" className="btn btn-primary" name="submit" onClick={this.submit} value="Sign Up" />
+               <input type="button" className="btn btn-primary" name="submit" onClick={this.onSubmit} value="Sign Up" />
                </Col>
                </FormGroup>
                 </Form>

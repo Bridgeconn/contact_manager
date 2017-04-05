@@ -55,13 +55,13 @@ class Signup extends React.Component {
       var dotpos = email.lastIndexOf(".");
       //if value of @ is not present or dotpos less then atpos+2 or dotpos+2 more then email.length 
       if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
-        //write to console: incorrect password
+        //write to console: incorrect email
         console.log("incorrect email");
         //return false
         return false;
       }
       else{
-        //else correct password
+        //else correct email
         console.log("correct email")
       }
   }
