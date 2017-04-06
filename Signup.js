@@ -113,7 +113,7 @@ class Signup extends React.Component {
     //assigne email value  to emailValue
     var email_value=this.state.email;
     //assigne password value  to valueConfirm
-    var valueConfirm=this.state.password_confirm;
+    var value_confirm=this.state.password_confirm;
    //var atpos get the value of @
     var atpos = email_value.indexOf("@");
     //var dotpos get "." value next to @
@@ -133,7 +133,7 @@ class Signup extends React.Component {
     else{
       var params = {
         username:this.state.username,
-        email:emailValue,
+        email:email_value,
         address:this.state.address,
         education:this.state.education,
         password:password_value
