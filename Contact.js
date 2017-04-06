@@ -160,25 +160,25 @@ class Contact extends React.Component {
               <Form horizontal  onSubmit={this.onSubmit}>
                <FormGroup controlId="formHorizontalName" >
                  <Col componentClass={ControlLabel}  sm={2}> Name </Col>
-                 <Col  sm={6}>
+                 <Col  sm={4}>
                    <FormControl type="text" placeholder="Name" onChange={this.nameField} />
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalPassword">
                  <Col componentClass={ControlLabel} sm={2}> Mobile Number </Col>
-                 <Col sm={6}>
+                 <Col sm={4}>
                   <FormControl type="number" placeholder="Number" onChange={this.numberField} />
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalAddress">
                  <Col componentClass={ControlLabel} sm={2}> Address </Col>
-                 <Col sm={6}>
+                 <Col sm={4}>
                    <FormControl type="text" placeholder="Address" onChange={this.addressField}/>
                  </Col>
                </FormGroup>
                <FormGroup controlId="formHorizontalCity">
                  <Col componentClass={ControlLabel} sm={2}> City </Col>
-                 <Col sm={6}>
+                 <Col sm={4}>
                    <FormControl componentClass="select" placeholder="City" value={this.state.city} onChange={this.cityField}>
                     <option value="Dwarka">Dwarka</option>
                     <option value="Faridabad">Faridabad</option>
@@ -191,7 +191,7 @@ class Contact extends React.Component {
                </FormGroup>
                <FormGroup controlId="formHorizontalState">
                  <Col componentClass={ControlLabel} sm={2}> State </Col>
-                 <Col sm={6}>         
+                 <Col sm={4}>         
                 <FormControl componentClass="select" value={this.state.value} onChange={this.stateField}>
                     <option value="Delhi" >Delhi</option>
                     <option value="Haryana">Haryana</option>
@@ -204,7 +204,7 @@ class Contact extends React.Component {
                </FormGroup>
               <FormGroup controlId="formHorizontalGender">
                  <Col componentClass={ControlLabel} sm={2}> Gender </Col>
-                 <Col sm={6}>         
+                 <Col sm={2}>         
                 <FormControl componentClass="select" value={this.state.gender} onChange={this.genderField}>
                     <option value="Female" >female</option>
                     <option value="Male">Male</option>
