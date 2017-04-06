@@ -10,7 +10,7 @@ import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router';
 
 
-//
+
 class Signin extends React.Component {
   //to initialise state create custructor
   constructor(props) {
@@ -35,7 +35,7 @@ class Signin extends React.Component {
    render() {
      var divStyle = {
        paddingLeft: "90px",
-       color: "blue"
+       color: "#2e6da4"
      };
 
 

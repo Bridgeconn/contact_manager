@@ -151,7 +151,7 @@ class Signup extends React.Component {
    render() {
      var divStyle = {
        paddingLeft: "90px",
-       color: "blue"
+       color: "#2e6da4"
 
      };
 

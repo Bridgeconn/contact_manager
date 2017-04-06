@@ -1,5 +1,7 @@
 //import react module
 import React from 'react';
+import {Col} from 'react-bootstrap';
+
 
 //import module for routing
 import {Router, Route, Link, browserHistory, IndexRoute} from 'react-router';
@@ -15,13 +17,14 @@ class App extends React.Component {
 
       return (
          <div >
+         
                 <Link to='/Home' style={alignLink}>Home</Link>
                 <Link to='/Signup' style={alignLink}>Signup</Link>
                 <Link to='/Signin' style={alignLink}>Signin</Link>
                 <Link to='/Contact' style={alignLink}>Contact</Link>
 
                 {this.props.children}
-         </div>
+                  </div>
       );
    }
    

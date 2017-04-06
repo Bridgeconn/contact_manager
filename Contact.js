@@ -3,12 +3,14 @@ import {Form} from 'react-bootstrap';
 import {FormGroup} from 'react-bootstrap';
 import {Col} from 'react-bootstrap';
 import {ControlLabel} from 'react-bootstrap';
+import Select from 'react-select';
 import {FormControl} from 'react-bootstrap';
 import {Checkbox} from 'react-bootstrap';
 import {Button} from 'react-bootstrap';
 import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router';
 import {ButtonGroup} from 'react-bootstrap';
+
 
 class Contact extends React.Component {
   //to initialise state create custructor
@@ -21,10 +23,9 @@ class Contact extends React.Component {
     name:'',
     number:'',
     address:'',
-    gender:'',
     city:'',
-    state:''
-   
+    value:'', 
+    gender:''
   }
   //returns a new function, in which references to 'this' will refer to 'this'
   this.nameField = this.nameField.bind(this);
@@ -34,7 +35,7 @@ class Contact extends React.Component {
   this.cityField = this.cityField.bind(this);
   this.stateField = this.stateField.bind(this);
   this.onSubmit = this.onSubmit.bind(this);
-
+ 
   }; 
  
   //method for inputfield name
@@ -74,7 +75,7 @@ class Contact extends React.Component {
   genderField(e){
     var gender=e.target.value.trim();
     this.setState({gender:gender});
-    console.log(gender)
+    
   }
    //method for inputfield city
   cityField(e){
@@ -84,12 +85,12 @@ class Contact extends React.Component {
     this.setState({city:city});
 
   }
-  //method for inputfield state
+  // method for inputfield state
   stateField(e){
     //var state : assigned dynamic value of state on event call
-    var state=e.target.value.trim();
+    var value=e.target.value.trim();
     //setState state value to state
-    this.setState({state:state});
+    this.setState({value:value});
    
   }
   onSubmit(e){
@@ -97,16 +98,18 @@ class Contact extends React.Component {
       var number = this.state.number;
       var address = this.state.address;
       var city = this.state.city;
-      var state =this.state.state;
+      var value = this.state.value;
+      var gender = this.state.gender; 
 
       this.setState({name:name});
       this.setState({number:number});
       this.setState({address:address});
       this.setState({city:city});
-      this.setState({state:state});
+      this.setState({state:value});
+      this.setState({gender:gender});
 
        if(isNaN(number)||number.indexOf(" ")!=-1||number.length!=10){
-        console.log("please check thew number");
+        console.log("please check the number");
        }
        else{
 
@@ -116,7 +119,9 @@ class Contact extends React.Component {
         number:this.state.number,
         address:this.state.address,
         city:this.state.city,
-        state:this.state.state
+        state:this.state.value,
+        gender:this.state.gender
+        
       }
 
       console.log(param);
@@ -124,6 +129,7 @@ class Contact extends React.Component {
        }
       
   }
+
 
    
   confirm(e) {
@@ -133,28 +139,28 @@ class Contact extends React.Component {
  //render divStyle css styling
    render() {
      var divStyle = {
-       paddingLeft: "90px",
-       color: "blue"
+       paddingLeft: "110px",
+       color: "#2e6da4",
      };
 
-
      var radioColor = {
-     backgroundColor:"#ccc",
+     backgroundColor:"#bbb",
      color:"#2e6da4"
     
      }
+   
 
 
      return (
 
 
          <div className ="row">
-         <div className ="col-md-6">
+         <div className ="col-sm-8">
               <PageHeader> <span style={divStyle}>  Contact </span> </PageHeader>
-              <Form horizontal >
-               <FormGroup controlId="formHorizontalEmail">
-                 <Col componentClass={ControlLabel} sm={2}> Name </Col>
-                 <Col sm={6}>
+              <Form horizontal  onSubmit={this.onSubmit}>
+               <FormGroup controlId="formHorizontalName" >
+                 <Col componentClass={ControlLabel}  sm={2}> Name </Col>
+                 <Col  sm={6}>
                    <FormControl type="text" placeholder="Name" onChange={this.nameField} />
                  </Col>
                </FormGroup>
@@ -164,45 +170,50 @@ class Contact extends React.Component {
                   <FormControl type="number" placeholder="Number" onChange={this.numberField} />
                  </Col>
                </FormGroup>
-               <FormGroup controlId="formHorizontalEmail">
+               <FormGroup controlId="formHorizontalAddress">
                  <Col componentClass={ControlLabel} sm={2}> Address </Col>
                  <Col sm={6}>
                    <FormControl type="text" placeholder="Address" onChange={this.addressField}/>
                  </Col>
                </FormGroup>
-               <FormGroup controlId="formHorizontalEmail">
+               <FormGroup controlId="formHorizontalCity">
                  <Col componentClass={ControlLabel} sm={2}> City </Col>
                  <Col sm={6}>
-                   <FormControl componentClass="select" placeholder="City" onChange={this.cityField}>
+                   <FormControl componentClass="select" placeholder="City" value={this.state.city} onChange={this.cityField}>
                     <option value="Dwarka">Dwarka</option>
                     <option value="Faridabad">Faridabad</option>
                     <option value="Jaipur">Jaipur</option>
                     <option value="Amratsar">Amratsar</option>
                     <option value="ShriGangaNagar">ShriGangaNagar</option>
                   </FormControl>
+
                  </Col>
                </FormGroup>
-               <FormGroup controlId="formHorizontalEmail">
+               <FormGroup controlId="formHorizontalState">
                  <Col componentClass={ControlLabel} sm={2}> State </Col>
                  <Col sm={6}>         
-                <FormControl componentClass="select" onChange={this.stateField}>
-                    <option value="Delhi">Delhi</option>
+                <FormControl componentClass="select" value={this.state.value} onChange={this.stateField}>
+                    <option value="Delhi" >Delhi</option>
                     <option value="Haryana">Haryana</option>
                     <option value="Gujrat">Gujrat</option>
-                    <option value="punjab">Punjab</option>
-                    <option value="Rajashdhan">Rajashdhan</option>
+                    <option value="punjab" >Punjab</option>
+                    <option value="Rajashdhan">Rajashdhan</option>    
                 </FormControl>
+               
                  </Col>
                </FormGroup>
-               <FormGroup controlId="formHorizontalPassword">
-                 <Col componentClass={ControlLabel} sm={2}>Gender</Col>
-
-                <ButtonGroup   style={radioColor}>
-                 <Button style={radioColor} active={this.state.gender === 'male'}>male</Button>
-                 <Button style={radioColor} active={this.state.gender === 'female'}>female</Button>
-                </ButtonGroup>
-                 
+              <FormGroup controlId="formHorizontalGender">
+                 <Col componentClass={ControlLabel} sm={2}> Gender </Col>
+                 <Col sm={6}>         
+                <FormControl componentClass="select" value={this.state.gender} onChange={this.genderField}>
+                    <option value="Female" >female</option>
+                    <option value="Male">Male</option>
+                </FormControl>
+               
+                 </Col>
                </FormGroup>
+                
+
                <FormGroup>
                  <Col smOffset={2} sm={4}>
                    <Checkbox>Remember me</Checkbox>
