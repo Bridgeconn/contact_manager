@@ -24,7 +24,7 @@ class Signup extends React.Component {
     username:'',//for username field
     address:'',//for address field
     education:''//for last education field
-  }
+    }
   //returns a new function, in which references to 'this' will refer to 'this'
   this.onEmail = this.onEmail.bind(this);
   this.onPassword = this.onPassword.bind(this);
@@ -41,29 +41,29 @@ class Signup extends React.Component {
     //setstate username value to username
     this.setState({username:username});
     //return username 
-    return username;
+    
   }
     // function for email value validation and getting email value
   onEmail(e) {
     //var email :assigned dynamic value of email on event call
     var email = e.target.value.trim();
     //setstate email value to email
-      this.setState({email:email})
+    this.setState({email:email})
       //var atpos get the value of @
-      var atpos = email.indexOf("@");
+    var atpos = email.indexOf("@");
       //var dotpos get "." value next to @
-      var dotpos = email.lastIndexOf(".");
+    var dotpos = email.lastIndexOf(".");
       //if value of @ is not present or dotpos less then atpos+2 or dotpos+2 more then email.length 
-      if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email.length) {
         //write to console: incorrect email
         console.log("incorrect email");
         //return false
         return false;
-      }
-      else{
+    }
+    else{
         //else correct email
         console.log("correct email")
-      }
+    }
   }
   //function getting password value onchange event
   onPassword(e){
@@ -139,16 +139,11 @@ class Signup extends React.Component {
         password:passwordValue
       }
         console.log(params);
-    
-   // fetch('/', { 
-   //      method: 'POST',
-   //      data: params
-   //    })
-      
     }
   }
-  //render divStyle css styling
+ 
    render() {
+     //render divStyle css styling
      var divStyle = {
        paddingLeft: "90px",
        color: "#2e6da4"

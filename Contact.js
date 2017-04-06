@@ -11,10 +11,9 @@ import {PageHeader} from 'react-bootstrap';
 import { Route, IndexRoute, Link } from 'react-router';
 import {ButtonGroup} from 'react-bootstrap';
 
-
+//component contact
 class Contact extends React.Component {
   //to initialise state create custructor
-
   constructor(props) {
    
   super(props);
@@ -24,9 +23,9 @@ class Contact extends React.Component {
     number:'',
     address:'',
     city:'',
-    value:'', 
+    state_name:'', 
     gender:''
-  }
+    }
   //returns a new function, in which references to 'this' will refer to 'this'
   this.nameField = this.nameField.bind(this);
   this.numberField = this.numberField.bind(this);
@@ -57,12 +56,12 @@ class Contact extends React.Component {
    if(isNaN(number)||number.indexOf(" ")!=-1||number.length!=10){
     //error please check the number
     console.log("please check the number  ")
-   }
+    }
    //else print number
    else{
     console.log(number);
 
-   }
+    }
   }
   //method for inputfield address
   addressField(e){
@@ -74,6 +73,7 @@ class Contact extends React.Component {
   }
   genderField(e){
     var gender=e.target.value.trim();
+    //setState gender value to gender
     this.setState({gender:gender});
     
   }
@@ -88,45 +88,56 @@ class Contact extends React.Component {
   // method for inputfield state
   stateField(e){
     //var state : assigned dynamic value of state on event call
-    var value=e.target.value.trim();
+    var state_name=e.target.value.trim();
     //setState state value to state
-    this.setState({value:value});
+    this.setState({state_name:state_name});
    
   }
   onSubmit(e){
+      // assigne value of this.state.name to name 
       var name = this.state.name;
+      // assigne value of this.state.number to number 
       var number = this.state.number;
+      // assigne value of state.address to address 
       var address = this.state.address;
+      // assigne value of state.city to city 
       var city = this.state.city;
-      var value = this.state.value;
+      // assigne value of state.value to value i.e the value of state 
+      var state_name = this.state.state_name;
+      // assigne value of state.gender to gender 
       var gender = this.state.gender; 
-
+      //setState name value to name
       this.setState({name:name});
+      //setState number value to number
       this.setState({number:number});
+      //setState address value to address
       this.setState({address:address});
+      //setState city value to city
       this.setState({city:city});
-      this.setState({state:value});
+      //setState state_name value to state_name
+      this.setState({state_name:state_name});
+      //setState gender value to gender
       this.setState({gender:gender});
-
-       if(isNaN(number)||number.indexOf(" ")!=-1||number.length!=10){
+        //if number is blank or number length is not equal to 10
+      if(isNaN(number)||number.indexOf(" ")!=-1||number.length!=10){
+        //print please check the number 
         console.log("please check the number");
-       }
-       else{
-
-
+      }
+      else{
+        //take all form's value to one variable
         var param = {
         name:this.state.name,
         number:this.state.number,
         address:this.state.address,
         city:this.state.city,
-        state:this.state.value,
+        state_name:this.state.state_name,
         gender:this.state.gender
         
       }
-
+      //print all form's value to console
       console.log(param);
 
-       }
+    }
       
   }
 
@@ -136,24 +147,14 @@ class Contact extends React.Component {
     e.preventDefault();
     alert('The link was clicked.');
   }
- //render divStyle css styling
+
    render() {
+     //render divStyle css styling
      var divStyle = {
        paddingLeft: "110px",
        color: "#2e6da4",
-     };
-
-     var radioColor = {
-     backgroundColor:"#bbb",
-     color:"#2e6da4"
-    
-     }
-   
-
-
+    };
      return (
-
-
          <div className ="row">
          <div className ="col-sm-8">
               <PageHeader> <span style={divStyle}>  Contact </span> </PageHeader>
@@ -179,7 +180,8 @@ class Contact extends React.Component {
                <FormGroup controlId="formHorizontalCity">
                  <Col componentClass={ControlLabel} sm={2}> City </Col>
                  <Col sm={4}>
-                   <FormControl componentClass="select" placeholder="City" value={this.state.city} onChange={this.cityField}>
+                   <FormControl componentClass="select" placeholder="City" value={this.state.city} onClick={this.cityField}>
+      
                     <option value="Dwarka">Dwarka</option>
                     <option value="Faridabad">Faridabad</option>
                     <option value="Jaipur">Jaipur</option>
@@ -192,11 +194,12 @@ class Contact extends React.Component {
                <FormGroup controlId="formHorizontalState">
                  <Col componentClass={ControlLabel} sm={2}> State </Col>
                  <Col sm={4}>         
-                <FormControl componentClass="select" value={this.state.value} onChange={this.stateField}>
-                    <option value="Delhi" >Delhi</option>
+                <FormControl componentClass="select" value={this.state.state_name} onClick={this.stateField}>
+                    
+                    <option value="Delhi">Delhi</option>
                     <option value="Haryana">Haryana</option>
                     <option value="Gujrat">Gujrat</option>
-                    <option value="punjab" >Punjab</option>
+                    <option value="punjab">Punjab</option>
                     <option value="Rajashdhan">Rajashdhan</option>    
                 </FormControl>
                
@@ -205,8 +208,9 @@ class Contact extends React.Component {
               <FormGroup controlId="formHorizontalGender">
                  <Col componentClass={ControlLabel} sm={2}> Gender </Col>
                  <Col sm={2}>         
-                <FormControl componentClass="select" value={this.state.gender} onChange={this.genderField}>
-                    <option value="Female" >female</option>
+                <FormControl componentClass="select" value={this.state.gender} onClick={this.genderField}>
+                   
+                    <option value="Female">Female</option>
                     <option value="Male">Male</option>
                 </FormControl>
                

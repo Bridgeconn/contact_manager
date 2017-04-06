@@ -20,7 +20,7 @@ class Signin extends React.Component {
   this.state = {
     
     data: 'Initial data...', 
-  }
+    }
   //returns a new function, in which references to 'this' will refer to 'this'
   this.confirm = this.confirm.bind(this);
  
@@ -32,11 +32,11 @@ class Signin extends React.Component {
     alert('The link was clicked.');
   }
   // //render divStyle css styling
-   render() {
-     var divStyle = {
-       paddingLeft: "90px",
-       color: "#2e6da4"
-     };
+  render() {
+    var divStyle = {
+      paddingLeft: "90px",
+      color: "#2e6da4"
+  };
 
 
      return (

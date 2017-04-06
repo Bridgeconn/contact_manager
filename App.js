@@ -17,7 +17,6 @@ class App extends React.Component {
 
       return (
          <div >
-         
                 <Link to='/Home' style={alignLink}>Home</Link>
                 <Link to='/Signup' style={alignLink}>Signup</Link>
                 <Link to='/Signin' style={alignLink}>Signin</Link>
