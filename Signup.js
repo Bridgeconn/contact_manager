@@ -20,7 +20,7 @@ class Signup extends React.Component {
   this.state = {
     email: '',//email field
     password: '',//for password field
-    passwordConfirm:'',//for confirm password field
+    password_confirm:'',//for confirm password field
     username:'',//for username field
     address:'',//for address field
     education:''//for last education field
@@ -77,13 +77,13 @@ class Signup extends React.Component {
   //function for validate password or match password to confirm password
   onConPassword(e){
     //assigning dynamic value of confirm password to var passwordConfirm using e.target.value
-    var passwordConfirm = e.target.value.trim();
+    var password_confirm = e.target.value.trim();
     //setstate passwordConfirm to dynamic value
-    this.setState({passwordConfirm:passwordConfirm})
+    this.setState({password_confirm:password_confirm})
     //assign the password value to pass 
     var pass=this.state.password;
     //if pass and passConfirm not same or password field isempty or password length is less than 3
-    if(pass!=passwordConfirm||pass==''|| pass.length<=3){
+    if(pass!=password_confirm||pass==''|| pass.length<=3){
       //wrong password 
       document.getElementById("wrongpass").innerHTML="Wrong Password";
     }
@@ -109,21 +109,21 @@ class Signup extends React.Component {
   //calling on submit form 
   submit(e){
    //assigne password value  to passwordValue
-    var passwordValue=this.state.password;
+    var password_value=this.state.password;
     //assigne email value  to emailValue
-    var emailValue=this.state.email;
+    var email_value=this.state.email;
     //assigne password value  to valueConfirm
-    var valueConfirm=this.state.passwordConfirm;
+    var valueConfirm=this.state.password_confirm;
    //var atpos get the value of @
-    var atpos = emailValue.indexOf("@");
+    var atpos = email_value.indexOf("@");
     //var dotpos get "." value next to @
-    var dotpos = emailValue.lastIndexOf(".");
+    var dotpos = email_value.lastIndexOf(".");
     //if pass and passConfirm not same or password field isempty or password length is less than 3
-    if(passwordValue!=valueConfirm || passwordValue.length<=3){
+    if(password_value!=value_confirm || password_value.length<=3){
     //output incorrect password
       console.log("incorrect password");
     }//if value of @ is not present or dotpos less then atpos+2 or dotpos+2 more then email.length 
-    else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=emailValue.length) {
+    else if (atpos<1 || dotpos<atpos+2 || dotpos+2>=email_value.length) {
     //incorrect email
     console.log("incorrect email");
     //return false
@@ -136,7 +136,7 @@ class Signup extends React.Component {
         email:emailValue,
         address:this.state.address,
         education:this.state.education,
-        password:passwordValue
+        password:password_value
       }
         console.log(params);
     }
