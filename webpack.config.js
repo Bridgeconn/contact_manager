@@ -10,7 +10,7 @@ var config = {
    devServer: {
     historyApiFallback: true,
       inline: true,
-      port: 8000
+      port: 8080
    },
     node: {
   fs: "empty",

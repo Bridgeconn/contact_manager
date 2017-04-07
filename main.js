@@ -10,7 +10,13 @@ import Home from './Home.js';
 import Signup from './Signup.js';
 //import Signin compoment
 import Signin from './Signin.js';
+//import Contact component
 import Contact from './Contact.js';
+import ContactList from './ContactList.js';
+
+
+
+
 //import react router link ,browserHistory,indexRoute 
 import {Router, Route, Link, browserHistory, IndexRoute} from 'react-router';
 
@@ -22,9 +28,11 @@ ReactDOM.render((
          <Route path = "/Signup" component = {Signup} />
          <Route path = "/Signin" component = {Signin} />
          <Route path = "/Contact" component = {Contact} />
+          <Route path = "/ContactList" component = {ContactList} />
  
       </Route>
    </Router>), document.getElementById('app'));
+
 
 
 
