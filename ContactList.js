@@ -55,7 +55,7 @@ render(){
   return(
    <div className ="row">         
   <div className ="col-md-8">
-  <BootstrapTable data={this.state.person} cellEdit={this.cellEditProp} insertRow={ true } onClick={this.cellEditProp}>
+  <BootstrapTable data={this.state.person} rowEdit={this.cellEditProp} insertRow={ true } onClick={this.cellEditProp}>
       <TableHeaderColumn isKey dataField='id'>ID</TableHeaderColumn>
       <TableHeaderColumn dataField='name'>Name</TableHeaderColumn>
       <TableHeaderColumn dataField='email'>Email</TableHeaderColumn>
