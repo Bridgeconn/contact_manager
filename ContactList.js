@@ -43,21 +43,25 @@ class ContactList extends React.Component {
       }
 
    }
-   cellEditProp(e){
+
+    cellEditProp(e){
         var contact = this.state.person;
         
         // this function should return an array of row keys
         return contact.filter(p => p.id < 3).map(p => p.id);
       
-    };
-
+      }
 render(){
+  // var tableHeaderMarginBottom = {
+  //      marginBottom: 0+ 'px !important'
+  //    };
+
   return(
    <div className ="row">         
   <div className ="col-md-8">
-  <BootstrapTable data={this.state.person} rowEdit={this.cellEditProp} insertRow={ true } onClick={this.cellEditProp}>
-      <TableHeaderColumn isKey dataField='id'>ID</TableHeaderColumn>
-      <TableHeaderColumn dataField='name'>Name</TableHeaderColumn>
+  <BootstrapTable bodyHeight={'40em'} data={this.state.person} rowEdit={this.cellEditProp} insertRow={ true } onClick={this.cellEditProp} >
+      <TableHeaderColumn isKey dataField='id' className='th-width'>ID</TableHeaderColumn>
+      <TableHeaderColumn dataField='name' className='th-next-width'>Name</TableHeaderColumn>
       <TableHeaderColumn dataField='email'>Email</TableHeaderColumn>
   </BootstrapTable>
   </div>

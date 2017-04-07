@@ -131,4 +131,15 @@ fieldset {
 .radio-color{
   background-color: blue;
 }
-
+.table{
+  margin-bottom: 0px !important;   
+}
+.th-width{
+-webkit-logical-width: 100px !important ;
+}
+.th-width{
+-webkit-logical-width: 100px !important ;
+}
+.th-next-width{
+-webkit-logical-width: 177px !important ;
+}
