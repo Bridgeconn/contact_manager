@@ -45,7 +45,7 @@ class ContactList extends React.Component {
    }
    cellEditProp(e){
         var contact = this.state.person;
-        // if product id less than 3, will cause the whole row noneditable
+        
         // this function should return an array of row keys
         return contact.filter(p => p.id < 3).map(p => p.id);
       
@@ -55,7 +55,7 @@ render(){
   return(
    <div className ="row">         
   <div className ="col-md-8">
-  <BootstrapTable data={this.state.person} cellEdit={ this.cellEditProp } insertRow={ true } onClick={this.cellEditProp}>
+  <BootstrapTable data={this.state.person} cellEdit={this.cellEditProp} insertRow={ true } onClick={this.cellEditProp}>
       <TableHeaderColumn isKey dataField='id'>ID</TableHeaderColumn>
       <TableHeaderColumn dataField='name'>Name</TableHeaderColumn>
       <TableHeaderColumn dataField='email'>Email</TableHeaderColumn>
