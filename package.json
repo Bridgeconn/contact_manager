@@ -34,6 +34,7 @@
     "react-native-background-color": "0.0.5",
     "react-router": "^3.0.2",
     "react-select": "^1.0.0-rc.3",
+    "react-table": "^5.5.0",
     "select": "^1.1.2",
     "tls": "0.0.1",
     "webpack": "^2.2.1",
