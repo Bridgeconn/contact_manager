@@ -134,16 +134,12 @@ fieldset {
 .table{
   margin-bottom: 0px !important;   
 }
-.th-width{
--webkit-logical-width: 100px !important ;
+.th-td-width{
+-webkit-logical-width: 500px;
 }
-.th-width{
--webkit-logical-width: 100px !important ;
-}
-.th-next-width{
--webkit-logical-width: 177px !important ;
-}
-table {
+
+
+/*table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
@@ -153,8 +149,8 @@ td, th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
+    border-bottom: 1px solid #e7e7e7;
+    font-size: 14px;
 }
+*/
 
-tr:nth-child(even) {
-    background-color: #dddddd;
-}

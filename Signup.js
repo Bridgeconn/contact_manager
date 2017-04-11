@@ -106,6 +106,7 @@ class Signup extends React.Component {
      //setstate education to dynamic value
     this.setState({education:education});
   }
+  
   //calling on submit form 
   submit(e){
    //assigne password value  to passwordValue
