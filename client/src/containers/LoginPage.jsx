@@ -76,7 +76,6 @@ class LoginPage extends React.Component {
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
-
     this.setState({
       user
     });
@@ -97,5 +96,5 @@ class LoginPage extends React.Component {
   }
 
 }
-
+// console.log(LoginPage);
 export default LoginPage;

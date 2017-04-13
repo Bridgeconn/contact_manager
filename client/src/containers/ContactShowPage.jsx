@@ -35,14 +35,14 @@ styles.tab[2] = styles.default_tab;
 styles.tab[3] = styles.default_tab;
 // styles.tab[this.setState.slideIndex] = objectAssign({},   styles.tab[this.setState.slideIndex], styles.active_tab);
 
-const HomePage = () => (
+const DetailsPage = () => (
   <Card style={styles.cardWidth} className="container">
 
-    <CardTitle title="Home Page" />
+    <CardTitle title="Detail Page" />
     
   </Card>
 );
 
-export default HomePage;
+export default DetailsPage;
 
 

@@ -16,7 +16,6 @@ const routes = {
       path: '/',
       component: HomePage
     },
-
     {
       path: '/login',
       component: LoginPage
@@ -27,15 +26,17 @@ const routes = {
       component: SignUpPage
     },
     {
-      path: '/contact',
+      path: '/add_contact',
       component: ContactPage
     },
-     {
-      path: '/contactlist',
+    {
+      path: '/contact_list',
       component: ContactListPage
+    },
+    {
+      path: '/contact_details',
+      component: ContactShowPage
     }
-
-
   ]
 };
 
