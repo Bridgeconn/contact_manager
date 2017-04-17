@@ -81,9 +81,6 @@ class LoginPage extends React.Component {
     });
   }
 
-  /**
-   * Render the component.
-   */
   render() {
     return (
       <LoginForm
@@ -96,5 +93,5 @@ class LoginPage extends React.Component {
   }
 
 }
-// console.log(LoginPage);
+
 export default LoginPage;

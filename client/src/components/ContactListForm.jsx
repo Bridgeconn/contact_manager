@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 const ContactListForm = () => (
   <Table>
@@ -12,7 +11,7 @@ const ContactListForm = () => (
         <TableHeaderColumn>ID</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
         <TableHeaderColumn>Status</TableHeaderColumn> 
-        <TableHeaderColumn><RaisedButton label="View"/></TableHeaderColumn>
+        <TableHeaderColumn><Link to="">show</Link></TableHeaderColumn>
 
       </TableRow>
     </TableHeader>
@@ -21,7 +20,7 @@ const ContactListForm = () => (
         <TableRowColumn>1</TableRowColumn>
         <TableRowColumn>John Smith</TableRowColumn>
         <TableRowColumn>Employed</TableRowColumn>       
-        <TableHeaderColumn><RaisedButton label="View" href="/contact_details" /></TableHeaderColumn>
+        <TableHeaderColumn><Link to="/contact_details">show</Link></TableHeaderColumn>
 
       </TableRow>
       <TableRow>
@@ -29,7 +28,7 @@ const ContactListForm = () => (
         <TableRowColumn>Randal White</TableRowColumn>
         <TableRowColumn>Unemployed</TableRowColumn>
         
-        <TableHeaderColumn><RaisedButton label="View" href="/contact_details"/></TableHeaderColumn>
+        <TableHeaderColumn><Link to="/contact_details">show</Link></TableHeaderColumn>
       </TableRow>
       <TableRow>
         <TableRowColumn>3</TableRowColumn>
@@ -41,15 +40,12 @@ const ContactListForm = () => (
         <TableRowColumn>4</TableRowColumn>
         <TableRowColumn>Steve Brown</TableRowColumn>
         <TableRowColumn>Employed</TableRowColumn>
-        <TableHeaderColumn><RaisedButton label="View" href="/contact_details"/></TableHeaderColumn>
+        <TableHeaderColumn><Link to="/contact_details">show</Link></TableHeaderColumn>
       </TableRow>
     </TableBody>
   </Table>
 );
 
-// ContactListForm.propTypes = {
-//   products[]: PropTypes.func.isRequired,
- 
-// };
+
 
 export default ContactListForm;

@@ -4,7 +4,7 @@ import LoginPage from './containers/LoginPage.jsx';
 import SignUpPage from './containers/SignUpPage.jsx';
 import ContactPage from './containers/ContactPage.jsx';
 import ContactListPage from './containers/ContactListPage.jsx';
-
+import ContactShowPage from './containers/ContactShowPage.jsx';
 
 
 const routes = {

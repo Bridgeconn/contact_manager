@@ -1,48 +1,62 @@
-import React from 'react';
-import { Card, CardTitle } from 'material-ui/Card';
-import {Tabs, Tab} from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
-import {colors} from 'material-ui/styles';
+import React, {PropTypes} from 'react';
+import ContactShowForm from '../components/ContactShowForm.jsx';
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 0,
-    marginBottom: 5,
-    fontWeight: 400,
-  },
-  cardWidth: {
-  	width: "90%",
-  },
-  tabDiv: {
-  	paddingLeft: 10,
-  	paddingRight: 10,
-  },
-  default_tab:{
-    color: colors.grey500,
-    backgroundColor: colors.grey50,
-    fontWeight: 400,
-  },
-  active_tab:{
-    color: colors.deepOrange700,
-  }
-};
+// var details = { 
+//     John: {
+//       name:"John" ,
+//       email:"john233@jhdfg.com" ,
+//       address: "ejhfr",
+      
+//     },
+//     Robin: {
+//       name:"Robin" ,
+//       email:"hgf@kjrh.dfh",
+//       address:"ewfgiu" ,
+//     },
+//     Piter: {
+//       name: "Piter"
+//       email:"UFGU@EEJRGH.wsg" ,
+//       address: "rsghfrwyj",
+//     },
+//     Jackson:{
+//       name: "Jackson",
+//       email: "egjjh",
+//       address: "rgh",
+//     },
+//     Robinson:{
+//       name:"Robinson" ,
+//       email:"fdgj@hk.sfhs" ,
+//       address: "efeef",
+//     }  
+//   };  
 
-styles.tab = []
-styles.tab[0] = styles.default_tab;
-styles.tab[1] = styles.default_tab;
-styles.tab[2] = styles.default_tab;
-styles.tab[3] = styles.default_tab;
-// styles.tab[this.setState.slideIndex] = objectAssign({},   styles.tab[this.setState.slideIndex], styles.active_tab);
 
-const DetailsPage = () => (
-  <Card style={styles.cardWidth} className="container">
 
-    <CardTitle title="Detail Page" />
-    
-  </Card>
-);
+class ContactShowPage extends React.Component {  
 
-export default DetailsPage;
+//   details(){
+//     var John_detail = {
+//     john: [
+//         {
+//             id: 1,
+//             name:"john",
+//             content: "Hello, world!\nBoring.\nBoring.\nBoring.",
+//         }, 
+//     ]
+// };
+//   }
+  render(){ 
+    return (
+        <ContactShowForm
+       
+        />
+       
+      );
+}
+}
+
+
+export default ContactShowPage;
+
 
 

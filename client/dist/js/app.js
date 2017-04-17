@@ -35533,6 +35533,10 @@
 
 	var _ContactListPage2 = _interopRequireDefault(_ContactListPage);
 
+	var _ContactShowPage = __webpack_require__(503);
+
+	var _ContactShowPage2 = _interopRequireDefault(_ContactShowPage);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var routes = {
@@ -35555,7 +35559,7 @@
 	    component: _ContactListPage2.default
 	  }, {
 	    path: '/contact_details',
-	    component: ContactShowPage
+	    component: _ContactShowPage2.default
 	  }]
 	};
 
@@ -43295,11 +43299,6 @@
 	        user: user
 	      });
 	    }
-
-	    /**
-	     * Render the component.
-	     */
-
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -43314,8 +43313,6 @@
 
 	  return LoginPage;
 	}(_react2.default.Component);
-	// console.log(LoginPage);
-
 
 	exports.default = LoginPage;
 
@@ -46046,7 +46043,11 @@
 	        _react2.default.createElement(
 	          _Table.TableHeaderColumn,
 	          null,
-	          _react2.default.createElement(_RaisedButton2.default, { label: 'View' })
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '' },
+	            'show'
+	          )
 	        )
 	      )
 	    ),
@@ -46074,7 +46075,11 @@
 	        _react2.default.createElement(
 	          _Table.TableHeaderColumn,
 	          null,
-	          _react2.default.createElement(_RaisedButton2.default, { label: 'View', href: '/contact_details' })
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/contact_details' },
+	            'show'
+	          )
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -46098,7 +46103,11 @@
 	        _react2.default.createElement(
 	          _Table.TableHeaderColumn,
 	          null,
-	          _react2.default.createElement(_RaisedButton2.default, { label: 'View', href: '/contact_details' })
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/contact_details' },
+	            'show'
+	          )
 	        )
 	      ),
 	      _react2.default.createElement(
@@ -46150,17 +46159,16 @@
 	        _react2.default.createElement(
 	          _Table.TableHeaderColumn,
 	          null,
-	          _react2.default.createElement(_RaisedButton2.default, { label: 'View', href: '/contact_details' })
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/contact_details' },
+	            'show'
+	          )
 	        )
 	      )
 	    )
 	  );
 	};
-
-	// ContactListForm.propTypes = {
-	//   products[]: PropTypes.func.isRequired,
-
-	// };
 
 	exports.default = ContactListForm;
 
@@ -49194,6 +49202,165 @@
 	} : void 0;
 	exports.default = TableRow;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+
+/***/ },
+/* 503 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ContactShowForm = __webpack_require__(504);
+
+	var _ContactShowForm2 = _interopRequireDefault(_ContactShowForm);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	// var details = { 
+	//     John: {
+	//       name:"John" ,
+	//       email:"john233@jhdfg.com" ,
+	//       address: "ejhfr",
+
+	//     },
+	//     Robin: {
+	//       name:"Robin" ,
+	//       email:"hgf@kjrh.dfh",
+	//       address:"ewfgiu" ,
+	//     },
+	//     Piter: {
+	//       name: "Piter"
+	//       email:"UFGU@EEJRGH.wsg" ,
+	//       address: "rsghfrwyj",
+	//     },
+	//     Jackson:{
+	//       name: "Jackson",
+	//       email: "egjjh",
+	//       address: "rgh",
+	//     },
+	//     Robinson:{
+	//       name:"Robinson" ,
+	//       email:"fdgj@hk.sfhs" ,
+	//       address: "efeef",
+	//     }  
+	//   };  
+
+
+	var ContactShowPage = function (_React$Component) {
+	  _inherits(ContactShowPage, _React$Component);
+
+	  function ContactShowPage() {
+	    _classCallCheck(this, ContactShowPage);
+
+	    return _possibleConstructorReturn(this, (ContactShowPage.__proto__ || Object.getPrototypeOf(ContactShowPage)).apply(this, arguments));
+	  }
+
+	  _createClass(ContactShowPage, [{
+	    key: 'render',
+
+
+	    //   details(){
+	    //     var John_detail = {
+	    //     john: [
+	    //         {
+	    //             id: 1,
+	    //             name:"john",
+	    //             content: "Hello, world!\nBoring.\nBoring.\nBoring.",
+	    //         }, 
+	    //     ]
+	    // };
+	    //   }
+	    value: function render() {
+	      return _react2.default.createElement(_ContactShowForm2.default, null);
+	    }
+	  }]);
+
+	  return ContactShowPage;
+	}(_react2.default.Component);
+
+	exports.default = ContactShowPage;
+
+/***/ },
+/* 504 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Card = __webpack_require__(398);
+
+	var _Tabs = __webpack_require__(455);
+
+	var _Slider = __webpack_require__(460);
+
+	var _Slider2 = _interopRequireDefault(_Slider);
+
+	var _styles = __webpack_require__(464);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var styles = {
+	  headline: {
+	    fontSize: 24,
+	    paddingTop: 0,
+	    marginBottom: 5,
+	    fontWeight: 400
+	  },
+	  cardWidth: {
+	    width: "90%"
+	  },
+	  tabDiv: {
+	    paddingLeft: 10,
+	    paddingRight: 10
+	  },
+	  default_tab: {
+	    color: _styles.colors.grey500,
+	    backgroundColor: _styles.colors.grey50,
+	    fontWeight: 400
+	  },
+	  active_tab: {
+	    color: _styles.colors.deepOrange700
+	  }
+	};
+
+	// styles.tab = []
+	// styles.tab[0] = styles.default_tab;
+	// styles.tab[1] = styles.default_tab;
+	// styles.tab[2] = styles.default_tab;
+	// styles.tab[3] = styles.default_tab;
+	// styles.tab[this.setState.slideIndex] = objectAssign({},   styles.tab[this.setState.slideIndex], styles.active_tab);
+
+	var ContactShowForm = function ContactShowForm() {
+	  return _react2.default.createElement(
+	    _Card.Card,
+	    { style: styles.cardWidth, className: 'container' },
+	    _react2.default.createElement(_Card.CardTitle, { title: 'Detail Page' })
+	  );
+	};
+
+	exports.default = ContactShowForm;
 
 /***/ }
 /******/ ]);

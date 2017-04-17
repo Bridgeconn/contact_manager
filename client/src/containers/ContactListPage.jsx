@@ -7,7 +7,6 @@ class ContactListPage extends React.Component {
   render(){
     return (
         <ContactListForm
-        
         />
       );
 
