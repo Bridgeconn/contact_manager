@@ -35,7 +35,6 @@ function validateSignupForm(payload) {
   }
 
   return {
-     data: payload,
     success: isFormValid,
     message,
     errors
@@ -69,7 +68,6 @@ function validateLoginForm(payload) {
   }
 
   return {
-     data: payload,
     success: isFormValid,
     message,
     errors
@@ -96,7 +94,6 @@ function validateContactForm(payload) {
   }
 
   return {
-    data: payload,
     success: isFormValid,
     message,
     errors
@@ -106,29 +103,31 @@ function validateContactForm(payload) {
 
 router.post('/signup', (req, res) => {
   const validationResult = validateSignupForm(req.body);
-  console.log(validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
       message: validationResult.message,
       errors: validationResult.errors
-
     });
 
+  }else{
+    //Here we can save/fetch data from database.
+    console.log(req.body)
   }
-
   return res.status(200).end();
 });
 
 router.post('/login', (req, res) => {
   const validationResult = validateLoginForm(req.body);
-  console.log(validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
       message: validationResult.message,
       errors: validationResult.errors
     });
+  }else{
+    //Here we can save/fetch data from database.
+    console.log(req.body)
   }
 
   return res.status(200).end();
@@ -136,15 +135,16 @@ router.post('/login', (req, res) => {
 
 router.post('/add_contact', (req, res) => {
   const validationResult = validateContactForm(req.body);
-  console.log(validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
       message: validationResult.message,
       errors: validationResult.errors
     });
+  }else{
+    //Here we can save/fetch data from database.
+    console.log(req.body)
   }
-
   return res.status(200).end();
 });
 
