@@ -70,9 +70,10 @@ const ContactForm = ({
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="Log in" primary />
+        <RaisedButton type="submit" label="Add Contact" primary />
 
       </div>
+      
     </form>
   </Card>
 );

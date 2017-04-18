@@ -45789,6 +45789,7 @@
 	        }
 	      });
 	      xhr.send(formData);
+	      console.log(formData);
 	    }
 
 	    /**
@@ -45919,7 +45920,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'button-line' },
-	        _react2.default.createElement(_RaisedButton2.default, { type: 'submit', label: 'Log in', primary: true })
+	        _react2.default.createElement(_RaisedButton2.default, { type: 'submit', label: 'Add Contact', primary: true })
 	      )
 	    )
 	  );

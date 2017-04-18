@@ -88,6 +88,7 @@ class ContactPage extends React.Component {
       }
     });
     xhr.send(formData);
+    console.log(formData);
   }
 
   /**

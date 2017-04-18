@@ -35,6 +35,7 @@ function validateSignupForm(payload) {
   }
 
   return {
+     data: payload,
     success: isFormValid,
     message,
     errors
@@ -68,6 +69,7 @@ function validateLoginForm(payload) {
   }
 
   return {
+     data: payload,
     success: isFormValid,
     message,
     errors
@@ -84,7 +86,7 @@ function validateContactForm(payload) {
     errors.email = 'Please provide your email address.';
   }
 
-  if (!payload || typeof payload.mobile_no !== 'number' || payload.mobile_no.trim().length === 0) {
+  if (!payload || isNaN(payload.mobile_no) || payload.mobile_no.trim().length != 10) {
     isFormValid = false;
     errors.mobile_no = 'Please provide your correct mobile number';
   }
@@ -94,6 +96,7 @@ function validateContactForm(payload) {
   }
 
   return {
+    data: payload,
     success: isFormValid,
     message,
     errors
@@ -103,6 +106,7 @@ function validateContactForm(payload) {
 
 router.post('/signup', (req, res) => {
   const validationResult = validateSignupForm(req.body);
+  console.log(validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -118,6 +122,7 @@ router.post('/signup', (req, res) => {
 
 router.post('/login', (req, res) => {
   const validationResult = validateLoginForm(req.body);
+  console.log(validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -131,6 +136,7 @@ router.post('/login', (req, res) => {
 
 router.post('/add_contact', (req, res) => {
   const validationResult = validateContactForm(req.body);
+  console.log(validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
