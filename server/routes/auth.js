@@ -74,9 +74,50 @@ function validateLoginForm(payload) {
   };
 }
 
+function validateContactForm(payload) {
+  const errors = {};
+  let isFormValid = true;
+  let message = '';
+
+  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
+    isFormValid = false;
+    errors.email = 'Please provide your email address.';
+  }
+
+  if (!payload || typeof payload.mobile_no !== 'number' || payload.mobile_no.trim().length === 0) {
+    isFormValid = false;
+    errors.mobile_no = 'Please provide your correct mobile number';
+  }
+
+  if (!isFormValid) {
+    message = 'Check the form for errors.';
+  }
+
+  return {
+    success: isFormValid,
+    message,
+    errors
+  };
+}
+
+
 router.post('/signup', (req, res) => {
-  console.log(req);
   const validationResult = validateSignupForm(req.body);
+  if (!validationResult.success) {
+    return res.status(400).json({
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors
+
+    });
+
+  }
+
+  return res.status(200).end();
+});
+
+router.post('/login', (req, res) => {
+  const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -88,8 +129,8 @@ router.post('/signup', (req, res) => {
   return res.status(200).end();
 });
 
-router.post('/login', (req, res) => {
-  const validationResult = validateLoginForm(req.body);
+router.post('/add_contact', (req, res) => {
+  const validationResult = validateContactForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,

@@ -14,10 +14,10 @@ class ContactPage extends React.Component {
     this.state = {
       errors: {},
       user: {
-        email: '',
         name: '',
-        eduction: '',
-        mobileno:'',
+        email: '',
+        education: '',
+        mobile_no:'',
         address:''
 
       }
@@ -33,6 +33,7 @@ class ContactPage extends React.Component {
    * @param {object} event - the JavaScript event object
    */
   changeUser(event) {
+    console.log(event.target.name);
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
@@ -54,15 +55,15 @@ class ContactPage extends React.Component {
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
-    const eduction = encodeURIComponent(this.state.user.education);
+    const education = encodeURIComponent(this.state.user.education);
     const address = encodeURIComponent(this.state.user.address);
     const mobile_no = encodeURIComponent(this.state.user.mobile_no);
    
-    const formData = `name=${name}&email=${email}&password=${password}`;
+    const formData = `name=${name}&email=${email}&education=${education}&address=${address}&mobile_no=${mobile_no}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/signup');
+    xhr.open('post', '/auth/add_contact');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {

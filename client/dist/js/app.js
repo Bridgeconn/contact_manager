@@ -45705,10 +45705,10 @@
 	    _this.state = {
 	      errors: {},
 	      user: {
-	        email: '',
 	        name: '',
-	        eduction: '',
-	        mobileno: '',
+	        email: '',
+	        education: '',
+	        mobile_no: '',
 	        address: ''
 
 	      }
@@ -45729,6 +45729,7 @@
 	  _createClass(ContactPage, [{
 	    key: 'changeUser',
 	    value: function changeUser(event) {
+	      console.log(event.target.name);
 	      var field = event.target.name;
 	      var user = this.state.user;
 	      user[field] = event.target.value;
@@ -45755,15 +45756,15 @@
 	      // create a string for an HTTP body message
 	      var name = encodeURIComponent(this.state.user.name);
 	      var email = encodeURIComponent(this.state.user.email);
-	      var eduction = encodeURIComponent(this.state.user.education);
+	      var education = encodeURIComponent(this.state.user.education);
 	      var address = encodeURIComponent(this.state.user.address);
 	      var mobile_no = encodeURIComponent(this.state.user.mobile_no);
 
-	      var formData = 'name=' + name + '&email=' + email + '&password=' + password;
+	      var formData = 'name=' + name + '&email=' + email + '&education=' + education + '&address=' + address + '&mobile_no=' + mobile_no;
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();
-	      xhr.open('post', '/auth/signup');
+	      xhr.open('post', '/auth/add_contact');
 	      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	      xhr.responseType = 'json';
 	      xhr.addEventListener('load', function () {
@@ -45864,6 +45865,17 @@
 	        'div',
 	        { className: 'field-line' },
 	        _react2.default.createElement(_TextField2.default, {
+	          floatingLabelText: 'Name',
+	          name: 'name',
+	          onChange: onChange,
+	          errorText: errors.name,
+	          value: user.name
+	        })
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'field-line' },
+	        _react2.default.createElement(_TextField2.default, {
 	          floatingLabelText: 'Email',
 	          name: 'email',
 	          errorText: errors.email,
@@ -45875,20 +45887,8 @@
 	        'div',
 	        { className: 'field-line' },
 	        _react2.default.createElement(_TextField2.default, {
-	          floatingLabelText: 'Name',
-	          type: 'text',
-	          onChange: onChange,
-	          errorText: errors.name,
-	          value: user.name
-	        })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'field-line' },
-	        _react2.default.createElement(_TextField2.default, {
 	          floatingLabelText: 'Mobile No.',
-	          type: 'number',
-	          name: 'number',
+	          name: 'mobile_no',
 	          onChange: onChange,
 	          errorText: errors.mobile_no,
 	          value: user.mobile_no
@@ -45899,7 +45899,6 @@
 	        { className: 'field-line' },
 	        _react2.default.createElement(_TextField2.default, {
 	          floatingLabelText: 'Education',
-	          type: 'text',
 	          name: 'education',
 	          onChange: onChange,
 	          errorText: errors.education,
@@ -45911,7 +45910,6 @@
 	        { className: 'field-line' },
 	        _react2.default.createElement(_TextField2.default, {
 	          floatingLabelText: 'Address',
-	          type: 'text',
 	          name: 'address',
 	          onChange: onChange,
 	          errorText: errors.address,
@@ -45921,7 +45919,7 @@
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'button-line' },
-	        _react2.default.createElement(_RaisedButton2.default, { type: 'submit', label: 'contact', primary: true })
+	        _react2.default.createElement(_RaisedButton2.default, { type: 'submit', label: 'Log in', primary: true })
 	      )
 	    )
 	  );
