@@ -1,29 +1,29 @@
-var config = {
-   entry: './main.js',
+const path = require('path');
 
-   output: {
-      path:'/.',
-      filename: 'index.js',
-   },
 
-   devServer: {
-      inline: true,
-      port: 8080
-   },
+module.exports = {
+  // the entry file for the bundle
+  entry: path.join(__dirname, '/client/src/app.jsx'),
 
-   module: {
-      loaders: [
-         {
-            test: /\.js?$/,
-            exclude: /node_modules/,
-            loader: 'babel-loader',
+  // the bundle file we will get in the result
+  output: {
+    path: path.join(__dirname, '/client/dist/js'),
+    filename: 'app.js',
+  },
+   
+  module: {
 
-            query: {
-               presets: ['es2015', 'react']
-            }
-         }
-      ]
-   }
-}
+    // apply loaders to files that meet given conditions
+    loaders: [{
+      test: /\.jsx?$/,
+      include: path.join(__dirname, '/client/src'),
+      loader: 'babel',
+      query: {
+        presets: ["react", "es2015"]
+      }
+    }],
+  },
 
-module.exports = config;
+  // start Webpack in a watch mode, so Webpack will rebuild the bundle on changes
+  watch: true
+};
