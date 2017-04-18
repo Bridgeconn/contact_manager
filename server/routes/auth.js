@@ -84,6 +84,8 @@ router.post('/signup', (req, res) => {
       message: validationResult.message,
       errors: validationResult.errors
     });
+  }else{
+    
   }
 
   return res.status(200).end();
