@@ -1,6 +1,8 @@
 const express = require('express');
 const validator = require('validator');
 
+const database = require('../config/db.js')
+
 const router = new express.Router();
 
 /**

@@ -45595,7 +45595,7 @@
 	    { className: 'container' },
 	    _react2.default.createElement(
 	      'form',
-	      { action: '/' },
+	      { action: '/signup', method: 'post', onSubmit: undefined.onSubmit },
 	      _react2.default.createElement(
 	        'h2',
 	        { className: 'card-heading' },

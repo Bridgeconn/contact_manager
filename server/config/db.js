@@ -1,5 +1,6 @@
 var express    = require("express");
 var mysql      = require('mysql');
+
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -18,26 +19,3 @@ if(!err) {
 });
 
 
-app.post('/signup', function(req,res){
-  console.log(req.body);
-   var users={
-     "Name":req.body.Name,
-     "Email":req.body.Email,
-     "password":req.body.password
-   }
-   connection.query('INSERT INTO signup SET ?',users, function (error, results, fields) {
-   if (error) {
-     console.log("error ocurred",error);
-     res.send({
-       "code":400,
-       "failed":"error ocurred"
-     })
-   }else{
-     res.send({
-       "code":200,
-       "success":"user registered sucessfully"
-         });
-   }
-   });
-
-}

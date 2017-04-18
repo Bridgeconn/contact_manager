@@ -11,27 +11,6 @@ const SignUpForm = ({
   user,
 }) => (
 
-this.onSubmit = this.onSubmit.bind(this);
-
-onSubmit(e) {
-    console.log("inside submit");
-    e.preventDefault();
-    var self = this;
-    fetch('/signup', { 
-        method: 'POST',
-        data: {
-          name: self.refs.name,
-          email: self.refs.email,
-          password: self.refs.password
-        }
-      })
-      .then(function(response) {
-        return response.json()
-      }).then(function(body) {
-        console.log(body);
-      });
-  }
-
   <Card className="container">
     <form action="/signup" method="post" onSubmit={this.onSubmit} >
       <h2 className="card-heading">Sign Up</h2>
