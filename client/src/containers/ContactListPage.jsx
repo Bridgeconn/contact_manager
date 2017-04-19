@@ -1,27 +1,29 @@
 import React, { PropTypes } from 'react';
 import ContactListForm from '../components/ContactListForm.jsx';
 
-
-
 class ContactListPage extends React.Component {
 	constructor(props) {
     super(props);
-    this.onUpdateInput = this.onUpdateInput.bind(this);
+    // set the initial component state
     this.state = {
-      dataSource : [],
-      inputValue : ''
-    }
-  }
-
-  onUpdateInput(inputValue) {
-  	}
+     searchText: 'gfhjyd',
+     
+      }
+     
+    };
+ 
+ 
   render(){
+
     return (
-        <AutoComplete
-            dataSource    = {this.state.dataSource}
-            onUpdateInput = {this.onUpdateInput} />
-        );
-  }
+        <ContactListForm
+        	searchText={this.state.searchText}
+         
+        />
+       
+      )
+
+}
 }
 
 export default ContactListPage;
