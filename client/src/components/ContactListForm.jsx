@@ -1,10 +1,21 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
+import { RaisedButton } from 'material-ui/RaisedButton';
+import { TextField } from 'material-ui/TextField';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
+import { AutoComplete } from 'material-ui/AutoComplete';
+import { MenuItem } from 'material-ui/MenuItem';
+
 const ContactListForm = () => (
+  <Card className="container">
+  <div>
+    <AutoComplete
+      hintText="Type anything"
+      dataSource={colors}
+      menuProps={menuProps}
+    />
+  </div>
   <Table>
     <TableHeader>
       <TableRow>
@@ -44,6 +55,7 @@ const ContactListForm = () => (
       </TableRow>
     </TableBody>
   </Table>
+  </Card>
 );
 
 
