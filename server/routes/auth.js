@@ -97,7 +97,7 @@ router.post('/signup', (req, res) => {
   if (error) {
     console.log("Error ocurred",error);
   }else{
-    console.log('Signup form data inserted successfully: \n', results);
+    console.log('\n Signup form data inserted successfully: \n', results);
   }
   });
 
@@ -115,8 +115,19 @@ router.post('/login', (req, res) => {
     });
   }else{
     //Here we can save/fetch data from database.
-    console.log("hello login");
-    console.log(req.body)
+  var user={
+      "Email":req.body.email,
+      "Password":req.body.password
+    }
+
+  connection.query('INSERT INTO dbsignin SET ?',user, function (error, results, fields) {
+  if (error) {
+    console.log("Error ocurred",error);
+  }else{
+    console.log('Signin form data inserted successfully:\n ', results);
+  }
+  });
+
   }
 
   return res.status(200).end();
