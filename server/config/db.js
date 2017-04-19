@@ -12,10 +12,11 @@ var app = express();
 
 connection.connect(function(err){
 if(!err) {
-    console.log("Database is connected ... nn");    
+    console.log("\n Database is connected successfully \n");    
 } else {
-    console.log("Error connecting database ... nn");    
+    console.log("\n Error in database connection \n");    
 }
 });
 
 
+module.exports = connection;
