@@ -12,7 +12,7 @@ const SignUpForm = ({
 }) => (
 
   <Card className="container">
-    <form action="/signup" method="post" onSubmit={this.onSubmit} >
+    <form action="/" >
       <h2 className="card-heading">Sign Up</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}

@@ -1,7 +1,6 @@
 const express = require('express');
 const validator = require('validator');
-
-const database = require('../config/db.js')
+const database = require('../config/db.js');
 
 const router = new express.Router();
 
@@ -12,7 +11,11 @@ const router = new express.Router();
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
+  console.log("I am validated");
+
 function validateSignupForm(payload) {
+  console.log("I am not validated");
+
   const errors = {};
   let isFormValid = true;
   let message = '';
@@ -76,8 +79,10 @@ function validateLoginForm(payload) {
   };
 }
 
-router.post('/signup', (req, res) => {
+router.post('/signup', (req, res) => {  
+
   const validationResult = validateSignupForm(req.body);
+  console.log(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
@@ -85,7 +90,27 @@ router.post('/signup', (req, res) => {
       errors: validationResult.errors
     });
   }else{
-    
+    var user={
+      "Name":req.body.Name,
+      "Email":req.body.Email,
+      "Password":req.body.Password
+    }
+
+  connection.query('INSERT INTO signup SET ?',user, function (error, results, fields) {
+  if (error) {
+    console.log("error ocurred",error);
+    res.send({
+      "code":400,
+      "failed":"error ocurred"
+    })
+  }else{
+    console.log('The solution is: ', results);
+    res.send({
+      "code":200,
+      "success":"user registered sucessfully"
+        });
+  }
+  });
   }
 
   return res.status(200).end();

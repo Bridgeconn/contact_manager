@@ -45509,7 +45509,7 @@
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();
-	      xhr.open('post', '/auth/signup');
+	      xhr.open('post', './server/routes/auth/signup');
 	      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	      xhr.responseType = 'json';
 	      xhr.addEventListener('load', function () {
@@ -45595,7 +45595,7 @@
 	    { className: 'container' },
 	    _react2.default.createElement(
 	      'form',
-	      { action: '/signup', method: 'post', onSubmit: undefined.onSubmit },
+	      { action: '/' },
 	      _react2.default.createElement(
 	        'h2',
 	        { className: 'card-heading' },
