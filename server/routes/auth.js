@@ -1,5 +1,7 @@
 const express = require('express');
 const validator = require('validator');
+const connection = require('../config/db.js');
+var passport = require('passport');
 
 const router = new express.Router();
 
@@ -103,8 +105,15 @@ function validateContactForm(payload) {
   };
 }
 
+router.get('/signup', function(req, res) {
+    res.render('SignUpPage.jsx', { message: req.flash('signupMessage') });
+});
 
-router.post('/signup', (req, res) => {
+
+router.post('/signup', passport.authenticate('local-signup', {
+  successRedirect : '/add_contact', 
+  failureRedirect : '/signup'
+  }), (req, res) => {
   const validationResult = validateSignupForm(req.body);
   console.log(validationResult);
   if (!validationResult.success) {
@@ -115,12 +124,38 @@ router.post('/signup', (req, res) => {
 
     });
 
-  }
+  }else {
+  console.log("!!!!!! I am inside signup !!!!!!");
 
+  console.log(req.body);
+  
+    var user={
+      "Name":req.body.name,
+      "Email":req.body.email,
+      "Password":req.body.password
+    }
+
+  connection.query('INSERT INTO dbsignup SET ?',user, function (error, results, fields) {
+  if (error) {
+    console.log("Error ocurred",error);
+  }else{
+    console.log('\n Signup form data inserted successfully: \n', results);
+  }
+  });
+  }
   return res.status(200).end();
 });
 
-router.post('/login', (req, res) => {
+router.get('/login', function(req, res) {
+
+    // render the page and pass in any flash data if it exists
+    res.render('LoginPage.jsx', { message: req.flash('loginMessage') });
+});
+
+router.post('/login', passport.authenticate('local-login', {
+  successRedirect : '/add_contact', 
+  failureRedirect : '/login',
+  }), (req, res) => {
   const validationResult = validateLoginForm(req.body);
   console.log(validationResult);
   if (!validationResult.success) {
@@ -129,24 +164,41 @@ router.post('/login', (req, res) => {
       message: validationResult.message,
       errors: validationResult.errors
     });
-  }
+  } else {
+    console.log(req.body);
+    var user={
+      "Email":req.body.email,
+      "Password":req.body.password
+    }
 
+  connection.query('INSERT INTO dbsignin SET ?',user, function (error, results, fields) {
+  if (error) {
+    console.log("Error ocurred",error);
+  }else{
+    console.log('\n Signin form data inserted successfully:\n ', results);
+  }
+  });
+
+  if (req.body.remember) {
+    req.session.cookie.maxAge = 1000 * 60 * 3;
+  } else {
+    req.session.cookie.expires = false;
+  }
+}
   return res.status(200).end();
 });
 
-router.post('/add_contact', (req, res) => {
-  const validationResult = validateContactForm(req.body);
-  console.log(validationResult);
-  if (!validationResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: validationResult.message,
-      errors: validationResult.errors
+router.get('/add_contact', isLoggedIn, function(req, res) {
+    res.render('ContactPage.jsx ', {
+      user : req.user 
     });
-  }
+  });
 
-  return res.status(200).end();
-});
+function isLoggedIn(req, res, next) {
 
+  if (req.isAuthenticated())
+    return next();
 
+  res.redirect('/');
+}
 module.exports = router;
