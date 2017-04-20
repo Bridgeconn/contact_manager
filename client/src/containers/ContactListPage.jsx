@@ -3,7 +3,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import ContactListForm from '../components/ContactListForm.jsx';
 
 
-const fruit = [
+const name = [
   'John Smith',
   'Randal White',
   'Stephanie Sanders',
@@ -19,13 +19,15 @@ class ContactListPage extends React.Component {
     return (
 
         <div>
-          <div className="container ">
+          <div className="container">
+          <div className="float-right">
             <AutoComplete
               floatingLabelText="Search-box"
               filter={AutoComplete.fuzzyFilter}
-              dataSource={fruit}
+              dataSource={name}
               maxSearchResults={5}
               />
+          </div>    
           </div>
 
           <ContactListForm/>

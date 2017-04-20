@@ -45973,7 +45973,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var fruit = ['John Smith', 'Randal White', 'Stephanie Sanders', 'Banana', 'Steve Brown', 'Banana'];
+	var name = ['John Smith', 'Randal White', 'Stephanie Sanders', 'Banana', 'Steve Brown', 'Banana'];
 
 	var ContactListPage = function (_React$Component) {
 	  _inherits(ContactListPage, _React$Component);
@@ -45992,13 +45992,17 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container ' },
-	          _react2.default.createElement(_AutoComplete2.default, {
-	            floatingLabelText: 'Search-box',
-	            filter: _AutoComplete2.default.fuzzyFilter,
-	            dataSource: fruit,
-	            maxSearchResults: 5
-	          })
+	          { className: 'container' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'float-right' },
+	            _react2.default.createElement(_AutoComplete2.default, {
+	              floatingLabelText: 'Search-box',
+	              filter: _AutoComplete2.default.fuzzyFilter,
+	              dataSource: name,
+	              maxSearchResults: 5
+	            })
+	          )
 	        ),
 	        _react2.default.createElement(_ContactListForm2.default, null)
 	      );
