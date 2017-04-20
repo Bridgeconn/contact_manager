@@ -7,27 +7,12 @@ import AutoComplete from 'material-ui/AutoComplete';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
-// const colors : [
-//       'Red',
-//       'Orange',
-//       'Yellow',
-//       'Green',
-//       'Blue',
-//       'Purple',
-//       'Black',
-//       'White',
-//         ];
-const ContactListForm = (
-  searchText
-  ) => (
+
+class ContactListForm extends React.Component {
+render () {
+    return (
+
   <Card className="container">
-  <div>
-        <AutoComplete
-          hintText="Type 'r', case insensitive"
-          searchText={searchText}
-         
-        />
-      </div>
   <Table>
     <TableHeader>
       <TableRow>
@@ -68,10 +53,9 @@ const ContactListForm = (
     </TableBody>
   </Table>
   </Card>
-);
-ContactListForm.propTypes = {
-  searchText: PropTypes.string
-};
-
+    )
+  }
+}
 
 export default ContactListForm;
+
