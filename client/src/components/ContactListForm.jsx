@@ -4,22 +4,31 @@ import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import AutoComplete from 'material-ui/AutoComplete';
-
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
-
+const styles = {
+  headline: {
+    fontSize: 24,
+    paddingTop: 0,
+    marginBottom: 5,
+    fontWeight: 400,
+  },
+  cardWidth: {
+    width: "90%",
+  },
+}
 class ContactListForm extends React.Component {
 render () {
     return (
 
-  <Card className="container">
+  <Card style={styles.cardWidth} className="container">>
   <Table>
     <TableHeader>
       <TableRow>
         <TableHeaderColumn>ID</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
         <TableHeaderColumn>Status</TableHeaderColumn> 
-        <TableHeaderColumn><Link to="">show</Link></TableHeaderColumn>
+        <TableHeaderColumn>show</TableHeaderColumn>
 
       </TableRow>
     </TableHeader>

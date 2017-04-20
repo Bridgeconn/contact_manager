@@ -45974,6 +45974,17 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var name = ['John Smith', 'Randal White', 'Stephanie Sanders', 'Banana', 'Steve Brown', 'Banana'];
+	var styles = {
+	  headline: {
+	    fontSize: 24,
+	    paddingTop: 0,
+	    marginBottom: 5,
+	    fontWeight: 400
+	  },
+	  cardWidth: {
+	    width: "90%"
+	  }
+	};
 
 	var ContactListPage = function (_React$Component) {
 	  _inherits(ContactListPage, _React$Component);
@@ -50587,6 +50598,18 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var styles = {
+	  headline: {
+	    fontSize: 24,
+	    paddingTop: 0,
+	    marginBottom: 5,
+	    fontWeight: 400
+	  },
+	  cardWidth: {
+	    width: "90%"
+	  }
+	};
+
 	var ContactListForm = function (_React$Component) {
 	  _inherits(ContactListForm, _React$Component);
 
@@ -50601,7 +50624,8 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        _Card.Card,
-	        { className: 'container' },
+	        { style: styles.cardWidth, className: 'container' },
+	        '>',
 	        _react2.default.createElement(
 	          _Table.Table,
 	          null,
@@ -50629,11 +50653,7 @@
 	              _react2.default.createElement(
 	                _Table.TableHeaderColumn,
 	                null,
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '' },
-	                  'show'
-	                )
+	                'show'
 	              )
 	            )
 	          ),
@@ -53683,6 +53703,10 @@
 
 	var _ContactShowForm2 = _interopRequireDefault(_ContactShowForm);
 
+	var _ContactListForm = __webpack_require__(508);
+
+	var _ContactListForm2 = _interopRequireDefault(_ContactListForm);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -53720,6 +53744,7 @@
 	//     }  
 	//   };  
 
+	var john = ['  Name: John Smith', '  email-id : ejhgkjd@gmail.com', '  address: Delhi', '  education: M.Sci'];
 
 	var ContactShowPage = function (_React$Component) {
 	  _inherits(ContactShowPage, _React$Component);
@@ -53733,20 +53758,27 @@
 	  _createClass(ContactShowPage, [{
 	    key: 'render',
 
+	    // 	constructor(props) {
+	    //     super(props);
 
-	    //   details(){
-	    //     var John_detail = {
-	    //     john: [
-	    //         {
-	    //             id: 1,
-	    //             name:"john",
-	    //             content: "Hello, world!\nBoring.\nBoring.\nBoring.",
-	    //         }, 
-	    //     ]
-	    // };
-	    //   }
+	    //     // set the initial component state
+	    //     this.state = {
+	    //       errors: {},
+	    //       user: {
+	    //         email: 'jkhdfjks',
+	    //         password: 'sfgdfh'
+	    //       }
+	    //     };
+	    // }
+
 	    value: function render() {
-	      return _react2.default.createElement(_ContactShowForm2.default, null);
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_ContactShowForm2.default, {
+	          john: john
+	        })
+	      );
 	    }
 	  }]);
 
@@ -53765,6 +53797,8 @@
 	  value: true
 	});
 
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -53780,6 +53814,12 @@
 	var _styles = __webpack_require__(464);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var styles = {
 	  headline: {
@@ -53805,20 +53845,37 @@
 	  }
 	};
 
-	// styles.tab = []
-	// styles.tab[0] = styles.default_tab;
-	// styles.tab[1] = styles.default_tab;
-	// styles.tab[2] = styles.default_tab;
-	// styles.tab[3] = styles.default_tab;
-	// styles.tab[this.setState.slideIndex] = objectAssign({},   styles.tab[this.setState.slideIndex], styles.active_tab);
+	var ContactShowForm = function (_React$Component) {
+	  _inherits(ContactShowForm, _React$Component);
 
-	var ContactShowForm = function ContactShowForm() {
-	  return _react2.default.createElement(
-	    _Card.Card,
-	    { style: styles.cardWidth, className: 'container' },
-	    _react2.default.createElement(_Card.CardTitle, { title: 'Detail Page' })
-	  );
-	};
+	  function ContactShowForm() {
+	    _classCallCheck(this, ContactShowForm);
+
+	    return _possibleConstructorReturn(this, (ContactShowForm.__proto__ || Object.getPrototypeOf(ContactShowForm)).apply(this, arguments));
+	  }
+
+	  _createClass(ContactShowForm, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          _Card.Card,
+	          { style: styles.cardWidth, className: 'container' },
+	          _react2.default.createElement(_Card.CardTitle, { title: 'Detail Page' }),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            this.props.john
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ContactShowForm;
+	}(_react2.default.Component);
 
 	exports.default = ContactShowForm;
 
