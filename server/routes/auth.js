@@ -1,6 +1,7 @@
 const express = require('express');
 const validator = require('validator');
 const connection = require('../config/db.js');
+var passport = require('passport');
 
 const router = new express.Router();
 
@@ -75,8 +76,20 @@ function validateLoginForm(payload) {
   };
 }
 
+router.get('/', function(req, res) {
+    res.render('HomePage.jsx'); // load the index.ejs file
+});
 
-router.post('/signup', (req, res) => {
+
+router.get('/signup', function(req, res) {
+  // render the page and pass in any flash data if it exists
+  res.render('SignUpPage,jsx', { message: req.flash('signupMessage') });
+});
+
+router.post('/signup', passport.authenticate('local-signup', {
+    successRedirect : '/add_contact', 
+    failureRedirect : '/signup'
+    }), (req, res) => {
   const validationResult = validateSignupForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
@@ -105,7 +118,21 @@ router.post('/signup', (req, res) => {
   return res.status(200).end();
 });
 
-router.post('/login', (req, res) => {
+
+
+
+router.get('/login', function(req, res) {
+
+  // render the page and pass in any flash data if it exists
+  res.render('LoginPage.jsx', { message: req.flash('loginMessage') });
+
+});
+  console.log("Hello I am auth !!!!!!!!!!!!!");
+
+router.post('/login', passport.authenticate('local-login', {
+            successRedirect : '/add_contact', 
+            failureRedirect : '/login' 
+        }), (req, res) => {
   const validationResult = validateLoginForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
@@ -115,6 +142,13 @@ router.post('/login', (req, res) => {
     });
   }else{
     //Here we can save/fetch data from database.
+
+  if (req.body.remember) {
+    req.session.cookie.maxAge = 1000 * 60 * 3;
+  } else {
+      req.session.cookie.expires = false;
+    }
+
   var user={
       "Email":req.body.email,
       "Password":req.body.password
@@ -124,7 +158,7 @@ router.post('/login', (req, res) => {
   if (error) {
     console.log("Error ocurred",error);
   }else{
-    console.log('Signin form data inserted successfully:\n ', results);
+    console.log('\n Signin form data inserted successfully:\n ', results);
   }
   });
 
