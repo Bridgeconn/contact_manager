@@ -3,8 +3,31 @@ import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import {Col,Row} from 'react-grid-system';
+import Paper from 'material-ui/Paper';
 
+
+const styles = {
+  div:{
+    display: 'flex',
+    flexDirection: 'row wrap',
+    padding: 10,
+    
+  },
+  paperLeft:{
+    flex: 1,
+    height: '100%',
+    margin: 10,
+    textAlign: 'center',
+    padding: 10
+  },
+  paperRight:{
+   flex: 1,
+    height: '100%',
+    margin: 10,
+    textAlign: 'center',
+    padding: 10
+  }
+};
 
 const ContactForm = ({
   onSubmit,
@@ -12,15 +35,14 @@ const ContactForm = ({
   errors,
   user
 }) => (
+
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Contact</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
-
-      <Row>
-        <Col sm={6}>
-    
+      <div style={styles.div}>
+        <Paper  style={styles.paperLeft} >
           <div className="field-line">
             <TextField
               floatingLabelText="Name"
@@ -30,7 +52,8 @@ const ContactForm = ({
               value={user.name}
             />
           </div>
-
+          </Paper>
+         <Paper style={styles.paperRight}>
           <div className="field-line">
             <TextField
               floatingLabelText="Email"
@@ -40,8 +63,10 @@ const ContactForm = ({
               value={user.email}
             />
           </div>
-        </Col>
-        <Col sm={6}>
+          </Paper>
+          </div>
+          <div style={styles.div}>
+          <Paper style={styles.paperLeft}>
           <div className="field-line">
             <TextField
               floatingLabelText="Mobile No."
@@ -51,7 +76,8 @@ const ContactForm = ({
               value={user.mobile_no}
             />
           </div>
-
+          </Paper>
+          <Paper style={styles.paperRight}>
           <div className="field-line">
             <TextField
               floatingLabelText="Education"
@@ -61,8 +87,10 @@ const ContactForm = ({
               value={user.education}
             />
           </div>
-        </Col>
-        <Col sm={6}>
+          </Paper>
+          </div>
+          <div style={styles.div}>
+          <Paper style={styles.paperLeft}>
           <div className="field-line">
             <TextField
               floatingLabelText="Address"
@@ -72,15 +100,11 @@ const ContactForm = ({
               value={user.address}
             />
           </div>
-        </Col>
-      <Row>
-        <Col className="offSet2">
+          </Paper>
+          </div>
           <div className="button-line">
             <RaisedButton type="submit" label="Add Contact" primary />
           </div>
-        </Col>
-      </Row>
-      </Row>
     </form>
   </Card>
 );

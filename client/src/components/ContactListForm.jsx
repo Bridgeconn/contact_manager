@@ -18,8 +18,9 @@ const styles = {
 class ContactListForm extends React.Component {
 render () {
     return (
-
+ 
   <Card className="container" style={styles.cardWidth}>
+   <h2 className="card-heading">contact-list</h2>
   <Table>
     <TableHeader>
       <TableRow>
