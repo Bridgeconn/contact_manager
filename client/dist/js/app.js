@@ -45863,14 +45863,16 @@
 	    height: '100%',
 	    margin: 10,
 	    textAlign: 'center',
-	    padding: 10
+	    padding: 10,
+	    boxShadow: 'none !important'
 	  },
 	  paperRight: {
 	    flex: 1,
 	    height: '100%',
 	    margin: 10,
 	    textAlign: 'center',
-	    padding: 10
+	    padding: 10,
+	    boxShadow: 'none !important'
 	  }
 	};
 
