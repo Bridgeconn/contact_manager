@@ -17,7 +17,19 @@ const ContactForm = ({
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
+     
+
       <div className="field-line">
+        <TextField
+          floatingLabelText="Name"
+          name="name"
+          onChange={onChange}
+          errorText={errors.name}
+          value={user.name}
+        />
+      </div>
+
+       <div className="field-line">
         <TextField
           floatingLabelText="Email"
           name="email"
@@ -27,21 +39,10 @@ const ContactForm = ({
         />
       </div>
 
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Name"
-          type="text"
-          onChange={onChange}
-          errorText={errors.name}
-          value={user.name}
-        />
-      </div>
-
        <div className="field-line">
         <TextField
           floatingLabelText="Mobile No."
-          type="number"
-          name="number"
+          name="mobile_no"
           onChange={onChange}
           errorText={errors.mobile_no}
           value={user.mobile_no}
@@ -51,7 +52,6 @@ const ContactForm = ({
        <div className="field-line">
         <TextField
           floatingLabelText="Education"
-          type="text"
           name="education"
           onChange={onChange}
           errorText={errors.education}
@@ -62,7 +62,6 @@ const ContactForm = ({
        <div className="field-line">
         <TextField
           floatingLabelText="Address"
-          type="text"
           name="address"
           onChange={onChange}
           errorText={errors.address}
@@ -71,8 +70,10 @@ const ContactForm = ({
       </div>
 
       <div className="button-line">
-        <RaisedButton type="submit" label="contact" primary />
+        <RaisedButton type="submit" label="Add Contact" primary />
+
       </div>
+      
     </form>
   </Card>
 );

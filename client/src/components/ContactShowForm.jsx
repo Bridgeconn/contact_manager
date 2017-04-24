@@ -4,7 +4,6 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import Slider from 'material-ui/Slider';
 import {colors} from 'material-ui/styles';
 
-
 const styles = {
   headline: {
     fontSize: 24,
@@ -30,21 +29,23 @@ const styles = {
 };
 
 
-// styles.tab = []
-// styles.tab[0] = styles.default_tab;
-// styles.tab[1] = styles.default_tab;
-// styles.tab[2] = styles.default_tab;
-// styles.tab[3] = styles.default_tab;
-// styles.tab[this.setState.slideIndex] = objectAssign({},   styles.tab[this.setState.slideIndex], styles.active_tab);
-
-const ContactShowForm = () => (
-
-  <Card style={styles.cardWidth} className="container">
-    <CardTitle title="Detail Page"/>
-  </Card>
-);
 
 
+class ContactShowForm extends React.Component {  
+  
+  render(){ 
+    return (
+      <div>
+        <Card style={styles.cardWidth} className="container">
+          <CardTitle title="Detail Page"/>
+          <p>{this.props.john}</p>
+
+      </Card>
+        </div>
+       
+      );
+}
+}
 export default ContactShowForm;
 
 

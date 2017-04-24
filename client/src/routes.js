@@ -6,7 +6,6 @@ import ContactPage from './containers/ContactPage.jsx';
 import ContactListPage from './containers/ContactListPage.jsx';
 import ContactShowPage from './containers/ContactShowPage.jsx';
 
-
 const routes = {
   // base component (wrapper for the whole application).
   component: Base,
@@ -37,6 +36,7 @@ const routes = {
       path: '/contact_details',
       component: ContactShowPage
     }
+    
   ]
 };
 
