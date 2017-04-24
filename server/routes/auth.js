@@ -26,13 +26,12 @@ app.post('/login', passport.authenticate('Process-for-login', {
 });
 
 app.get('/add_contact', isLoggedIn, function(req, res) {
-    res.render('ContactPage.jsx ', {
+    res.render('ContactPage.jsx', {
       user : req.user 
     });
   });
 
 }
-
 
 
 function isLoggedIn(req, res, next) {

@@ -24,6 +24,7 @@ app.use(bodyParser.json());
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.set('view engine', 'jsx');
 
 app.use(session({
 	secret: 'vidyapathaisalwaysrunning',
@@ -43,9 +44,5 @@ require('./server/routes/auth.js')(app, passport);
 // start the server
 app.listen(4000, () => {
   console.log('Server is running on http://localhost:4000 or http://127.0.0.1:4000');
-<<<<<<< HEAD
-})
-=======
 });
 
->>>>>>> 28197fde494216ba1a2e27d388b8dad720771b85
