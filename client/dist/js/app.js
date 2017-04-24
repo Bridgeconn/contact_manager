@@ -45974,16 +45974,12 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var name = ['John Smith', 'Randal White', 'Stephanie Sanders', 'Banana', 'Steve Brown', 'Banana'];
+
 	var styles = {
-	  headline: {
-	    fontSize: 24,
-	    paddingTop: 0,
-	    marginBottom: 5,
-	    fontWeight: 400
-	  },
-	  cardWidth: {
-	    width: "90%"
+	  searchbBoxAlign: {
+	    marginBottom: "50px"
 	  }
+
 	};
 
 	var ContactListPage = function (_React$Component) {
@@ -46003,12 +45999,13 @@
 	        null,
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'container' },
+	          { className: '' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'float-right' },
-	            _react2.default.createElement(_AutoComplete2.default, {
-	              floatingLabelText: 'Search-box',
+	            { className: 'container-custom' },
+	            _react2.default.createElement(_AutoComplete2.default
+	            // style={styles.searchbBoxAlign}
+	            , { floatingLabelText: 'Search-box',
 	              filter: _AutoComplete2.default.fuzzyFilter,
 	              dataSource: name,
 	              maxSearchResults: 5

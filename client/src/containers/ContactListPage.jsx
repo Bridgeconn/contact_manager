@@ -12,32 +12,29 @@ const name = [
   'Banana',
   
 ];
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 0,
-    marginBottom: 5,
-    fontWeight: 400,
-  },
-  cardWidth: {
-    width: "90%",
-  },
+
+const styles={
+searchbBoxAlign:{
+  marginBottom:"50px",
 }
+
+
+};
 class ContactListPage extends React.Component {
   
   render () {
     return (
-
         <div>
-          <div className="container">
-          <div className="float-right">
-            <AutoComplete
-              floatingLabelText="Search-box"
-              filter={AutoComplete.fuzzyFilter}
-              dataSource={name}
-              maxSearchResults={5}
-              />
-          </div>    
+          <div className="">
+            <div className="container-custom" >
+              <AutoComplete
+                // style={styles.searchbBoxAlign}
+                floatingLabelText="Search-box"
+                filter={AutoComplete.fuzzyFilter}
+                dataSource={name}
+                maxSearchResults={5}
+                />
+            </div>  
           </div>
 
           <ContactListForm/>
