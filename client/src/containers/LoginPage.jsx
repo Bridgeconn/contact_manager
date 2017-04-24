@@ -14,7 +14,7 @@ class LoginPage extends React.Component {
     this.state = {
       errors: {},
       user: {
-        email: '',
+        username: '',
         password: ''
       }
     };
@@ -33,13 +33,13 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
+    const username = encodeURIComponent(this.state.user.username);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `email=${email}&password=${password}`;
+    const formData = `username=${username}&password=${password}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
+    xhr.open('post', '/login');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
@@ -65,6 +65,7 @@ class LoginPage extends React.Component {
       }
     });
     xhr.send(formData);
+    
   }
 
   /**

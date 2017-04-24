@@ -4,39 +4,28 @@ import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
+
 const SignUpForm = ({
   onSubmit,
   onChange,
   errors,
   user,
 }) => (
-
   <Card className="container">
-    <form action="/" >
+    <form action="/signup" method="post">
       <h2 className="card-heading">Sign Up</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Name"
-          name="name"
+          floatingLabelText="Username"
+          name="username"
           errorText={errors.name}
           onChange={onChange}
           value={user.name}
         />
       </div>
-
-      <div className="field-line">
-        <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
-          onChange={onChange}
-          value={user.email}
-        />
-      </div>
-
       <div className="field-line">
         <TextField
           floatingLabelText="Password"

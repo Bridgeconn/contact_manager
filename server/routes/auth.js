@@ -26,7 +26,7 @@ app.post('/login', passport.authenticate('Process-for-login', {
 });
 
 app.get('/add_contact', isLoggedIn, function(req, res) {
-    console.log("Successfully redirect ...!!!");
+    console.log("Successfully redirected !!!");
   });
 
 }
@@ -40,4 +40,3 @@ function isLoggedIn(req, res, next) {
 
   res.redirect('/');
 }
-

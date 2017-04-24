@@ -12,18 +12,18 @@ const LoginForm = ({
   user
 }) => (
   <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
+    <form action="/login" onSubmit={onSubmit}>
       <h2 className="card-heading">Login</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Email"
-          name="email"
-          errorText={errors.email}
+          floatingLabelText="Username"
+          name="username"
+          errorText={errors.username}
           onChange={onChange}
-          value={user.email}
+          value={user.username}
         />
       </div>
 

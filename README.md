@@ -4,7 +4,7 @@ in this part, we will create a basic application server, learn to bundle scripts
 
 For databse setup you should follow below instruction:
 
-Prerequisites
+Prerequisites : 
 MySQL
 Ndejs
 Express
