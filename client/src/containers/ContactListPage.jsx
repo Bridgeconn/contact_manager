@@ -13,28 +13,21 @@ const name = [
   
 ];
 
-const styles={
-searchbBoxAlign:{
-  marginBottom:"50px",
-}
-
-
-};
 class ContactListPage extends React.Component {
   
   render () {
     return (
+
         <div>
-          <div className="">
-            <div className="container-custom" >
-              <AutoComplete
-                // style={styles.searchbBoxAlign}
-                floatingLabelText="Search-box"
-                filter={AutoComplete.fuzzyFilter}
-                dataSource={name}
-                maxSearchResults={5}
-                />
-            </div>  
+          <div className="container-custom">
+          
+            <AutoComplete
+              floatingLabelText="Search-box"
+              filter={AutoComplete.fuzzyFilter}
+              dataSource={name}
+              maxSearchResults={5}
+              />
+      
           </div>
 
           <ContactListForm/>
