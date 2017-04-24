@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import {Col,Row} from 'react-grid-system';
 
 
 const ContactForm = ({
@@ -17,8 +18,9 @@ const ContactForm = ({
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
-     
-
+     <Row>
+    <Col sm={6}>
+    
       <div className="field-line">
         <TextField
           floatingLabelText="Name"
@@ -38,7 +40,8 @@ const ContactForm = ({
           value={user.email}
         />
       </div>
-
+      </Col>
+      <Col sm={6}>
        <div className="field-line">
         <TextField
           floatingLabelText="Mobile No."
@@ -58,7 +61,8 @@ const ContactForm = ({
           value={user.education}
         />
       </div>
-
+      </Col>
+      <Col sm={6}>
        <div className="field-line">
         <TextField
           floatingLabelText="Address"
@@ -68,12 +72,15 @@ const ContactForm = ({
           value={user.address}
         />
       </div>
-
+      </Col>
+      <Row>
+      <Col className="offSet2">
       <div className="button-line">
         <RaisedButton type="submit" label="Add Contact" primary />
-
       </div>
-      
+      </Col>
+      </Row>
+      </Row>
     </form>
   </Card>
 );

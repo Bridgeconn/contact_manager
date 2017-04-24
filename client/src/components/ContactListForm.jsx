@@ -7,12 +7,19 @@ import AutoComplete from 'material-ui/AutoComplete';
 
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 
+const styles = {
+  
+  cardWidth: {
+    width: "90%",
+  },
+  
+};
 
 class ContactListForm extends React.Component {
 render () {
     return (
 
-  <Card className="container">
+  <Card className="container" style={styles.cardWidth}>
   <Table>
     <TableHeader>
       <TableRow>

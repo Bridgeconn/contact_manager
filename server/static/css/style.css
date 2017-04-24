@@ -65,3 +65,11 @@ a:hover {
   padding: 0 16px;
   color: green;
 }
+.offSet2{
+  margin-left: 20%;
+}
+.container-custom {
+  margin: 0 auto;
+  text-align: right;
+  width: 90%;
+}

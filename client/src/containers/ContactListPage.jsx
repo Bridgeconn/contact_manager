@@ -19,15 +19,15 @@ class ContactListPage extends React.Component {
     return (
 
         <div>
-          <div className="container">
-          <div className="float-right">
+          <div className="container-custom">
+          
             <AutoComplete
               floatingLabelText="Search-box"
               filter={AutoComplete.fuzzyFilter}
               dataSource={name}
               maxSearchResults={5}
               />
-          </div>    
+      
           </div>
 
           <ContactListForm/>
