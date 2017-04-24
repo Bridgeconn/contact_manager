@@ -3,8 +3,16 @@ import { Link } from 'react-router';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import AutoComplete from 'material-ui/AutoComplete';
+
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-const ContactListForm = () => (
+
+
+class ContactListForm extends React.Component {
+render () {
+    return (
+
+  <Card className="container">
   <Table>
     <TableHeader>
       <TableRow>
@@ -44,8 +52,10 @@ const ContactListForm = () => (
       </TableRow>
     </TableBody>
   </Table>
-);
-
-
+  </Card>
+    )
+  }
+}
 
 export default ContactListForm;
+
