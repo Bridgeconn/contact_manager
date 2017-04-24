@@ -43231,7 +43231,7 @@
 	    _this.state = {
 	      errors: {},
 	      user: {
-	        email: '',
+	        username: '',
 	        password: ''
 	      }
 	    };
@@ -43257,13 +43257,13 @@
 	      event.preventDefault();
 
 	      // create a string for an HTTP body message
-	      var email = encodeURIComponent(this.state.user.email);
+	      var username = encodeURIComponent(this.state.user.username);
 	      var password = encodeURIComponent(this.state.user.password);
-	      var formData = 'email=' + email + '&password=' + password;
+	      var formData = 'username=' + username + '&password=' + password;
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();
-	      xhr.open('post', '/auth/login');
+	      xhr.open('post', '/login');
 	      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	      xhr.responseType = 'json';
 	      xhr.addEventListener('load', function () {
@@ -43362,7 +43362,7 @@
 	    { className: 'container' },
 	    _react2.default.createElement(
 	      'form',
-	      { action: '/', onSubmit: onSubmit },
+	      { action: '/login', onSubmit: onSubmit },
 	      _react2.default.createElement(
 	        'h2',
 	        { className: 'card-heading' },
@@ -43377,11 +43377,11 @@
 	        'div',
 	        { className: 'field-line' },
 	        _react2.default.createElement(_TextField2.default, {
-	          floatingLabelText: 'Email',
-	          name: 'email',
-	          errorText: errors.email,
+	          floatingLabelText: 'Username',
+	          name: 'username',
+	          errorText: errors.username,
 	          onChange: onChange,
-	          value: user.email
+	          value: user.username
 	        })
 	      ),
 	      _react2.default.createElement(
@@ -45459,8 +45459,7 @@
 	    _this.state = {
 	      errors: {},
 	      user: {
-	        email: '',
-	        name: '',
+	        username: '',
 	        password: ''
 	      }
 	    };
@@ -45504,14 +45503,13 @@
 	      event.preventDefault();
 
 	      // create a string for an HTTP body message
-	      var name = encodeURIComponent(this.state.user.name);
-	      var email = encodeURIComponent(this.state.user.email);
+	      var username = encodeURIComponent(this.state.user.username);
 	      var password = encodeURIComponent(this.state.user.password);
-	      var formData = 'name=' + name + '&email=' + email + '&password=' + password;
+	      var formData = 'username=' + username + '&password=' + password;
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();
-	      xhr.open('post', '/auth/signup');
+	      xhr.open('post', '/signup');
 	      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	      xhr.responseType = 'json';
 	      xhr.addEventListener('load', function () {
@@ -45597,7 +45595,7 @@
 	    { className: 'container' },
 	    _react2.default.createElement(
 	      'form',
-	      { action: '/', onSubmit: onSubmit },
+	      { action: '/signup', method: 'post' },
 	      _react2.default.createElement(
 	        'h2',
 	        { className: 'card-heading' },
@@ -45612,22 +45610,11 @@
 	        'div',
 	        { className: 'field-line' },
 	        _react2.default.createElement(_TextField2.default, {
-	          floatingLabelText: 'Name',
-	          name: 'name',
+	          floatingLabelText: 'Username',
+	          name: 'username',
 	          errorText: errors.name,
 	          onChange: onChange,
 	          value: user.name
-	        })
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'field-line' },
-	        _react2.default.createElement(_TextField2.default, {
-	          floatingLabelText: 'Email',
-	          name: 'email',
-	          errorText: errors.email,
-	          onChange: onChange,
-	          value: user.email
 	        })
 	      ),
 	      _react2.default.createElement(
