@@ -14,17 +14,32 @@
   "author": "Vladimir Ponomarev",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+>>>>>>> 1f747dfc238938a12e15f94a597069c5860833b7
     "express": "^4.14.0",
-    "jquery": "^3.2.1",
+    "express-session": "^1.15.2",
     "inferno": "beta23",
     "inferno-compat": "beta23",
+<<<<<<< HEAD
     "body-parser": "^1.13.1",
     "bcrypt-nodejs": "0.0.3",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "express-session": "^1.15.2",
     "express-render-jsx": "^1.0.1",
+=======
+    "jquery": "^3.2.1",
+>>>>>>> 1f747dfc238938a12e15f94a597069c5860833b7
     "material-ui": "^0.16.4",
+    "morgan": "^1.8.1",
+    "mysql": "^2.13.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "qlx-custom-material-ui": "^0.17.1",
     "morgan": "^1.6.0",
     "mysql": "^2.13.0",

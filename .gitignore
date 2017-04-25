@@ -1,2 +1,7 @@
 /node_modules
+<<<<<<< HEAD
 /app.js
+=======
+/client/dist/js/app.js
+
+>>>>>>> 1f747dfc238938a12e15f94a597069c5860833b7
