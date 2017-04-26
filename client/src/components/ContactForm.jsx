@@ -4,6 +4,8 @@ import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 
 const styles = {
@@ -27,13 +29,19 @@ const styles = {
     textAlign: 'center',
     
     boxShadow:'none !important'
-  }
+  },
+   customWidth: {
+    width: 300,
+    paddingTop:10,
+  },
 };
 
 const ContactForm = ({
   onSubmit,
   onChange,
+  handleChange,
   errors,
+  value,
   user
 }) => (
 
@@ -80,13 +88,18 @@ const ContactForm = ({
           </Paper>
           <Paper style={styles.paperRight}>
           <div className="field-line">
-            <TextField
-              floatingLabelText="Education"
-              name="education"
-              onChange={onChange}
-              errorText={errors.education}
-              value={user.education}
-            />
+            <DropDownMenu value={value} onChange={handleChange} style={styles.customWidth}>
+              <MenuItem value={1} primaryText="B.A." />
+              <MenuItem value={2} primaryText="B.B.A" />
+              <MenuItem value={3} primaryText="B.C.A" />
+              <MenuItem value={4} primaryText="B.TECH" />
+              <MenuItem value={5} primaryText="B.SCI" />
+              <MenuItem value={6} primaryText="M.A." />
+              <MenuItem value={7} primaryText="M.B.A" />
+              <MenuItem value={8} primaryText="M.C.A" />
+              <MenuItem value={9} primaryText="M.TECH" />
+              <MenuItem value={10} primaryText="M.SCI" />
+            </DropDownMenu>
           </div>
           </Paper>
           </div>
@@ -113,8 +126,10 @@ const ContactForm = ({
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
-  user: PropTypes.object.isRequired
+  user: PropTypes.object.isRequired,
+  value: PropTypes.object.isRequired
 };
 
 export default ContactForm;

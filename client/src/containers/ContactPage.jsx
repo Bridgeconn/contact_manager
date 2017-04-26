@@ -20,11 +20,14 @@ class ContactPage extends React.Component {
         mobile_no:'',
         address:''
 
-      }
+      },
+      value:2,
     };
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
   }
 
   /**
@@ -32,6 +35,10 @@ class ContactPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
+   handleChange(event, index, value){
+    this.setState({value});
+  }
+
   changeUser(event) {
     console.log(event.target.name);
     const field = event.target.name;
@@ -101,6 +108,8 @@ class ContactPage extends React.Component {
         onChange={this.changeUser}
         errors={this.state.errors}
         user={this.state.user}
+        handleChange={this.handleChange}
+        value={this.state.value}
       />
     );
   }
