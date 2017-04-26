@@ -36,28 +36,30 @@ render () {
         <TableRowColumn>1</TableRowColumn>
         <TableRowColumn>John Smith</TableRowColumn>
         <TableRowColumn>Employed</TableRowColumn>       
-        <TableHeaderColumn><Link to="/contact_details">show</Link></TableHeaderColumn>
-
+        <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
       </TableRow>
-      <TableRow>
+
+      <TableRow>     
         <TableRowColumn>2</TableRowColumn>
         <TableRowColumn>Randal White</TableRowColumn>
         <TableRowColumn>Unemployed</TableRowColumn>
-        
-        <TableHeaderColumn><Link to="/contact_details">show</Link></TableHeaderColumn>
+        <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
       </TableRow>
+
       <TableRow>
         <TableRowColumn>3</TableRowColumn>
         <TableRowColumn>Stephanie Sanders</TableRowColumn>
         <TableRowColumn>Employed</TableRowColumn>
-        <TableHeaderColumn><Link to="/contact_details">show</Link></TableHeaderColumn>
+        <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
       </TableRow>
+
       <TableRow>
         <TableRowColumn>4</TableRowColumn>
         <TableRowColumn>Steve Brown</TableRowColumn>
         <TableRowColumn>Employed</TableRowColumn>
-        <TableHeaderColumn><Link to="/contact_details">show</Link></TableHeaderColumn>
+       <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
       </TableRow>
+      
     </TableBody>
   </Table>
   </Card>
