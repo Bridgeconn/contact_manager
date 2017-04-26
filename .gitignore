@@ -1,2 +1,2 @@
 /node_modules
-/app.js
+client/dist/app.js
