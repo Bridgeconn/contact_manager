@@ -46839,7 +46839,7 @@
 	  },
 	  customWidth: {
 	    width: 300,
-	    paddingTop: 10
+	    paddingTop: 15
 	  }
 	};
 
