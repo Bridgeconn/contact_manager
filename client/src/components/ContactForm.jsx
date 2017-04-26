@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
-
+import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
 
 const styles = {
   div:{
@@ -34,6 +34,9 @@ const styles = {
     width: 300,
     paddingTop:10,
   },
+  radioButton: {
+    marginBottom: 16,
+  }
 };
 
 const ContactForm = ({
@@ -113,6 +116,22 @@ const ContactForm = ({
               errorText={errors.address}
               value={user.address}
             />
+          </div>
+          </Paper>
+          <Paper style={styles.paperLeft}>
+          <div className="field-line">
+            <RadioButtonGroup name="shipSpeed" labelPosition="right" defaultSelected="not_light">
+              <RadioButton
+                value="light"
+                label="Male"
+                style={styles.radioButton}
+              />
+              <RadioButton
+                value="not_light"
+                label="Female"
+                style={styles.radioButton}
+              />
+            </RadioButtonGroup>  
           </div>
           </Paper>
           </div>
