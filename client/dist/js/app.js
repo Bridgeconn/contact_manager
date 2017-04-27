@@ -46659,7 +46659,6 @@
 	      user: {
 	        name: '',
 	        email: '',
-	        education: '',
 	        mobile_no: '',
 	        address: ''
 
@@ -46729,11 +46728,10 @@
 	      // create a string for an HTTP body message
 	      var name = encodeURIComponent(this.state.user.name);
 	      var email = encodeURIComponent(this.state.user.email);
-	      var education = encodeURIComponent(this.state.user.education);
 	      var address = encodeURIComponent(this.state.user.address);
 	      var mobile_no = encodeURIComponent(this.state.user.mobile_no);
-	      var value = encodeURIComponent(this.state.value);
-	      var selectedOption = encodeURIComponent(this.state.selectedOption);
+	      var education = encodeURIComponent(this.state.education);
+	      var gender = encodeURIComponent(this.state.gender);
 
 	      var formData = 'name=' + name + '&email=' + email + '&education=' + education + '&address=' + address + '&mobile_no=' + mobile_no + '&education=' + education + '&gender=' + gender;
 

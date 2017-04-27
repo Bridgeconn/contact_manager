@@ -16,7 +16,6 @@ class ContactPage extends React.Component {
       user: {
         name: '',
         email: '',
-        education: '',
         mobile_no:'',
         address:''
 
@@ -75,11 +74,10 @@ class ContactPage extends React.Component {
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
-    const education = encodeURIComponent(this.state.user.education);
     const address = encodeURIComponent(this.state.user.address);
     const mobile_no = encodeURIComponent(this.state.user.mobile_no);
-    const value = encodeURIComponent(this.state.value);
-    const selectedOption = encodeURIComponent(this.state.selectedOption);
+    const education = encodeURIComponent(this.state.education);
+    const gender = encodeURIComponent(this.state.gender);
     
 
     
