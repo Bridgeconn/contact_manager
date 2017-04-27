@@ -21,8 +21,8 @@ class ContactPage extends React.Component {
         address:''
 
       },
-      value:2,
-      selectedOption:""
+      value:'B.A.',
+      selectedOption:''
       
     };
 
@@ -48,6 +48,7 @@ class ContactPage extends React.Component {
   }
 
    handleChange(event, index, value){
+    console.log(value);
     this.setState({value});
   }
 

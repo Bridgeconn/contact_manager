@@ -94,16 +94,16 @@ const ContactForm = ({
           <Paper style={styles.paperRight}>
           <div className="field-line">
             <DropDownMenu value={value} onChange={handleChange} style={styles.customWidth}>
-              <MenuItem value={1} primaryText="B.A." />
-              <MenuItem value={2} primaryText="B.B.A" />
-              <MenuItem value={3} primaryText="B.C.A" />
-              <MenuItem value={4} primaryText="B.TECH" />
-              <MenuItem value={5} primaryText="B.SCI" />
-              <MenuItem value={6} primaryText="M.A." />
-              <MenuItem value={7} primaryText="M.B.A" />
-              <MenuItem value={8} primaryText="M.C.A" />
-              <MenuItem value={9} primaryText="M.TECH" />
-              <MenuItem value={10} primaryText="M.SCI" />
+              <MenuItem value={'B.A.'} primaryText="B.A." />
+              <MenuItem value={'B.B.A.'} primaryText="B.B.A" />
+              <MenuItem value={'B.C.A.'} primaryText="B.C.A" />
+              <MenuItem value={'B.TECH.'} primaryText="B.TECH" />
+              <MenuItem value={'B.SCI.'} primaryText="B.SCI" />
+              <MenuItem value={'M.A.'} primaryText="M.A." />
+              <MenuItem value={'M.B.A.'} primaryText="M.B.A" />
+              <MenuItem value={'M.C.A.'} primaryText="M.C.A" />
+              <MenuItem value={'M.TECH.'} primaryText="M.TECH" />
+              <MenuItem value={'M.SCI.'} primaryText="M.SCI" />
             </DropDownMenu>
           </div>
           </Paper>

@@ -46664,8 +46664,8 @@
 	        address: ''
 
 	      },
-	      value: 2,
-	      selectedOption: ""
+	      value: 'B.A.',
+	      selectedOption: ''
 
 	    };
 
@@ -46696,6 +46696,7 @@
 	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(event, index, value) {
+	      console.log(value);
 	      this.setState({ value: value });
 	    }
 	  }, {
@@ -46950,16 +46951,16 @@
 	            _react2.default.createElement(
 	              _DropDownMenu2.default,
 	              { value: value, onChange: handleChange, style: styles.customWidth },
-	              _react2.default.createElement(_MenuItem2.default, { value: 1, primaryText: 'B.A.' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 2, primaryText: 'B.B.A' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 3, primaryText: 'B.C.A' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 4, primaryText: 'B.TECH' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 5, primaryText: 'B.SCI' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 6, primaryText: 'M.A.' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 7, primaryText: 'M.B.A' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 8, primaryText: 'M.C.A' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 9, primaryText: 'M.TECH' }),
-	              _react2.default.createElement(_MenuItem2.default, { value: 10, primaryText: 'M.SCI' })
+	              _react2.default.createElement(_MenuItem2.default, { value: 'B.A.', primaryText: 'B.A.' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'B.B.A.', primaryText: 'B.B.A' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'B.C.A.', primaryText: 'B.C.A' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'B.TECH.', primaryText: 'B.TECH' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'B.SCI.', primaryText: 'B.SCI' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'M.A.', primaryText: 'M.A.' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'M.B.A.', primaryText: 'M.B.A' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'M.C.A.', primaryText: 'M.C.A' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'M.TECH.', primaryText: 'M.TECH' }),
+	              _react2.default.createElement(_MenuItem2.default, { value: 'M.SCI.', primaryText: 'M.SCI' })
 	            )
 	          )
 	        )
