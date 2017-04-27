@@ -47022,8 +47022,8 @@
 	  handleOptionChange: _react.PropTypes.func.isRequired,
 	  errors: _react.PropTypes.object.isRequired,
 	  user: _react.PropTypes.object.isRequired,
-	  value: _react.PropTypes.object.isRequired,
-	  selectedOption: _react.PropTypes.object.isRequired
+	  value: _react.PropTypes.string.isRequired,
+	  selectedOption: _react.PropTypes.string.isRequired
 	};
 
 	exports.default = ContactForm;

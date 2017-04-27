@@ -152,8 +152,8 @@ ContactForm.propTypes = {
   handleOptionChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  value: PropTypes.object.isRequired,
-  selectedOption: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
+  selectedOption: PropTypes.string.isRequired,
 };
 
 export default ContactForm;
