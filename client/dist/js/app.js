@@ -46733,7 +46733,7 @@
 	      var education = encodeURIComponent(this.state.education);
 	      var gender = encodeURIComponent(this.state.gender);
 
-	      var formData = 'name=' + name + '&email=' + email + '&education=' + education + '&address=' + address + '&mobile_no=' + mobile_no + '&education=' + education + '&gender=' + gender;
+	      var formData = 'name=' + name + '&email=' + email + '&address=' + address + '&mobile_no=' + mobile_no + '&education=' + education + '&gender=' + gender;
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();

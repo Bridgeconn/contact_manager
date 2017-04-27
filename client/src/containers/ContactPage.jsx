@@ -81,7 +81,7 @@ class ContactPage extends React.Component {
     
 
     
-    const formData = `name=${name}&email=${email}&education=${education}&address=${address}&mobile_no=${mobile_no}&education=${education}&gender=${gender}`;
+    const formData = `name=${name}&email=${email}&address=${address}&mobile_no=${mobile_no}&education=${education}&gender=${gender}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
