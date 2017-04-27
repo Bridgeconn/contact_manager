@@ -46664,14 +46664,14 @@
 	        address: ''
 
 	      },
-	      value: 2,
-	      selectedOption: ''
+	      value: 2
+
 	    };
 
 	    _this.processForm = _this.processForm.bind(_this);
 	    _this.changeUser = _this.changeUser.bind(_this);
 	    _this.handleChange = _this.handleChange.bind(_this);
-	    _this.handleOptionChange = _this.handleOptionChange.bind(_this);
+	    // this.handleOptionChange = this.handleOptionChange.bind(this);
 
 	    return _this;
 	  }
@@ -46681,16 +46681,13 @@
 	   *
 	   * @param {object} event - the JavaScript event object
 	   */
-
+	  //  handleOptionChange(changeEvent) {
+	  //   this.setState({
+	  //     selectedOption: changeEvent.target.value
+	  //   });
+	  // }
 
 	  _createClass(ContactPage, [{
-	    key: 'handleOptionChange',
-	    value: function handleOptionChange(changeEvent) {
-	      this.setState({
-	        selectedOption: changeEvent.target.value
-	      });
-	    }
-	  }, {
 	    key: 'handleChange',
 	    value: function handleChange(event, index, value) {
 	      this.setState({ value: value });
@@ -46729,9 +46726,8 @@
 	      var address = encodeURIComponent(this.state.user.address);
 	      var mobile_no = encodeURIComponent(this.state.user.mobile_no);
 	      var value = encodeURIComponent(this.state.value);
-	      var selectedOption = encodeURIComponent(this.state.selectedOption);
 
-	      var formData = 'name=' + name + '&email=' + email + '&education=' + education + '&address=' + address + '&mobile_no=' + mobile_no + '&value=' + value + '&selectedOption=' + selectedOption;
+	      var formData = 'name=' + name + '&email=' + email + '&education=' + education + '&address=' + address + '&mobile_no=' + mobile_no + '&value=' + value;
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();
@@ -46776,9 +46772,7 @@
 	        errors: this.state.errors,
 	        user: this.state.user,
 	        handleChange: this.handleChange,
-	        value: this.state.value,
-	        handleOptionChange: this.handleOptionChange,
-	        selectedOption: this.state.selectedOption
+	        value: this.state.value
 	      });
 	    }
 	  }]);
