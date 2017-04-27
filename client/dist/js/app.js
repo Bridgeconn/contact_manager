@@ -46664,8 +46664,8 @@
 	        address: ''
 
 	      },
-	      value: 'B.A.',
-	      selectedOption: ''
+	      education: 'B.A.',
+	      gender: ''
 
 	    };
 
@@ -46689,15 +46689,15 @@
 	    value: function handleOptionChange(changeEvent) {
 	      console.log(changeEvent.target.value);
 	      this.setState({
-	        selectedOption: changeEvent.target.value
+	        gender: changeEvent.target.value
 
 	      });
 	    }
 	  }, {
 	    key: 'handleChange',
-	    value: function handleChange(event, index, value) {
-	      console.log(value);
-	      this.setState({ value: value });
+	    value: function handleChange(event, index, education) {
+	      console.log(education);
+	      this.setState({ education: education });
 	    }
 	  }, {
 	    key: 'changeUser',
@@ -46735,7 +46735,7 @@
 	      var value = encodeURIComponent(this.state.value);
 	      var selectedOption = encodeURIComponent(this.state.selectedOption);
 
-	      var formData = 'name=' + name + '&email=' + email + '&education=' + education + '&address=' + address + '&mobile_no=' + mobile_no + '&value=' + value + '&selectedOption=' + selectedOption;
+	      var formData = 'name=' + name + '&email=' + email + '&education=' + education + '&address=' + address + '&mobile_no=' + mobile_no + '&education=' + education + '&gender=' + gender;
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();
@@ -46780,9 +46780,9 @@
 	        errors: this.state.errors,
 	        user: this.state.user,
 	        handleChange: this.handleChange,
-	        value: this.state.value,
+	        education: this.state.education,
 	        handleOptionChange: this.handleOptionChange,
-	        selectedOption: this.state.selectedOption
+	        gender: this.state.gender
 	      });
 	    }
 	  }]);
@@ -46871,9 +46871,9 @@
 	      handleChange = _ref.handleChange,
 	      handleOptionChange = _ref.handleOptionChange,
 	      errors = _ref.errors,
-	      value = _ref.value,
+	      education = _ref.education,
 	      user = _ref.user,
-	      selectedOption = _ref.selectedOption;
+	      gender = _ref.gender;
 	  return _react2.default.createElement(
 	    _Card.Card,
 	    { className: 'container' },
@@ -46950,7 +46950,7 @@
 	            { className: 'field-line' },
 	            _react2.default.createElement(
 	              _DropDownMenu2.default,
-	              { value: value, onChange: handleChange, style: styles.customWidth },
+	              { value: education, onChange: handleChange, style: styles.customWidth },
 	              _react2.default.createElement(_MenuItem2.default, { value: 'B.A.', primaryText: 'B.A.' }),
 	              _react2.default.createElement(_MenuItem2.default, { value: 'B.B.A.', primaryText: 'B.B.A' }),
 	              _react2.default.createElement(_MenuItem2.default, { value: 'B.C.A.', primaryText: 'B.C.A' }),
@@ -47022,8 +47022,8 @@
 	  handleOptionChange: _react.PropTypes.func.isRequired,
 	  errors: _react.PropTypes.object.isRequired,
 	  user: _react.PropTypes.object.isRequired,
-	  value: _react.PropTypes.string.isRequired,
-	  selectedOption: _react.PropTypes.string.isRequired
+	  education: _react.PropTypes.string.isRequired,
+	  gender: _react.PropTypes.string.isRequired
 	};
 
 	exports.default = ContactForm;

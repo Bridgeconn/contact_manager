@@ -45,9 +45,9 @@ const ContactForm = ({
   handleChange,
   handleOptionChange,
   errors,
-  value,
+  education,
   user,
-  selectedOption
+  gender
 }) => (
 
   <Card className="container">
@@ -93,7 +93,7 @@ const ContactForm = ({
           </Paper>
           <Paper style={styles.paperRight}>
           <div className="field-line">
-            <DropDownMenu value={value} onChange={handleChange} style={styles.customWidth}>
+            <DropDownMenu value={education} onChange={handleChange} style={styles.customWidth}>
               <MenuItem value={'B.A.'} primaryText="B.A." />
               <MenuItem value={'B.B.A.'} primaryText="B.B.A" />
               <MenuItem value={'B.C.A.'} primaryText="B.C.A" />
@@ -152,8 +152,8 @@ ContactForm.propTypes = {
   handleOptionChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  value: PropTypes.string.isRequired,
-  selectedOption: PropTypes.string.isRequired,
+  education: PropTypes.string.isRequired,
+  gender: PropTypes.string.isRequired,
 };
 
 export default ContactForm;

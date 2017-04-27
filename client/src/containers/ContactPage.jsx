@@ -21,8 +21,8 @@ class ContactPage extends React.Component {
         address:''
 
       },
-      value:'B.A.',
-      selectedOption:''
+      education:'B.A.',
+      gender:''
       
     };
 
@@ -41,15 +41,15 @@ class ContactPage extends React.Component {
    handleOptionChange(changeEvent) {
     console.log(changeEvent.target.value);
     this.setState({
-      selectedOption: changeEvent.target.value
+      gender: changeEvent.target.value
       
     });
     
   }
 
-   handleChange(event, index, value){
-    console.log(value);
-    this.setState({value});
+   handleChange(event, index, education){
+    console.log(education);
+    this.setState({education});
   }
 
   changeUser(event) {
@@ -83,7 +83,7 @@ class ContactPage extends React.Component {
     
 
     
-    const formData = `name=${name}&email=${email}&education=${education}&address=${address}&mobile_no=${mobile_no}&value=${value}&selectedOption=${selectedOption}`;
+    const formData = `name=${name}&email=${email}&education=${education}&address=${address}&mobile_no=${mobile_no}&education=${education}&gender=${gender}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -126,9 +126,9 @@ class ContactPage extends React.Component {
         errors={this.state.errors}
         user={this.state.user}
         handleChange={this.handleChange}
-        value={this.state.value} 
+        education={this.state.education} 
         handleOptionChange={this.handleOptionChange}
-        selectedOption={this.state.selectedOption}     
+        gender={this.state.gender}     
       />
     );
   }
