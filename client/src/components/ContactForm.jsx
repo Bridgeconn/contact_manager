@@ -7,8 +7,6 @@ import Paper from 'material-ui/Paper';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
-import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton'
-
 
 const styles = {
   div:{
@@ -45,9 +43,11 @@ const ContactForm = ({
   onSubmit,
   onChange,
   handleChange,
+  handleOptionChange,
   errors,
   value,
-  user
+  user,
+  selectedOption
 }) => (
 
   <Card className="container">
@@ -122,16 +122,14 @@ const ContactForm = ({
           </Paper>
           <Paper style={styles.paperLeft}>
           <div className="field-line">
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light">
-            
-
+            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={handleOptionChange}>
               <RadioButton
-                value="light"
+                value="male"
                 label="Male"
                 style={styles.radioButton}
               />
               <RadioButton
-                value="not_light"
+                value="female"
                 label="Female"
                 style={styles.radioButton}
               />
@@ -151,9 +149,11 @@ ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
+  handleOptionChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
-  value: PropTypes.object.isRequired
+  value: PropTypes.object.isRequired,
+  selectedOption: PropTypes.object.isRequired,
 };
 
 export default ContactForm;

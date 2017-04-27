@@ -22,13 +22,14 @@ class ContactPage extends React.Component {
 
       },
       value:2,
+      selectedOption:""
       
     };
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    // this.handleOptionChange = this.handleOptionChange.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
 
   }
 
@@ -37,11 +38,14 @@ class ContactPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  //  handleOptionChange(changeEvent) {
-  //   this.setState({
-  //     selectedOption: changeEvent.target.value
-  //   });
-  // }
+   handleOptionChange(changeEvent) {
+    console.log(changeEvent.target.value);
+    this.setState({
+      selectedOption: changeEvent.target.value
+      
+    });
+    
+  }
 
    handleChange(event, index, value){
     this.setState({value});
@@ -74,10 +78,11 @@ class ContactPage extends React.Component {
     const address = encodeURIComponent(this.state.user.address);
     const mobile_no = encodeURIComponent(this.state.user.mobile_no);
     const value = encodeURIComponent(this.state.value);
+    const selectedOption = encodeURIComponent(this.state.selectedOption);
     
 
     
-    const formData = `name=${name}&email=${email}&education=${education}&address=${address}&mobile_no=${mobile_no}&value=${value}`;
+    const formData = `name=${name}&email=${email}&education=${education}&address=${address}&mobile_no=${mobile_no}&value=${value}&selectedOption=${selectedOption}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -120,7 +125,9 @@ class ContactPage extends React.Component {
         errors={this.state.errors}
         user={this.state.user}
         handleChange={this.handleChange}
-        value={this.state.value}     
+        value={this.state.value} 
+        handleOptionChange={this.handleOptionChange}
+        selectedOption={this.state.selectedOption}     
       />
     );
   }
