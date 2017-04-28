@@ -5,6 +5,9 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var jsx = require('node-jsx');
+
+jsx.install();  
 
 
 const app = express();
@@ -24,7 +27,9 @@ app.use(bodyParser.json());
 // tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.set('views', __dirname + '/client/src/components');
 app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
 
 app.use(session({
 	secret: 'vidyapathaisalwaysrunning',

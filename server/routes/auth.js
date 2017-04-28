@@ -6,15 +6,19 @@ const router = express.Router();
 
 module.exports = function(app, passport) {
 
+app.get('/signup', function(req, res) {
+    res.render('SignUpForm.jsx', { message: req.flash('signupMessage') });
+  });
+
 app.post('/signup', passport.authenticate('Process-for-signup', {
   successRedirect : '/add_contact', 
-  failureRedirect : '/signup'
+  failureRedirect : '/contact_list'
   }));
 
 
 app.post('/login', passport.authenticate('Process-for-login', {
-  successRedirect : '/contact_list', 
-  failureRedirect : '/add_contact',
+  successRedirect : '/add_contact', 
+  failureRedirect : '/contact_list'
   }), 
     function(req, res){
     if (req.body.remember) {
@@ -26,12 +30,11 @@ app.post('/login', passport.authenticate('Process-for-login', {
 });
 
 app.get('/add_contact', isLoggedIn, function(req, res) {
-    res.render('ContactPage.jsx', {
+    res.render('ContactPage.jsx ', {
       user : req.user 
     });
   });
 
-}
 
 
 function isLoggedIn(req, res, next) {
@@ -40,4 +43,6 @@ function isLoggedIn(req, res, next) {
     return next();
 
   res.redirect('/');
+}
+
 }
