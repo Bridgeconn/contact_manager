@@ -35639,7 +35639,17 @@
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: '/logout' },
-	          'Log out'
+	          'Logout'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/add_contact' },
+	          'Add Contact'
+	        ),
+	        _react2.default.createElement(
+	          _reactRouter.Link,
+	          { to: '/contact_list' },
+	          'ContactList'
 	        )
 	      ) : _react2.default.createElement(
 	        'div',
@@ -35653,16 +35663,6 @@
 	          _reactRouter.Link,
 	          { to: '/signup' },
 	          'Sign up'
-	        ),
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/add_contact' },
-	          'Add Contact'
-	        ),
-	        _react2.default.createElement(
-	          _reactRouter.Link,
-	          { to: '/contact_list' },
-	          'ContactList'
 	        )
 	      )
 	    ),
