@@ -12,20 +12,31 @@ const SignUpForm = ({
   user,
 }) => (
   <Card className="container">
-    <form action="/signup" method="post">
+    <form action="/" onSubmit={onSubmit}>
       <h2 className="card-heading">Sign Up</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
 
       <div className="field-line">
         <TextField
-          floatingLabelText="Username"
-          name="username"
+          floatingLabelText="Name"
+          name="name"
           errorText={errors.name}
           onChange={onChange}
           value={user.name}
         />
       </div>
+
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Email"
+          name="email"
+          errorText={errors.email}
+          onChange={onChange}
+          value={user.email}
+        />
+      </div>
+
       <div className="field-line">
         <TextField
           floatingLabelText="Password"
@@ -54,3 +65,4 @@ SignUpForm.propTypes = {
 };
 
 export default SignUpForm;
+

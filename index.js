@@ -1,53 +1,34 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-var session  = require('express-session');
-var cookieParser = require('cookie-parser');
-var morgan = require('morgan');
-var passport = require('passport');
-var flash    = require('connect-flash');
-var jsx = require('node-jsx');
+const passport = require('passport');
+const config = require('./config');
 
-jsx.install();  
-
+require('./server/models').connect(config.dbUri);
 
 const app = express();
-// tell the app to look for static files in these directories
-require('./server/config/passport')(passport);	
+
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 
-
-app.use(morgan('dev')); // log every request to the console
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
-app.use(bodyParser.json());
-
-// tell the app to parse HTTP body messages
 app.use(bodyParser.urlencoded({ extended: false }));
-
-app.set('views', __dirname + '/client/src/components');
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
-
-app.use(session({
-	secret: 'vidyapathaisalwaysrunning',
-	resave: true,
-	saveUninitialized: true
- } )); // session secret
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash());
 
-require('./server/routes/auth.js')(app, passport);
+const localSignupStrategy = require('./server/passport/local-signup');
+const localLoginStrategy = require('./server/passport/local-login');
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
+
+const authCheckMiddleware = require('./server/middleware/auth-check');
+app.use('/api', authCheckMiddleware);
 
 // routes
-// const authRoutes = require('./server/routes/auth');
-// app.use('/auth', authRoutes);
+const authRoutes = require('./server/routes/auth');
+const apiRoutes = require('./server/routes/api');
+app.use('/auth', authRoutes);
+app.use('/api', apiRoutes);
+
 
 // start the server
 app.listen(4000, () => {
-  console.log('Server is running on http://localhost:4000 or http://127.0.0.1:4000');
+  console.log('Server is running on http://localhost:4000 or http://127.0.0.1:3000');
 });
-

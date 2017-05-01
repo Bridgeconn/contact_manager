@@ -5,16 +5,25 @@ import SignUpPage from './containers/SignUpPage.jsx';
 import ContactPage from './containers/ContactPage.jsx';
 import ContactListPage from './containers/ContactListPage.jsx';
 import ContactShowPage from './containers/ContactShowPage.jsx';
+import AfterLogin from './components/AfterLogin.jsx';
+import Auth from './modules/Auth';
+
 
 const routes = {
-  // base component (wrapper for the whole application).
   component: Base,
   childRoutes: [
 
     {
       path: '/',
-      component: HomePage
+      getComponent: (location, callback) => {
+        if (Auth.isUserAuthenticated()) {
+          callback(null, AfterLogin);
+        } else {
+          callback(null, HomePage);
+        }
+      }
     },
+
     {
       path: '/login',
       component: LoginPage
@@ -35,6 +44,15 @@ const routes = {
     {
       path: '/contact_details',
       component: ContactShowPage
+    },
+
+    {
+      path: '/logout',
+      onEnter: (nextState, replace) => {
+        Auth.deauthenticateUser();
+
+        replace('/');
+      }
     }
     
   ]

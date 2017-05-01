@@ -1,7 +1,7 @@
 {
-  "name": "authentication-in-react-apps",
+  "name": "contact_manager",
   "version": "1.0.0",
-  "description": "Authentication in React Applications, Part 1: Creating Components",
+  "description": "Authentication in React Applications for contact_manager",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --use_strict index.js",
@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/vladimirponomarev/authentication-in-react-apps.git"
+    "url": "https://github.com/Bridgeconn/contact_manager/tree/db_branch"
   },
-  "author": "Vladimir Ponomarev",
+  "author": "Himanshu Pandey",
   "license": "MIT",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
