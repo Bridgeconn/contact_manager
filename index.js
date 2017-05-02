@@ -27,6 +27,13 @@ const apiRoutes = require('./server/routes/api');
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
+app.get("/add_contact", function(req, res) {
+res.sendFile(__dirname + '/server/static/index.html')
+});
+
+app.get("/contact_list", function(req, res) {
+res.sendFile(__dirname + '/server/static/index.html')
+});
 
 // start the server
 app.listen(4000, () => {
