@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
+const Contact = require('./server/models/contact');
 
 require('./server/models').connect(config.dbUri);
 
@@ -30,6 +31,10 @@ app.use('/api', apiRoutes);
 app.get("/add_contact", function(req, res) {
 res.sendFile(__dirname + '/server/static/index.html')
 });
+
+app.post('/add_contact', (req, res) => {
+   Contact.saveContact(req.body)
+ });
 
 app.get("/contact_list", function(req, res) {
 res.sendFile(__dirname + '/server/static/index.html')

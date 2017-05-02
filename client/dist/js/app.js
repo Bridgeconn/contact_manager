@@ -43370,7 +43370,7 @@
 	          _Auth2.default.authenticateUser(xhr.response.token);
 
 	          // change the current URL to /
-	          _this2.context.router.replace('/');
+	          _this2.context.router.replace('/add_contact');
 	        } else {
 	          // failure
 
@@ -45893,7 +45893,7 @@
 
 	      // create an AJAX request
 	      var xhr = new XMLHttpRequest();
-	      xhr.open('get', '/add_contact');
+	      xhr.open('post', '/add_contact');
 	      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 	      xhr.responseType = 'json';
 	      xhr.addEventListener('load', function () {
@@ -45918,7 +45918,7 @@
 	        }
 	      });
 	      xhr.send(formData);
-	      console.log(formData);
+	      console.log("Add Contact: " + formData);
 	    }
 
 	    /**
@@ -46096,7 +46096,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var name = ['John Smith', 'Randal White', 'Stephanie Sanders', 'Banana', 'Steve Brown', 'Banana'];
+	var name = ['John Smith', 'Randal White'];
 
 	var styles = {
 	  searchbBoxAlign: {

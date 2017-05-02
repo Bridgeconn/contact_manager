@@ -63,7 +63,7 @@ class ContactPage extends React.Component {
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('get', '/add_contact');
+    xhr.open('post', '/add_contact');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
@@ -88,7 +88,7 @@ class ContactPage extends React.Component {
       }
     });
     xhr.send(formData);
-    console.log(formData);
+    console.log("Add Contact: " + formData);
   }
 
   /**

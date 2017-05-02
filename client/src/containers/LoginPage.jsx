@@ -66,7 +66,7 @@ class LoginPage extends React.Component {
 
 
         // change the current URL to /
-        this.context.router.replace('/');
+        this.context.router.replace('/add_contact');
       } else {
         // failure
 

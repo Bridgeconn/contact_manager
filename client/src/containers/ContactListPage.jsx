@@ -5,12 +5,7 @@ import ContactListForm from '../components/ContactListForm.jsx';
 
 const name = [
   'John Smith',
-  'Randal White',
-  'Stephanie Sanders',
-  'Banana',
-  'Steve Brown',
-  'Banana',
-  
+  'Randal White'  
 ];
 
 const styles={
