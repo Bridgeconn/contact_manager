@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
@@ -11,7 +12,7 @@ const app = express();
 
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
-
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 
@@ -26,8 +27,10 @@ app.use('/api', authCheckMiddleware);
 // routes
 const authRoutes = require('./server/routes/auth');
 const apiRoutes = require('./server/routes/api');
+
 app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
+
 
 app.get("/add_contact", function(req, res) {
 res.sendFile(__dirname + '/server/static/index.html')
@@ -47,9 +50,29 @@ app.post('/add_contact', (req, res) => {
 
  });
 
+// app.get("/contact_list", function(req, res) {
+
+// 	Contact.find({}, function(err, contacts) {
+// 	  if (err) throw err;
+// 	  console.log(contacts);
+// 	});
+//    // res.sendFile(__dirname + '/server/static/index.html')
+// });
+
+//request for get list of contact
 app.get("/contact_list", function(req, res) {
-res.sendFile(__dirname + '/server/static/index.html')
+
+	Contact.find({}, function(err, foundData) { 
+        if(err) {
+            console.log(err);
+            return res.status(500).send();
+        } else {
+        	console.log("hello")
+            return res.status(200).send(foundData);
+        }
+    });
 });
+
 
 // start the server
 app.listen(4000, () => {
