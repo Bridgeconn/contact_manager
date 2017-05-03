@@ -45908,7 +45908,7 @@
 	          console.log('The form is valid');
 	        } else {
 	          // failure
-
+	          console.log(errors);
 	          var errors = xhr.response.errors ? xhr.response.errors : {};
 	          errors.summary = xhr.response.message;
 

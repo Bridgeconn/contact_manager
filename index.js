@@ -2,9 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const config = require('./config');
+require('./server/models').connect(config.dbUri);
 const Contact = require('./server/models/contact');
 
-require('./server/models').connect(config.dbUri);
+
 
 const app = express();
 
@@ -32,8 +33,18 @@ app.get("/add_contact", function(req, res) {
 res.sendFile(__dirname + '/server/static/index.html')
 });
 
+// Save contact in database after login
 app.post('/add_contact', (req, res) => {
-   Contact.saveContact(req.body)
+	var contact = new Contact(req.body)
+	contact.save(function(err, result) {
+		if (err){
+			console.log(err);
+		}
+		else {
+		    console.log("Contact saved successfully in database !!!");
+		}
+	})
+
  });
 
 app.get("/contact_list", function(req, res) {

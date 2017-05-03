@@ -78,7 +78,7 @@ class ContactPage extends React.Component {
         console.log('The form is valid');
       } else {
         // failure
-
+        console.log(errors);
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
 

@@ -1,7 +1,9 @@
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-// define the User model schema
-const ContactSchema = new mongoose.Schema({
+// define the Contact model schema
+
+const ContactSchema = new Schema({
   name: {
     type: String,
     index: { unique: true }
@@ -25,18 +27,6 @@ const ContactSchema = new mongoose.Schema({
 
 });
 
-ContactSchema.methods = {
-
-	saveContact: function(contactObj){
-		Contact.save(contactObj, function(err, result) {
-			if (err){
-				console.log(err);
-			}
-			else {
-			    result;
-			}
-		})
-	}
-}
 
 var Contact = mongoose.model('Contact', ContactSchema);
+module.exports = Contact;
