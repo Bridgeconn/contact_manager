@@ -85,7 +85,7 @@ class ContactPage extends React.Component {
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/add_contact');
+    xhr.open('post', '/add_contact');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
@@ -100,7 +100,7 @@ class ContactPage extends React.Component {
         console.log('The form is valid');
       } else {
         // failure
-
+        console.log(errors);
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
 
@@ -110,7 +110,7 @@ class ContactPage extends React.Component {
       }
     });
     xhr.send(formData);
-    console.log(formData);
+    console.log("Add Contact: " + formData);
   }
 
   /**

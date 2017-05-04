@@ -16,6 +16,9 @@ const styles = {
 };
 
 class ContactListForm extends React.Component {
+  constructor(props){
+    super(props);
+  }
 render () {
     return (
  
@@ -26,40 +29,25 @@ render () {
       <TableRow>
         <TableHeaderColumn>ID</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
-        <TableHeaderColumn>Status</TableHeaderColumn> 
-        <TableHeaderColumn><Link to="">show</Link></TableHeaderColumn>
-
+        <TableHeaderColumn>Email</TableHeaderColumn> 
+        <TableHeaderColumn>Mobile No.</TableHeaderColumn>
+        <TableHeaderColumn>Education</TableHeaderColumn>
+        <TableHeaderColumn>Address</TableHeaderColumn>
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow>
-        <TableRowColumn>1</TableRowColumn>
-        <TableRowColumn>John Smith</TableRowColumn>
-        <TableRowColumn>Employed</TableRowColumn>       
-        <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
-      </TableRow>
-
-      <TableRow>     
-        <TableRowColumn>2</TableRowColumn>
-        <TableRowColumn>Randal White</TableRowColumn>
-        <TableRowColumn>Unemployed</TableRowColumn>
-        <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>3</TableRowColumn>
-        <TableRowColumn>Stephanie Sanders</TableRowColumn>
-        <TableRowColumn>Employed</TableRowColumn>
-        <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
-      </TableRow>
-
-      <TableRow>
-        <TableRowColumn>4</TableRowColumn>
-        <TableRowColumn>Steve Brown</TableRowColumn>
-        <TableRowColumn>Employed</TableRowColumn>
-       <TableRowColumn><Link to="/contact_details">show</Link></TableRowColumn>
-      </TableRow>
-      
+        {
+          this.props.contactData.map(function(data){
+            return(<TableRow>
+                      <TableRowColumn>{data.id}</TableRowColumn>
+                      <TableRowColumn>{data.name}</TableRowColumn>
+                      <TableRowColumn>{data.email}</TableRowColumn>
+                      <TableRowColumn>{data.mobile_no}</TableRowColumn>
+                      <TableRowColumn>{data.education}</TableRowColumn>
+                      <TableRowColumn>{data.address}</TableRowColumn>
+                   </TableRow>)
+          })
+        } 
     </TableBody>
   </Table>
   </Card>

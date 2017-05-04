@@ -29,8 +29,6 @@ const styles = {
 };
 
 
-
-
 class ContactShowForm extends React.Component {  
   
   render(){ 
