@@ -16,15 +16,20 @@ class ContactPage extends React.Component {
       user: {
         name: '',
         email: '',
-        education: '',
         mobile_no:'',
         address:''
 
-      }
+      },
+      education:'B.A.',
+      gender:''
+      
     };
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleOptionChange = this.handleOptionChange.bind(this);
+
   }
 
   /**
@@ -32,6 +37,20 @@ class ContactPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
+   handleOptionChange(changeEvent) {
+    console.log(changeEvent.target.value);
+    this.setState({
+      gender: changeEvent.target.value
+      
+    });
+    
+  }
+
+   handleChange(event, index, education){
+    console.log(education);
+    this.setState({education});
+  }
+
   changeUser(event) {
     console.log(event.target.name);
     const field = event.target.name;
@@ -55,11 +74,14 @@ class ContactPage extends React.Component {
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
-    const education = encodeURIComponent(this.state.user.education);
     const address = encodeURIComponent(this.state.user.address);
     const mobile_no = encodeURIComponent(this.state.user.mobile_no);
-   
-    const formData = `name=${name}&email=${email}&education=${education}&address=${address}&mobile_no=${mobile_no}`;
+    const education = encodeURIComponent(this.state.education);
+    const gender = encodeURIComponent(this.state.gender);
+    
+
+    
+    const formData = `name=${name}&email=${email}&address=${address}&mobile_no=${mobile_no}&education=${education}&gender=${gender}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -101,6 +123,10 @@ class ContactPage extends React.Component {
         onChange={this.changeUser}
         errors={this.state.errors}
         user={this.state.user}
+        handleChange={this.handleChange}
+        education={this.state.education} 
+        handleOptionChange={this.handleOptionChange}
+        gender={this.state.gender}     
       />
     );
   }
