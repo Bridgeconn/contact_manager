@@ -30,24 +30,25 @@ render () {
       <TableRow>
         <TableHeaderColumn>ID</TableHeaderColumn>
         <TableHeaderColumn>Name</TableHeaderColumn>
-        <TableHeaderColumn>Status</TableHeaderColumn> 
-        <TableHeaderColumn>Email</TableHeaderColumn>
-
+        <TableHeaderColumn>Email</TableHeaderColumn> 
+        <TableHeaderColumn>Mobile No.</TableHeaderColumn>
+        <TableHeaderColumn>Education</TableHeaderColumn>
+        <TableHeaderColumn>Address</TableHeaderColumn>
       </TableRow>
     </TableHeader>
     <TableBody>
-      
         {
           this.props.contactData.map(function(data){
-            return(<TableRow><TableRowColumn>{data.id}</TableRowColumn>
-                <TableRowColumn>{data.name}</TableRowColumn>
-              <TableRowColumn>{data.address}</TableRowColumn>
-              <TableRowColumn>{data.email}</TableRowColumn></TableRow>
-              )
+            return(<TableRow>
+                      <TableRowColumn>{data.id}</TableRowColumn>
+                      <TableRowColumn>{data.name}</TableRowColumn>
+                      <TableRowColumn>{data.email}</TableRowColumn>
+                      <TableRowColumn>{data.mobile_no}</TableRowColumn>
+                      <TableRowColumn>{data.education}</TableRowColumn>
+                      <TableRowColumn>{data.address}</TableRowColumn>
+                   </TableRow>)
           })
-        }
-      
-     
+        } 
     </TableBody>
   </Table>
   </Card>
