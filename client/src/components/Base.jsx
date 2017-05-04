@@ -2,7 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
 
-// Full Stack (Uday Kumar)
+console.log(Auth.isUserAuthenticated());
+// console.log(localStorage)
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">

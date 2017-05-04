@@ -16,14 +16,22 @@ module.exports = (req, res, next) => {
     if (err) { return res.status(401).end(); }
 
     const userId = decoded.sub;
-
+    console.log(userId);
+    
     // check if a user exists
-    return User.findById(userId, (userErr, user) => {
-      if (userErr || !user) {
-        return res.status(401).end();
-      }
-
-      return next();
+    User.findOne({id: userId}).exec(function findOneCB(err, found){
+      console.log("hii");
+      console.log(found);
+      if(err) next(err);
+      req.currentUser = found;
+      next();
     });
+    // return User.findById(userId, (userErr, user) => {
+    //   if (userErr || !user) {
+    //     return res.status(401).end();
+    //   }
+
+    //   return next();
+    // });
   });
 };

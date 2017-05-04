@@ -7,14 +7,15 @@ require('./server/models').connect(config.dbUri);
 const Contact = require('./server/models/contact');
 
 
-
 const app = express();
+
 
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
+app.use(passport.session()); 
 
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
@@ -33,11 +34,13 @@ app.use('/api', apiRoutes);
 
 
 app.get("/add_contact", function(req, res) {
+	console.log(req.currentUser);
 res.sendFile(__dirname + '/server/static/index.html')
 });
 
 // Save contact in database after login
 app.post('/add_contact', (req, res) => {
+
 	var contact = new Contact(req.body)
 	contact.save(function(err, result) {
 		if (err){
@@ -61,13 +64,13 @@ app.post('/add_contact', (req, res) => {
 
 //request for get list of contact
 app.get("/contact_list", function(req, res) {
-
+	// console.log(req.session);
 	Contact.find({}, function(err, foundData) { 
         if(err) {
             console.log(err);
             return res.status(500).send();
         } else {
-        	console.log("hello")
+        	// console.log("hello")
             return res.status(200).send(foundData);
         }
     });

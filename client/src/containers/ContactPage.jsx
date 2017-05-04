@@ -20,7 +20,7 @@ class ContactPage extends React.Component {
         address:''
 
       },
-      education:'B.A.',
+      education:'M.C.A',
       gender:''
       
     };
