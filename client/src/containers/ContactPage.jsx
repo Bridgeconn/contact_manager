@@ -16,10 +16,11 @@ class ContactPage extends React.Component {
       user: {
         name: '',
         email: '',
-        mobile_no:'',
-        address:''
+        address:'',
+        mobile:''
 
       },
+      
       education:'B.A.',
       gender:''
       
@@ -52,10 +53,11 @@ class ContactPage extends React.Component {
   }
 
   changeUser(event) {
-    console.log(event.target.name);
+    // console.log(event.target.name);
     const field = event.target.name;
     const user = this.state.user;
     user[field] = event.target.value;
+    // console.log(user[field]);
 
     this.setState({
       user
@@ -75,21 +77,24 @@ class ContactPage extends React.Component {
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
     const address = encodeURIComponent(this.state.user.address);
-    const mobile_no = encodeURIComponent(this.state.user.mobile_no);
-    const education = encodeURIComponent(this.state.education);
-    const gender = encodeURIComponent(this.state.gender);
+    const mobile = encodeURIComponent(this.state.user.mobile);
+    // const education = encodeURIComponent(this.state.education);
+    // const gender = encodeURIComponent(this.state.gender);
     
 
     
-    const formData = `name=${name}&email=${email}&address=${address}&mobile_no=${mobile_no}&education=${education}&gender=${gender}`;
+    const formData = `name=${name}&email=${email}&address=${address}&mobile=${mobile}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', 'auth/add_contact');
+    console.log(xhr);
+    xhr.open('post', '/auth/add_contact');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
+    console.log(xhr)
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
+        
         // success
 
         // change the component-container state
@@ -100,9 +105,11 @@ class ContactPage extends React.Component {
         console.log('The form is valid');
       } else {
         // failure
-        console.log(errors);
+        
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
+        console.log(xhr);
+        // console.log(errors);
 
         this.setState({
           errors
@@ -113,6 +120,7 @@ class ContactPage extends React.Component {
     console.log("Add Contact: " + formData);
   }
 
+  
   /**
    * Render the component.
    */
@@ -120,7 +128,7 @@ class ContactPage extends React.Component {
     return (
       <ContactForm
         onSubmit={this.processForm}
-        onChange={this.changeUser}
+        changeUser={this.changeUser}
         errors={this.state.errors}
         user={this.state.user}
         handleChange={this.handleChange}

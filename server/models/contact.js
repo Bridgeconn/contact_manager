@@ -9,10 +9,12 @@ const ContactSchema = new Schema({
   },
   email: {
     type: String,
+    index: { unique: true }
    
   },
   mobile_no: {
     type: String,
+    index: { unique: true }
     
   },
   education: {
@@ -20,6 +22,7 @@ const ContactSchema = new Schema({
   },
   address: {
     type: String,
+    index: { unique: true }
   },
 
 });

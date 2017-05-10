@@ -41,7 +41,7 @@ const styles = {
 
 const ContactForm = ({
   onSubmit,
-  onChange,
+  changeUser,
   handleChange,
   handleOptionChange,
   errors,
@@ -51,17 +51,18 @@ const ContactForm = ({
 }) => (
 
   <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
+    <form action="/" onSubmit={onSubmit} >
       <h2 className="card-heading">Contact</h2>
 
       {errors.summary && <p className="error-message">{errors.summary}</p>}
+      
       <div style={styles.div}>
         <Paper  style={styles.paperLeft} >
           <div className="field-line">
             <TextField
               floatingLabelText="Name"
               name="name"
-              onChange={onChange}
+              onChange={changeUser}
               errorText={errors.name}
               value={user.name}
             />
@@ -73,7 +74,7 @@ const ContactForm = ({
               floatingLabelText="Email"
               name="email"
               errorText={errors.email}
-              onChange={onChange}
+              onChange={changeUser}
               value={user.email}
             />
           </div>
@@ -84,10 +85,10 @@ const ContactForm = ({
           <div className="field-line">
             <TextField
               floatingLabelText="Mobile No."
-              name="mobile_no"
-              onChange={onChange}
-              errorText={errors.mobile_no}
-              value={user.mobile_no}
+              name="mobile"
+              onChange={changeUser}
+              errorText={errors.mobile}
+              value={user.mobile}
             />
           </div>
           </Paper>
@@ -114,7 +115,7 @@ const ContactForm = ({
             <TextField
               floatingLabelText="Address"
               name="address"
-              onChange={onChange}
+              onChange={changeUser}
               errorText={errors.address}
               value={user.address}
             />
@@ -147,7 +148,7 @@ const ContactForm = ({
 
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
+  changeUser: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleOptionChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,

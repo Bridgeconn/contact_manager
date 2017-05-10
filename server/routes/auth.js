@@ -61,45 +61,7 @@ function validateLoginForm(payload) {
   };
 }
 
-function validateContactForm(payload) {
-  
-  const errors = {};
-  let isFormValid = true;
-  let message = '';
 
-  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
-    isFormValid = false;
-    errors.email = 'Please provide your email address.';
-  }
-  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
-    isFormValid = false;
-    errors.name = 'Please provide your name.';
-    console.log(errors.name);
-  }
-  if (!payload || isNaN(payload.mobile_no) || payload.mobile_no.trim().length !==10) {
-    isFormValid = false;
-    errors.mobile_no = 'Please provide your mobile number';
-    console.log(errors.name);
-  }
-
-   if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
-    isFormValid = false;
-    errors.name = 'Please provide your address';
-    console.log(errors.name);
-  }
-  
-
-  if (!isFormValid) {
-    message = 'Check the form for errors.';
-    console.log(message);
-  }
-
-  return {
-    success: isFormValid,
-    message,
-    errors
-  };
-}
 
 router.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body);
@@ -175,18 +137,43 @@ router.post('/login', (req, res, next) => {
   })(req, res, next);
 });
 
-router.post('/add_contact', (req, res, next) => {
+function validateContactForm(payload) {
+  const errors = {};
+  let isFormValid = true;
+
+  
+  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
+    isFormValid = false;
+    errors.email = 'Please provide a correct email address.';
+  }
+  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
+    isFormValid = false;
+    errors.name = 'Please provide your name.';
+  }
+  if (!payload || isNaN(payload.mobile) || payload.mobile.trim().length !==10) {
+    isFormValid = false;
+    errors.mobile = 'mobile number must be of 10  digits ';
+  }
+  if (!payload || typeof payload.address !== 'string' || payload.address.trim().length ===0) {
+    isFormValid = false;
+    errors.address = 'please write something to address ';
+  }
+
+  return {
+    success: isFormValid,
+    errors
+  };
+}
+
+router.post('/add_contact', (req, res) => {
   const validationResult = validateContactForm(req.body);
+  console.log(validationResult);
   if (!validationResult.success) {
     return res.status(400).json({
       success: false,
-      message: validationResult.message,
       errors: validationResult.errors
     });
   }
-});
-
-
-
-
+})
+  
 module.exports = router;
