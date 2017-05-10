@@ -62,7 +62,7 @@ function validateLoginForm(payload) {
 }
 
 function validateContactForm(payload) {
-  console.log(payload)
+  
   const errors = {};
   let isFormValid = true;
   let message = '';
@@ -185,5 +185,8 @@ router.post('/add_contact', (req, res, next) => {
     });
   }
 });
+
+
+
 
 module.exports = router;
