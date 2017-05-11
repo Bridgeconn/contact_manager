@@ -12,14 +12,14 @@ const ContactSchema = new Schema({
     index: { unique: true }
    
   },
-  mobile_no: {
+  mobile: {
     type: String,
     index: { unique: true }
     
   },
-  education: {
-    type: String,
-  },
+  // education: {
+  //   type: String,
+  // },
   address: {
     type: String,
     index: { unique: true }

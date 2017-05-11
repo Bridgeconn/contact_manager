@@ -85,10 +85,10 @@ const ContactForm = ({
           <div className="field-line">
             <TextField
               floatingLabelText="Mobile No."
-              name="mobile"
+              name="mobile_no"
               onChange={changeUser}
-              errorText={errors.mobile}
-              value={user.mobile}
+              errorText={errors.mobile_no}
+              value={user.mobile_no}
             />
           </div>
           </Paper>
@@ -123,7 +123,7 @@ const ContactForm = ({
           </Paper>
           <Paper style={styles.paperLeft}>
           <div className="field-line">
-            <RadioButtonGroup name="shipSpeed" defaultSelected="not_light" onChange={handleOptionChange}>
+            <RadioButtonGroup  defaultSelected="male" onChange={handleOptionChange}>
               <RadioButton
                 value="male"
                 label="Male"

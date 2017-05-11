@@ -17,7 +17,7 @@ class ContactPage extends React.Component {
         name: '',
         email: '',
         address:'',
-        mobile:''
+        mobile_no:''
 
       },
       
@@ -75,50 +75,47 @@ class ContactPage extends React.Component {
 
     // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
-    const email = encodeURIComponent(this.state.user.email);
+    const email = encodeURIComponent(this.state.user.email);    
+    const mobile_no = encodeURIComponent(this.state.user.mobile_no);
     const address = encodeURIComponent(this.state.user.address);
-    const mobile = encodeURIComponent(this.state.user.mobile);
-    // const education = encodeURIComponent(this.state.education);
-    // const gender = encodeURIComponent(this.state.gender);
     
-
-    
-    const formData = `name=${name}&email=${email}&address=${address}&mobile=${mobile}`;
+    const formData = `name=${name}&email=${email}&mobile_no=${mobile_no}&address=${address}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
     console.log(xhr);
-    xhr.open('post', '/auth/add_contact');
+    xhr.open('post', 'auth/add_contact');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
-    console.log(xhr)
+    
     xhr.addEventListener('load', () => {
+
       if (xhr.status === 200) {
         
         // success
-
         // change the component-container state
         this.setState({
           errors: {}
         });
-
-        console.log('The form is valid');
+          console.log('hi');
+         
+        
       } else {
         // failure
         
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;
-        console.log(xhr);
-        // console.log(errors);
-
+        
+        console.log('how r u');
         this.setState({
           errors
         });
       }
     });
     xhr.send(formData);
-    console.log("Add Contact: " + formData);
+    // console.log("Add Contact: " + formData); 
   }
+ 
 
   
   /**
