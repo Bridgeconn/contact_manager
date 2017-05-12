@@ -3,10 +3,6 @@ import AutoComplete from 'material-ui/AutoComplete';
 import ContactListForm from '../components/ContactListForm.jsx';
 import $ from "jquery";
 
-const name = [
-  'John Smith',
-  'Randal White'  
-];
 
 class ContactListPage extends React.Component {
   constructor(props){
@@ -35,23 +31,7 @@ class ContactListPage extends React.Component {
   
   render () {
     return (
-
-        <div>
-          <div className="container-custom">
-          
-            <AutoComplete
-              floatingLabelText="Search-box"
-              filter={AutoComplete.fuzzyFilter}
-              dataSource={name}
-              maxSearchResults={5}
-              />
-      
-          </div>
-
-          <ContactListForm contactData = {this.state.contactList}/>
-          
-        </div>
-
+      <ContactListForm contactData = {this.state.contactList}/>          
     );    
   }
 

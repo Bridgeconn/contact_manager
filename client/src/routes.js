@@ -34,7 +34,7 @@ const routes = {
       component: SignUpPage
     },
     {
-      path: '/add_contact',
+      path: '/contacts/add_contact',
       component: ContactPage
     },
     {

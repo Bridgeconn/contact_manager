@@ -37,15 +37,17 @@ render () {
     </TableHeader>
     <TableBody>
         {
-          this.props.contactData.map(function(data){
-            return(<TableRow>
-                      <TableRowColumn>{data.id}</TableRowColumn>
-                      <TableRowColumn>{data.name}</TableRowColumn>
-                      <TableRowColumn>{data.email}</TableRowColumn>
-                      <TableRowColumn>{data.mobile_no}</TableRowColumn>
-                      <TableRowColumn>{data.education}</TableRowColumn>
-                      <TableRowColumn>{data.address}</TableRowColumn>
-                   </TableRow>)
+          this.props.contactData.map(function(data, i){
+            return(
+              <TableRow key={i}>
+                <TableRowColumn key={i}>{data.id}</TableRowColumn>
+                <TableRowColumn key={i}>{data.name}</TableRowColumn>
+                <TableRowColumn key={i}>{data.email}</TableRowColumn>
+                <TableRowColumn key={i}>{data.mobile_no}</TableRowColumn>
+                <TableRowColumn key={i}>{data.education}</TableRowColumn>
+                <TableRowColumn key={i}>{data.address}</TableRowColumn>
+              </TableRow>
+            )
           })
         } 
     </TableBody>

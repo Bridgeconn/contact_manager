@@ -2,8 +2,6 @@ import React, { PropTypes } from 'react';
 import { Link, IndexLink } from 'react-router';
 import Auth from '../modules/Auth';
 
-console.log(Auth.isUserAuthenticated());
-// console.log(localStorage)
 const Base = ({ children }) => (
   <div>
     <div className="top-bar">
@@ -14,7 +12,7 @@ const Base = ({ children }) => (
       {Auth.isUserAuthenticated() ? (
         <div className="top-bar-right">
         <Link to="/logout">Logout</Link>
-        <Link to="/add_contact">Add Contact</Link>
+        <Link to="/contacts/add_contact">Add Contact</Link>
         <Link to="/contact_list">ContactList</Link>
         </div>
       ) : (

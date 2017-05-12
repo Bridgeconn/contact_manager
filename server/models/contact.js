@@ -25,19 +25,9 @@ const ContactSchema = new Schema({
     index: { unique: true }
   },
 
+
 });
 
-// ContactSchema.methods = {
-//   allContact: function() {
 
-//     User.find({}, function(err, users) {
-//       if (err) throw err;
-
-//       // object of all the users
-//       console.log(users);
-//     });
-//     // body...
-//   }
-// }
 var Contact = mongoose.model('Contact', ContactSchema);
 module.exports = Contact;

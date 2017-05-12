@@ -1,4 +1,5 @@
 const express = require('express');
+var session = require('express-session')
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -7,18 +8,27 @@ require('./server/models').connect(config.dbUri);
 const Contact = require('./server/models/contact');
 
 
+// Init App
 const app = express();
 
+app.set('trust proxy', 1) // trust first proxy
 
+
+// Set Static Folder
 app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
+
 app.use(cors());
+app.use(session({secret:'dkanhdad838ytebeagadb62ye8qy4qbaudte7qheb89902', resave: true, saveUninitialized: true}));
 app.use(bodyParser.urlencoded({ extended: false }));
+
+// Passport init
 app.use(passport.initialize());
 app.use(passport.session()); 
-
+	
 const localSignupStrategy = require('./server/passport/local-signup');
 const localLoginStrategy = require('./server/passport/local-login');
+
 passport.use('local-signup', localSignupStrategy);
 passport.use('local-login', localLoginStrategy);
 
@@ -33,49 +43,17 @@ app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
 
-app.get("/add_contact", function(req, res) {
-	console.log(req.currentUser);
-res.sendFile(__dirname + '/server/static/index.html')
+app.get("/login", function(req, res) {
+	
+	res.sendFile(__dirname + '/server/static/index.html')
 });
 
-// Save contact in database after login
-app.post('/add_contact', (req, res) => {
-
-	var contact = new Contact(req.body)
-	contact.save(function(err, result) {
-		if (err){
-			console.log(err);
-		}
-		else {
-		    console.log("Contact saved successfully in database !!!");
-		}
-	})
-
- });
-
-// app.get("/contact_list", function(req, res) {
-
-// 	Contact.find({}, function(err, contacts) {
-// 	  if (err) throw err;
-// 	  console.log(contacts);
-// 	});
-//    // res.sendFile(__dirname + '/server/static/index.html')
-// });
-
-//request for get list of contact
-app.get("/contact_list", function(req, res) {
-	// console.log(req.session);
-	Contact.find({}, function(err, foundData) { 
-        if(err) {
-            console.log(err);
-            return res.status(500).send();
-        } else {
-        	// console.log("hello")
-            return res.status(200).send(foundData);
-        }
-    });
+app.get("/signup", function(req, res) {
+	
+	res.sendFile(__dirname + '/server/static/index.html')
 });
 
+app.use(require('./server/controllers'));
 
 // start the server
 app.listen(4000, () => {

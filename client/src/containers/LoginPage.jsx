@@ -5,9 +5,6 @@ import LoginForm from '../components/LoginForm.jsx';
 
 class LoginPage extends React.Component {
 
-  /**
-   * Class constructor.
-   */
   constructor(props, context) {
     super(props, context);
 
@@ -33,13 +30,7 @@ class LoginPage extends React.Component {
     this.changeUser = this.changeUser.bind(this);
   }
 
-  /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
   processForm(event) {
-    // prevent default action. in this case, action is the form submission event
     event.preventDefault();
 
     // create a string for an HTTP body message
@@ -64,9 +55,8 @@ class LoginPage extends React.Component {
         // save the token
         Auth.authenticateUser(xhr.response.token);
 
-
         // change the current URL to /
-        this.context.router.replace('/add_contact');
+        this.context.router.replace('/contacts/add_contact');
       } else {
         // failure
 
@@ -82,11 +72,6 @@ class LoginPage extends React.Component {
     xhr.send(formData);
   }
 
-  /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
   changeUser(event) {
     const field = event.target.name;
     const user = this.state.user;
@@ -97,9 +82,6 @@ class LoginPage extends React.Component {
     });
   }
 
-  /**
-   * Render the component.
-   */
   render() {
     return (
       <LoginForm

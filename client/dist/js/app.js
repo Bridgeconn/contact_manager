@@ -35573,7 +35573,7 @@
 	    path: '/signup',
 	    component: _SignUpPage2.default
 	  }, {
-	    path: '/add_contact',
+	    path: '/contacts/add_contact',
 	    component: _ContactPage2.default
 	  }, {
 	    path: '/contact_list',
@@ -35615,8 +35615,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	console.log(_Auth2.default.isUserAuthenticated());
-	// console.log(localStorage)
 	var Base = function Base(_ref) {
 	  var children = _ref.children;
 	  return _react2.default.createElement(
@@ -35644,7 +35642,7 @@
 	        ),
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: '/add_contact' },
+	          { to: '/contacts/add_contact' },
 	          'Add Contact'
 	        ),
 	        _react2.default.createElement(
@@ -43302,9 +43300,6 @@
 	var LoginPage = function (_React$Component) {
 	  _inherits(LoginPage, _React$Component);
 
-	  /**
-	   * Class constructor.
-	   */
 	  function LoginPage(props, context) {
 	    _classCallCheck(this, LoginPage);
 
@@ -43333,19 +43328,11 @@
 	    return _this;
 	  }
 
-	  /**
-	   * Process the form.
-	   *
-	   * @param {object} event - the JavaScript event object
-	   */
-
-
 	  _createClass(LoginPage, [{
 	    key: 'processForm',
 	    value: function processForm(event) {
 	      var _this2 = this;
 
-	      // prevent default action. in this case, action is the form submission event
 	      event.preventDefault();
 
 	      // create a string for an HTTP body message
@@ -43371,7 +43358,7 @@
 	          _Auth2.default.authenticateUser(xhr.response.token);
 
 	          // change the current URL to /
-	          _this2.context.router.replace('/add_contact');
+	          _this2.context.router.replace('/contacts/add_contact');
 	        } else {
 	          // failure
 
@@ -43386,13 +43373,6 @@
 	      });
 	      xhr.send(formData);
 	    }
-
-	    /**
-	     * Change the user object.
-	     *
-	     * @param {object} event - the JavaScript event object
-	     */
-
 	  }, {
 	    key: 'changeUser',
 	    value: function changeUser(event) {
@@ -43404,11 +43384,6 @@
 	        user: user
 	      });
 	    }
-
-	    /**
-	     * Render the component.
-	     */
-
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -51959,8 +51934,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var name = ['John Smith', 'Randal White'];
-
 	var ContactListPage = function (_React$Component) {
 	  _inherits(ContactListPage, _React$Component);
 
@@ -51995,21 +51968,7 @@
 	  _createClass(ContactListPage, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'container-custom' },
-	          _react2.default.createElement(_AutoComplete2.default, {
-	            floatingLabelText: 'Search-box',
-	            filter: _AutoComplete2.default.fuzzyFilter,
-	            dataSource: name,
-	            maxSearchResults: 5
-	          })
-	        ),
-	        _react2.default.createElement(_ContactListForm2.default, { contactData: this.state.contactList })
-	      );
+	      return _react2.default.createElement(_ContactListForm2.default, { contactData: this.state.contactList });
 	    }
 	  }]);
 
@@ -52953,38 +52912,38 @@
 	          _react2.default.createElement(
 	            _Table.TableBody,
 	            null,
-	            this.props.contactData.map(function (data) {
+	            this.props.contactData.map(function (data, i) {
 	              return _react2.default.createElement(
 	                _Table.TableRow,
-	                null,
+	                { key: i },
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
-	                  null,
+	                  { key: i },
 	                  data.id
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
-	                  null,
+	                  { key: i },
 	                  data.name
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
-	                  null,
+	                  { key: i },
 	                  data.email
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
-	                  null,
+	                  { key: i },
 	                  data.mobile_no
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
-	                  null,
+	                  { key: i },
 	                  data.education
 	                ),
 	                _react2.default.createElement(
 	                  _Table.TableRowColumn,
-	                  null,
+	                  { key: i },
 	                  data.address
 	                )
 	              );
@@ -65934,7 +65893,7 @@
 	};
 
 	AfterLogin.propTypes = {
-	  secretData: _react.PropTypes.string.isRequired
+	  secretData: _react.PropTypes.string
 	};
 
 	exports.default = AfterLogin;

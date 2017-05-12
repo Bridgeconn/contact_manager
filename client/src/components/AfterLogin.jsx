@@ -14,7 +14,7 @@ const AfterLogin = ({ secretData }) => (
 );
 
 AfterLogin.propTypes = {
-  secretData: PropTypes.string.isRequired
+  secretData: PropTypes.string
 };
 
 export default AfterLogin;
