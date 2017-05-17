@@ -3,7 +3,7 @@ const app = express();
 var path = require('path');
 
 app.get('/add_contact',  function (req, res) {
-	console.log("Test User: " + req.session.user)
+	console.log("Controller User: " + req.user)
 	res.sendFile(path.resolve(__dirname+'../../static/index.html'));
 });
 
@@ -21,7 +21,7 @@ app.post('/add_contact', (req, res) => {
  });
 
 
-app.get("/contact_list", function(req, res) {
+app.get('/contact_list', function(req, res) {
 	Contact.find({}, function(err, foundData) { 
         if(err) {
             console.log(err);

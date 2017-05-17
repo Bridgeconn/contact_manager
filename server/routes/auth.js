@@ -61,6 +61,14 @@ function validateLoginForm(payload) {
   };
 }
 
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 router.post('/signup', (req, res, next) => {
   const validationResult = validateSignupForm(req.body);
   if (!validationResult.success) {
@@ -99,39 +107,29 @@ router.post('/signup', (req, res, next) => {
   })(req, res, next);
 });
 
-router.post('/login', (req, res, next) => {
-  const validationResult = validateLoginForm(req.body);
-  if (!validationResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: validationResult.message,
-      errors: validationResult.errors
-    });
-  }
 
-
-  return passport.authenticate('local-login', (err, token, userData) => {
-    if (err) {
-      if (err.name === 'IncorrectCredentialsError') {
-        return res.status(400).json({
-          success: false,
-          message: err.message
-        });
-      }
-
-      return res.status(400).json({
-        success: false,
-        message: 'Could not process the form.'
-      });
-    }
-    return res.json({
+router.post('/login', passport.authenticate('local-login', { failureRedirect: '/login', failureFlash: true }), (req, res, next) => {
+    req.session.save((err) => {
+        if (err) {
+        return next(err);
+            if (err.name === 'MongoError' && err.code === 11000) {
+            // the 11000 Mongo code is for a duplication email error
+            // the 409 HTTP status code is for conflict error
+            return res.status(409).json({
+              success: false,
+              message: 'Check the form for errors.',
+              errors: {
+                email: 'This email is already taken.'
+              }
+            });
+          }
+         }
+         return res.status(200).json({
       success: true,
-      message: 'You have successfully logged in!',
-      token,
-      user: userData
+      message: 'You have successfully signed in! Now you should be able to add contact.'
     });
-  })(req, res, next);
+        console.log("Inside login");
+    });
+    
 });
-
-
 module.exports = router;
