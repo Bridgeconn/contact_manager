@@ -23,9 +23,12 @@ app.post('/add_contact', (req, res) => {
 	contact.save(function(err, result) {
 		if (err){
 			console.log(err);
+			return res.status(400).send({message: "Error occurred", contactSave: false});
 		}
 		else {
-		    console.log("Contact saved successfully in database !!!");
+			  console.log("Contact saved successfully in database !!!");
+			  return res.status(200).send({message: "Contact saved", contactSave: true});
+
 		}
 	})
  });

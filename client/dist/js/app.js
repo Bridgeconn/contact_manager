@@ -45877,12 +45877,12 @@
 	      xhr.addEventListener('load', function () {
 	        if (xhr.status === 200) {
 	          // success
-	          xhr.redirect("/contacts/contact_list");
+	          console.log("Hello contact");
+	          console.log(xhr.response.message);
 	          // change the component-container state
 	          _this2.setState({
 	            errors: {}
 	          });
-
 	          console.log('The form is valid');
 	        } else {
 	          // failure
@@ -45896,7 +45896,6 @@
 	        }
 	      });
 	      xhr.send(formData);
-	      console.log("Add Contact: " + formData);
 	    }
 	  }, {
 	    key: 'render',

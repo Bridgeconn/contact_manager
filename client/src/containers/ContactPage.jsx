@@ -76,12 +76,12 @@ class ContactPage extends React.Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         // success
-
+        console.log("Hello contact");
+        console.log(xhr.response.message);
         // change the component-container state
         this.setState({
           errors: {}
         });
-
         console.log('The form is valid');
       } else {
         // failure
