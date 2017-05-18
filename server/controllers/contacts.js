@@ -14,7 +14,7 @@ app.post('/add_contact', (req, res) => {
 		name: req.body.name,
 		email: req.body.email,
 		address: req.body.address,
-		mobile_no: req.body.modbile_no,
+		mobile_no: req.body.mobile_no,
 		education: req.body.education,
 		gender: req.body.gender,
 		userId: req.user._id

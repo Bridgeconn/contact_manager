@@ -5,8 +5,7 @@ var Schema = mongoose.Schema;
 
 const ContactSchema = new Schema({
   name: {
-    type: String,
-    index: { unique: true }
+    type: String
   },
   email: {
     type: String,
@@ -17,14 +16,14 @@ const ContactSchema = new Schema({
     index: { unique: true }
   },
   education: {
-    type: String,
-    index: { unique: true }
+    type: String
   },
   address: {
-    type: String,
-    index: { unique: true }
+    type: String
   },
-
+  userId: {
+    type: String
+  }
 
 });
 
