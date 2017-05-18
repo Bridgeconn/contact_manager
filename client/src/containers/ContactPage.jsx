@@ -76,7 +76,7 @@ class ContactPage extends React.Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         // success
-        xhr.redirect("/contacts/contact_list");
+
         // change the component-container state
         this.setState({
           errors: {}
@@ -95,7 +95,6 @@ class ContactPage extends React.Component {
       }
     });
     xhr.send(formData);
-    console.log("Add Contact: " + formData);
   }
 
   render() {
