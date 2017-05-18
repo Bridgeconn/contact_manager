@@ -4,13 +4,9 @@ import ContactForm from '../components/ContactForm.jsx';
 
 class ContactPage extends React.Component {
 
-  /**
-   * Class constructor.
-   */
   constructor(props) {
     super(props);
 
-    // set the initial component state
     this.state = {
       errors: {},
       user: {
@@ -32,11 +28,6 @@ class ContactPage extends React.Component {
 
   }
 
-  /**
-   * Change the user object.
-   *
-   * @param {object} event - the JavaScript event object
-   */
    handleOptionChange(changeEvent) {
     console.log(changeEvent.target.value);
     this.setState({
@@ -62,13 +53,7 @@ class ContactPage extends React.Component {
     });
   }
 
-  /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
-  processForm(event) {
-    // prevent default action. in this case, action is the form submission event
+     processForm(event) {
     event.preventDefault();
 
     // create a string for an HTTP body message
@@ -91,7 +76,7 @@ class ContactPage extends React.Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         // success
-
+        xhr.redirect("/contacts/contact_list");
         // change the component-container state
         this.setState({
           errors: {}
@@ -113,9 +98,6 @@ class ContactPage extends React.Component {
     console.log("Add Contact: " + formData);
   }
 
-  /**
-   * Render the component.
-   */
   render() {
     return (
       <ContactForm

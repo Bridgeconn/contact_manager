@@ -45798,13 +45798,9 @@
 	var ContactPage = function (_React$Component) {
 	  _inherits(ContactPage, _React$Component);
 
-	  /**
-	   * Class constructor.
-	   */
 	  function ContactPage(props) {
 	    _classCallCheck(this, ContactPage);
 
-	    // set the initial component state
 	    var _this = _possibleConstructorReturn(this, (ContactPage.__proto__ || Object.getPrototypeOf(ContactPage)).call(this, props));
 
 	    _this.state = {
@@ -45828,13 +45824,6 @@
 
 	    return _this;
 	  }
-
-	  /**
-	   * Change the user object.
-	   *
-	   * @param {object} event - the JavaScript event object
-	   */
-
 
 	  _createClass(ContactPage, [{
 	    key: 'handleOptionChange',
@@ -45863,19 +45852,11 @@
 	        user: user
 	      });
 	    }
-
-	    /**
-	     * Process the form.
-	     *
-	     * @param {object} event - the JavaScript event object
-	     */
-
 	  }, {
 	    key: 'processForm',
 	    value: function processForm(event) {
 	      var _this2 = this;
 
-	      // prevent default action. in this case, action is the form submission event
 	      event.preventDefault();
 
 	      // create a string for an HTTP body message
@@ -45896,7 +45877,7 @@
 	      xhr.addEventListener('load', function () {
 	        if (xhr.status === 200) {
 	          // success
-
+	          xhr.redirect("/contacts/contact_list");
 	          // change the component-container state
 	          _this2.setState({
 	            errors: {}
@@ -45917,11 +45898,6 @@
 	      xhr.send(formData);
 	      console.log("Add Contact: " + formData);
 	    }
-
-	    /**
-	     * Render the component.
-	     */
-
 	  }, {
 	    key: 'render',
 	    value: function render() {
