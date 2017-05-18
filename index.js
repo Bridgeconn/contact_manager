@@ -6,6 +6,7 @@ const passport = require('passport');
 const config = require('./config');
 require('./server/models').connect(config.dbUri);
 const Contact = require('./server/models/contact');
+var flash    = require('connect-flash');
 
 
 // Init App
@@ -19,18 +20,19 @@ app.use(express.static('./server/static/'));
 app.use(express.static('./client/dist/'));
 
 app.use(cors());
-app.use(session({secret:'dkanhdad838ytebeagadb62ye8qy4qbaudte7qheb89902', resave: true, saveUninitialized: true}));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // Passport init
+require('./server/config/passport')(passport);
+app.use(session({
+    secret: 'ilovescotchscotchyscotchscotch', // session secret
+    resave: true,
+    saveUninitialized: true
+}));
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
+app.use(flash());
 	
-const localSignupStrategy = require('./server/passport/local-signup');
-const localLoginStrategy = require('./server/passport/local-login');
-
-passport.use('local-signup', localSignupStrategy);
-passport.use('local-login', localLoginStrategy);
 
 const authCheckMiddleware = require('./server/middleware/auth-check');
 app.use('/api', authCheckMiddleware);

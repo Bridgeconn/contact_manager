@@ -38,7 +38,7 @@ const routes = {
       component: ContactPage
     },
     {
-      path: '/contact_list',
+      path: '/contacts/contact_list',
       component: ContactListPage
     },
     {

@@ -11,8 +11,18 @@ const UserSchema = new mongoose.Schema({
   name: String
 });
 
+UserSchema.methods.generateHash = function(password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+// checking if password is valid
+UserSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.password);
+};
+
+
 UserSchema.methods.comparePassword = function comparePassword(password, callback) {
-  bcrypt.compare(password, this.password, callback);
+  return bcrypt.compare(password, this.password, callback);
 };
 
 

@@ -13,7 +13,7 @@ const Base = ({ children }) => (
         <div className="top-bar-right">
         <Link to="/logout">Logout</Link>
         <Link to="/contacts/add_contact">Add Contact</Link>
-        <Link to="/contact_list">ContactList</Link>
+        <Link to="/contacts/contact_list">ContactList</Link>
         </div>
       ) : (
         <div className="top-bar-right">

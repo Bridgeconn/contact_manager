@@ -1,15 +1,25 @@
 const express = require('express');
 const app = express();
 var path = require('path');
+var Contact = require("../models/contact");
 
 app.get('/add_contact',  function (req, res) {
-	console.log("Controller User: " + req.user)
-	res.sendFile(path.resolve(__dirname+'../../static/index.html'));
+	console.log("Controller User: " + req.user._id)
+	res.sendFile(path.resolve(__dirname+'./../static/index.html'));
 });
 
 // Save contact in database after login
 app.post('/add_contact', (req, res) => {
-	var contact = new Contact(req.body)
+	var contact_data = {
+		name: req.body.name,
+		email: req.body.email,
+		address: req.body.address,
+		mobile_no: req.body.modbile_no,
+		education: req.body.education,
+		gender: req.body.gender,
+		userId: req.user._id
+	}
+	var contact = new Contact(contact_data)
 	contact.save(function(err, result) {
 		if (err){
 			console.log(err);
@@ -22,7 +32,8 @@ app.post('/add_contact', (req, res) => {
 
 
 app.get('/contact_list', function(req, res) {
-	Contact.find({}, function(err, foundData) { 
+	console.log(req.user)
+	Contact.find({userId: req.user._id}, function(err, foundData) { 
         if(err) {
             console.log(err);
             return res.status(500).send();

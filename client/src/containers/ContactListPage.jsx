@@ -13,7 +13,7 @@ class ContactListPage extends React.Component {
     }
     
     $.ajax({
-          url: "/contact_list",
+          url: "/contacts/contact_list",
           type: 'get',
           headers: {
             'Content-Type':'application/json'
