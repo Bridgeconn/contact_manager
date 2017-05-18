@@ -25,3 +25,12 @@ I have complted authentication part earlier using MySQL, passport. So aging doin
 4) bcrypt:  is a package with the bcrypt algorithm implementation for hashing passwords
 5) jsonwebtoken: is an implementation of JSON Web Token standard
 
+For see data in MongoDB database follow the following commands:
+
+1) show dbs;
+2) use ContactListDatabase;
+3) show collections;
+4) db.users.find();
+5) db.contacts.find();
+6) db.user.remove({ });
+7) db.contacts.remove({ });
