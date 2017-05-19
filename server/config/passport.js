@@ -20,11 +20,14 @@ module.exports = function(passport) {
         passReqToCallback : true 
     },
     function(req, email, password, done) {
+
         if (email)
             email = email.toLowerCase();
 
         process.nextTick(function() {
             User.findOne({ 'email' :  email }, function(err, user) {
+            console.log("Password : " + password)
+            console.log("User1 : " + user)
                 if (err)
                     return done(err);
                 if (!user)
@@ -35,7 +38,6 @@ module.exports = function(passport) {
                     return done(null, user);
             });
         });
-
     }));
 
     passport.use('local-signup', new LocalStrategy({

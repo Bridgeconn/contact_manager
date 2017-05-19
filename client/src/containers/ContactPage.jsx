@@ -9,6 +9,7 @@ class ContactPage extends React.Component {
 
     this.state = {
       errors: {},
+      showmessage: {},
       user: {
         name: '',
         email: '',
@@ -53,7 +54,7 @@ class ContactPage extends React.Component {
     });
   }
 
-     processForm(event) {
+  processForm(event) {
     event.preventDefault();
 
     // create a string for an HTTP body message
@@ -76,13 +77,28 @@ class ContactPage extends React.Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         // success
-        console.log("Hello contact");
-        console.log(xhr.response.message);
+
         // change the component-container state
         this.setState({
           errors: {}
         });
-        console.log('The form is valid');
+
+        this.setState({
+          showmessage: {}
+        });
+        
+       const showmessage = xhr.response.showmessage ? xhr.response.showmessage : {};
+        showmessage.summary = xhr.response.message;
+        this.setState({
+          showmessage
+        });
+
+        //set a message
+        console.log("I am contact page !!");
+        console.log(xhr.response.message);
+
+        // make a redirect
+
       } else {
         // failure
         console.log(errors);

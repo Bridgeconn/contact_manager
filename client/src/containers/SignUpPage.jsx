@@ -4,13 +4,9 @@ import SignUpForm from '../components/SignUpForm.jsx';
 
 class SignUpPage extends React.Component {
 
-  /**
-   * Class constructor.
-   */
   constructor(props, context) {
     super(props, context);
 
-    // set the initial component state
     this.state = {
       errors: {},
       user: {
@@ -24,16 +20,9 @@ class SignUpPage extends React.Component {
     this.changeUser = this.changeUser.bind(this);
   }
 
-  /**
-   * Process the form.
-   *
-   * @param {object} event - the JavaScript event object
-   */
   processForm(event) {
-    // prevent default action. in this case, action is the form submission event
     event.preventDefault();
 
-    // create a string for an HTTP body message
     const name = encodeURIComponent(this.state.user.name);
     const email = encodeURIComponent(this.state.user.email);
     const password = encodeURIComponent(this.state.user.password);
@@ -54,6 +43,8 @@ class SignUpPage extends React.Component {
         });
 
         // set a message
+        console.log("I am signup !!");
+        console.log(xhr.response.message);
         localStorage.setItem('successMessage', xhr.response.message);
 
         // make a redirect
