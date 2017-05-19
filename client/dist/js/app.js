@@ -45536,13 +45536,9 @@
 	var SignUpPage = function (_React$Component) {
 	  _inherits(SignUpPage, _React$Component);
 
-	  /**
-	   * Class constructor.
-	   */
 	  function SignUpPage(props, context) {
 	    _classCallCheck(this, SignUpPage);
 
-	    // set the initial component state
 	    var _this = _possibleConstructorReturn(this, (SignUpPage.__proto__ || Object.getPrototypeOf(SignUpPage)).call(this, props, context));
 
 	    _this.state = {
@@ -45559,22 +45555,13 @@
 	    return _this;
 	  }
 
-	  /**
-	   * Process the form.
-	   *
-	   * @param {object} event - the JavaScript event object
-	   */
-
-
 	  _createClass(SignUpPage, [{
 	    key: 'processForm',
 	    value: function processForm(event) {
 	      var _this2 = this;
 
-	      // prevent default action. in this case, action is the form submission event
 	      event.preventDefault();
 
-	      // create a string for an HTTP body message
 	      var name = encodeURIComponent(this.state.user.name);
 	      var email = encodeURIComponent(this.state.user.email);
 	      var password = encodeURIComponent(this.state.user.password);
@@ -45595,6 +45582,8 @@
 	          });
 
 	          // set a message
+	          console.log("I am signup !!");
+	          console.log(xhr.response.message);
 	          localStorage.setItem('successMessage', xhr.response.message);
 
 	          // make a redirect
@@ -45805,6 +45794,7 @@
 
 	    _this.state = {
 	      errors: {},
+	      showmessage: {},
 	      user: {
 	        name: '',
 	        email: '',
@@ -45877,13 +45867,30 @@
 	      xhr.addEventListener('load', function () {
 	        if (xhr.status === 200) {
 	          // success
-	          console.log("Hello contact");
-	          console.log(xhr.response.message);
+
 	          // change the component-container state
 	          _this2.setState({
 	            errors: {}
 	          });
-	          console.log('The form is valid');
+
+	          _this2.setState({
+	            showmessage: {}
+	          });
+
+	          console.log("I am contact page !!");
+
+	          var showmessage = xhr.response.showmessage ? xhr.response.showmessage : {};
+	          showmessage.summary = xhr.response.message;
+
+	          console.log("Showmessage: " + showmessage.summary);
+
+	          _this2.setState({
+	            showmessage: showmessage
+	          });
+
+	          //set a message
+
+	          // make a redirect
 	        } else {
 	          // failure
 	          console.log(errors);

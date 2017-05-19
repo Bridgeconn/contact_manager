@@ -86,16 +86,19 @@ class ContactPage extends React.Component {
         this.setState({
           showmessage: {}
         });
-        
-       const showmessage = xhr.response.showmessage ? xhr.response.showmessage : {};
+
+       console.log("I am contact page !!");
+      
+        const showmessage = xhr.response.showmessage ? xhr.response.showmessage : {};
         showmessage.summary = xhr.response.message;
+      
+        console.log("Showmessage: " + showmessage.summary);
+      
         this.setState({
           showmessage
         });
 
         //set a message
-        console.log("I am contact page !!");
-        console.log(xhr.response.message);
 
         // make a redirect
 
